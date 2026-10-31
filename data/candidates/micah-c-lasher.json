@@ -1,14 +1,134 @@
 {
   "name": "Micah C. Lasher",
-  "occupation": "",
+  "occupation": "Member of the New York State Assembly",
   "race": "cd-12",
   "ballotLines": [
     "Democratic"
   ],
   "priorOffice": null,
-  "positions": [],
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "A large expansion of federal child care funding"
+      ],
+      "opposes": [],
+      "quote": "Massively expand federal investment in child care.",
+      "source": {
+        "title": "Platform and Policies - Lasher for Congress (campaign site)",
+        "url": "https://micahlasher.com/platform-and-policies/"
+      },
+      "impact": "Families paying for child care could see lower costs if federal funding grows. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Medicare for All or a similar universal health plan"
+      ],
+      "opposes": [],
+      "quote": "Push to pass Medicare for All, or a similar plan that ensures universal care.",
+      "source": {
+        "title": "Platform and Policies - Lasher for Congress (campaign site)",
+        "url": "https://micahlasher.com/platform-and-policies/"
+      },
+      "impact": "A universal plan would cover everyone through a public program, paid for through taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Repealing recent federal tax cuts for high earners",
+        "Restoring safety-net programs that were cut"
+      ],
+      "opposes": [],
+      "quote": "Repeal Trump’s tax breaks to the rich and restore devastating cuts to the social safety net.",
+      "source": {
+        "title": "Platform and Policies - Lasher for Congress (campaign site)",
+        "url": "https://micahlasher.com/platform-and-policies/"
+      },
+      "impact": "High earners would pay more federal tax, and programs like food and health assistance would get more funding. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "iran",
+      "supports": [
+        "Diplomacy and de-escalation",
+        "Military action only as a last resort"
+      ],
+      "opposes": [],
+      "quote": "Prioritize diplomacy, de-escalation, and long-term stability, with military action only as a last resort with clear objectives and accountability.",
+      "source": {
+        "title": "Platform and Policies - Lasher for Congress (campaign site)",
+        "url": "https://micahlasher.com/platform-and-policies/"
+      },
+      "impact": "He would push for negotiations and limits on military action. Congress controls war funding, but the President directs military operations."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Abolishing ICE"
+      ],
+      "opposes": [],
+      "quote": "Fight to abolish ICE.",
+      "source": {
+        "title": "Platform and Policies - Lasher for Congress (campaign site)",
+        "url": "https://micahlasher.com/platform-and-policies/"
+      },
+      "impact": "He would vote to eliminate the federal immigration enforcement agency in its current form. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "abortion",
+      "supports": [
+        "The Women's Health Protection Act, restoring abortion rights nationwide"
+      ],
+      "opposes": [],
+      "quote": "Fight to pass the Women’s Health Protection Act to restore abortion rights nationwide.",
+      "source": {
+        "title": "Platform and Policies - Lasher for Congress (campaign site)",
+        "url": "https://micahlasher.com/platform-and-policies/"
+      },
+      "impact": "The bill would make abortion legally protected in every state. In New York, abortion is already protected by state law."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "Universal background checks for all gun sales and transfers"
+      ],
+      "opposes": [],
+      "quote": "Vote for universal background checks for all gun sales and transfers.",
+      "source": {
+        "title": "Platform and Policies - Lasher for Congress (campaign site)",
+        "url": "https://micahlasher.com/platform-and-policies/"
+      },
+      "impact": "Private gun sales would require a background check, as licensed dealer sales already do. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "ai-data-centers",
+      "supports": [
+        "A national pause on building new data centers until environmental and cost safeguards are in place"
+      ],
+      "opposes": [],
+      "quote": "Support a national moratorium on the construction of new data centers while lawmakers ensure they will not destroy our environment or spike costs.",
+      "source": {
+        "title": "Platform and Policies - Lasher for Congress (campaign site)",
+        "url": "https://micahlasher.com/platform-and-policies/"
+      },
+      "impact": "New AI data center construction would stop nationwide during the pause. The goal is to prevent higher energy bills and environmental harm."
+    },
+    {
+      "issue": "climate-change",
+      "supports": [
+        "Laws that quickly and sharply cut carbon emissions"
+      ],
+      "opposes": [],
+      "quote": "Support legislation to quickly and dramatically curb carbon emissions.",
+      "source": {
+        "title": "Platform and Policies - Lasher for Congress (campaign site)",
+        "url": "https://micahlasher.com/platform-and-policies/"
+      },
+      "impact": "Expect votes for strict federal emissions limits on power plants, vehicles and industry. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

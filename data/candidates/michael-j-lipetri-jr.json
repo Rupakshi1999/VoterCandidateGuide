@@ -1,15 +1,111 @@
 {
   "name": "Michael J. LiPetri Jr.",
-  "occupation": "",
+  "occupation": "Former New York State Assemblyman",
   "race": "cd-3",
   "ballotLines": [
     "Republican",
     "Conservative"
   ],
   "priorOffice": null,
-  "positions": [],
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Letting Americans keep more of what they earn"
+      ],
+      "opposes": [],
+      "quote": "Affordability starts with letting Americans keep more of what they earn.",
+      "source": {
+        "title": "Mike LiPetri for Congress (campaign site)",
+        "url": "https://www.mikelipetriforcongress.com/"
+      },
+      "impact": "He would vote for further federal tax cuts. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Restoring the patient-doctor relationship"
+      ],
+      "opposes": [
+        "Insurance companies and bureaucrats controlling health care"
+      ],
+      "quote": "We must restore the bond between patients and their doctors, not insurance companies and bureaucrats who wish to control the system.",
+      "source": {
+        "title": "Mike LiPetri for Congress (campaign site)",
+        "url": "https://www.mikelipetriforcongress.com/"
+      },
+      "impact": "Expect support for measures limiting insurer and government control over treatment decisions. The site doesn't name a specific bill."
+    },
+    {
+      "issue": "iran",
+      "supports": [
+        "A forceful military response to any terrorist acts by Iran and its allied groups"
+      ],
+      "opposes": [],
+      "quote": "Hamas, Hezbollah, the Houthis, and the Terror Republic of Iran must know that any acts of terrorism will be responded to with relentless and unmatched force.",
+      "source": {
+        "title": "Mike LiPetri for Congress (campaign site)",
+        "url": "https://www.mikelipetriforcongress.com/"
+      },
+      "impact": "He would vote for military funding and action against Iran and allied groups. Congress controls war funding, but the President directs military operations."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Lifting the SALT cap",
+        "No federal tax on tips, overtime or Social Security"
+      ],
+      "opposes": [],
+      "quote": "That means building off the success of the Trump tax cuts - including lifting the SALT tax cap to protect New York families and eliminating taxes on tips, overtime, and Social Security.",
+      "source": {
+        "title": "Mike LiPetri for Congress (campaign site)",
+        "url": "https://www.mikelipetriforcongress.com/"
+      },
+      "impact": "Homeowners in high-tax areas, tipped and hourly workers, and retirees would pay less federal tax. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Deporting people here illegally who commit crimes",
+        "Requiring all immigrants to enter legally"
+      ],
+      "opposes": [],
+      "quote": "We must continue to deport those criminals here illegally and demand that every immigrant - like our parents and grandparents - enter this country legally and with pride.",
+      "source": {
+        "title": "Mike LiPetri for Congress (campaign site)",
+        "url": "https://www.mikelipetriforcongress.com/"
+      },
+      "impact": "He would vote for stronger deportation and border enforcement. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "Full support for police officers and their families"
+      ],
+      "opposes": [],
+      "quote": "These officers and their families deserve and have earned our full and unapologetic support.",
+      "source": {
+        "title": "Mike LiPetri for Congress (campaign site)",
+        "url": "https://www.mikelipetriforcongress.com/"
+      },
+      "impact": "Expect support for federal funding for police. Day-to-day policing is run by local police departments."
+    },
+    {
+      "issue": "israel-palestine",
+      "supports": [],
+      "opposes": [
+        "Boycotts, divestment and sanctions against Israel"
+      ],
+      "quote": "Any attempt to boycott, divest from, or sanction Israel must be shut down, eliminated, and swiftly dealt with.",
+      "source": {
+        "title": "Mike LiPetri for Congress (campaign site)",
+        "url": "https://www.mikelipetriforcongress.com/"
+      },
+      "impact": "He would vote for federal limits on boycotts of Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

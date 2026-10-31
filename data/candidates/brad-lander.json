@@ -1,15 +1,45 @@
 {
   "name": "Brad Lander",
-  "occupation": "",
+  "occupation": "Former New York City Comptroller",
   "race": "cd-10",
   "ballotLines": [
     "Democratic",
     "Working Families"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "New York City Comptroller",
+    "years": "2022–2025"
+  },
+  "positions": [
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Higher taxes on the wealthy"
+      ],
+      "opposes": [],
+      "quote": "Tax the wealthy!",
+      "source": {
+        "title": "Brad Lander for Congress (campaign site)",
+        "url": "https://www.bradlanderforcongress.com/"
+      },
+      "impact": "He would vote for higher taxes on high earners and large fortunes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "immigration",
+      "supports": [],
+      "opposes": [
+        "Current federal immigration enforcement tactics, including detentions of local residents"
+      ],
+      "quote": "Fight against an authoritarian federal government that is abducting our neighbors.",
+      "source": {
+        "title": "Brad Lander for Congress (campaign site)",
+        "url": "https://www.bradlanderforcongress.com/"
+      },
+      "impact": "He would vote to restrict federal immigration enforcement and oppose funding for current detention practices. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

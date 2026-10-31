@@ -819,7 +819,12 @@
           "id": "brad-lander",
           "name": "Brad Lander",
           "party": "Democratic, Working Families",
-          "occupation": ""
+          "occupation": "Former New York City Comptroller",
+          "record": {
+            "office": "New York City Comptroller",
+            "years": "2022–2025",
+            "actions": []
+          }
         },
         {
           "id": "jennifer-e-moore",
@@ -883,7 +888,20 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "brad-lander": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Higher taxes on the wealthy"
+                }
+              ],
+              "quote": "Tax the wealthy!",
+              "source": "Brad Lander for Congress (campaign site)",
+              "sourceUrl": "https://www.bradlanderforcongress.com/",
+              "realWorldImpact": "He would vote for higher taxes on high earners and large fortunes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -912,7 +930,20 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "brad-lander": {
+              "positions": [
+                {
+                  "stance": "opposes",
+                  "text": "Current federal immigration enforcement tactics, including detentions of local residents"
+                }
+              ],
+              "quote": "Fight against an authoritarian federal government that is abducting our neighbors.",
+              "source": "Brad Lander for Congress (campaign site)",
+              "sourceUrl": "https://www.bradlanderforcongress.com/",
+              "realWorldImpact": "He would vote to restrict federal immigration enforcement and oppose funding for current detention practices. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1265,7 +1296,7 @@
           "id": "micah-c-lasher",
           "name": "Micah C. Lasher",
           "party": "Democratic",
-          "occupation": ""
+          "occupation": "Member of the New York State Assembly"
         },
         {
           "id": "wilneida-negron",
@@ -1299,6 +1330,18 @@
               "source": "Caroline Shinkle's Priorities (campaign site)",
               "sourceUrl": "https://www.carolinefornewyork.com/priorities",
               "realWorldImpact": "She would vote to reduce federal business regulations. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
+            "micah-c-lasher": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A large expansion of federal child care funding"
+                }
+              ],
+              "quote": "Massively expand federal investment in child care.",
+              "source": "Platform and Policies - Lasher for Congress (campaign site)",
+              "sourceUrl": "https://micahlasher.com/platform-and-policies/",
+              "realWorldImpact": "Families paying for child care could see lower costs if federal funding grows. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
             }
           },
           "shared": true
@@ -1331,6 +1374,18 @@
               "source": "Caroline Shinkle's Priorities (campaign site)",
               "sourceUrl": "https://www.carolinefornewyork.com/priorities",
               "realWorldImpact": "Patients could see more published prices for care and more insurance options. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
+            "micah-c-lasher": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Medicare for All or a similar universal health plan"
+                }
+              ],
+              "quote": "Push to pass Medicare for All, or a similar plan that ensures universal care.",
+              "source": "Platform and Policies - Lasher for Congress (campaign site)",
+              "sourceUrl": "https://micahlasher.com/platform-and-policies/",
+              "realWorldImpact": "A universal plan would cover everyone through a public program, paid for through taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
             }
           },
           "shared": true
@@ -1345,7 +1400,24 @@
             "military"
           ],
           "description": "U.S. policy toward the conflict with Iran.",
-          "stances": {},
+          "stances": {
+            "micah-c-lasher": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Diplomacy and de-escalation"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Military action only as a last resort"
+                }
+              ],
+              "quote": "Prioritize diplomacy, de-escalation, and long-term stability, with military action only as a last resort with clear objectives and accountability.",
+              "source": "Platform and Policies - Lasher for Congress (campaign site)",
+              "sourceUrl": "https://micahlasher.com/platform-and-policies/",
+              "realWorldImpact": "He would push for negotiations and limits on military action. Congress controls war funding, but the President directs military operations."
+            }
+          },
           "shared": true
         },
         {
@@ -1371,6 +1443,22 @@
               "source": "Caroline Shinkle's Priorities (campaign site)",
               "sourceUrl": "https://www.carolinefornewyork.com/priorities",
               "realWorldImpact": "Salaried and hourly workers would pay less federal income tax under her proposal. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
+            "micah-c-lasher": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Repealing recent federal tax cuts for high earners"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Restoring safety-net programs that were cut"
+                }
+              ],
+              "quote": "Repeal Trump’s tax breaks to the rich and restore devastating cuts to the social safety net.",
+              "source": "Platform and Policies - Lasher for Congress (campaign site)",
+              "sourceUrl": "https://micahlasher.com/platform-and-policies/",
+              "realWorldImpact": "High earners would pay more federal tax, and programs like food and health assistance would get more funding. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
             }
           },
           "shared": true
@@ -1401,7 +1489,20 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "micah-c-lasher": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Abolishing ICE"
+                }
+              ],
+              "quote": "Fight to abolish ICE.",
+              "source": "Platform and Policies - Lasher for Congress (campaign site)",
+              "sourceUrl": "https://micahlasher.com/platform-and-policies/",
+              "realWorldImpact": "He would vote to eliminate the federal immigration enforcement agency in its current form. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1412,7 +1513,20 @@
             "reproductive health"
           ],
           "description": "Access to and limits on abortion.",
-          "stances": {},
+          "stances": {
+            "micah-c-lasher": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "The Women's Health Protection Act, restoring abortion rights nationwide"
+                }
+              ],
+              "quote": "Fight to pass the Women’s Health Protection Act to restore abortion rights nationwide.",
+              "source": "Platform and Policies - Lasher for Congress (campaign site)",
+              "sourceUrl": "https://micahlasher.com/platform-and-policies/",
+              "realWorldImpact": "The bill would make abortion legally protected in every state. In New York, abortion is already protected by state law."
+            }
+          },
           "shared": true
         },
         {
@@ -1436,6 +1550,18 @@
               "source": "Caroline Shinkle's Priorities (campaign site)",
               "sourceUrl": "https://www.carolinefornewyork.com/priorities",
               "realWorldImpact": "Expect support for federal funding for police. Day-to-day policing is run by the NYPD."
+            },
+            "micah-c-lasher": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Universal background checks for all gun sales and transfers"
+                }
+              ],
+              "quote": "Vote for universal background checks for all gun sales and transfers.",
+              "source": "Platform and Policies - Lasher for Congress (campaign site)",
+              "sourceUrl": "https://micahlasher.com/platform-and-policies/",
+              "realWorldImpact": "Private gun sales would require a background check, as licensed dealer sales already do. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
             }
           },
           "shared": true
@@ -1477,7 +1603,20 @@
             "technology"
           ],
           "description": "Building large data centers for artificial intelligence, including energy and water use.",
-          "stances": {},
+          "stances": {
+            "micah-c-lasher": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A national pause on building new data centers until environmental and cost safeguards are in place"
+                }
+              ],
+              "quote": "Support a national moratorium on the construction of new data centers while lawmakers ensure they will not destroy our environment or spike costs.",
+              "source": "Platform and Policies - Lasher for Congress (campaign site)",
+              "sourceUrl": "https://micahlasher.com/platform-and-policies/",
+              "realWorldImpact": "New AI data center construction would stop nationwide during the pause. The goal is to prevent higher energy bills and environmental harm."
+            }
+          },
           "shared": true
         },
         {
@@ -1490,7 +1629,20 @@
             "energy"
           ],
           "description": "Policies on climate change and emissions.",
-          "stances": {},
+          "stances": {
+            "micah-c-lasher": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Laws that quickly and sharply cut carbon emissions"
+                }
+              ],
+              "quote": "Support legislation to quickly and dramatically curb carbon emissions.",
+              "source": "Platform and Policies - Lasher for Congress (campaign site)",
+              "sourceUrl": "https://micahlasher.com/platform-and-policies/",
+              "realWorldImpact": "Expect votes for strict federal emissions limits on power plants, vehicles and industry. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         }
       ]
@@ -2442,7 +2594,7 @@
           "id": "patrick-halpin",
           "name": "Patrick Halpin",
           "party": "Democratic, Working Families",
-          "occupation": ""
+          "occupation": "Chair, Town of Babylon Planning Board; former Suffolk County Executive"
         }
       ],
       "issues": [
@@ -2470,6 +2622,18 @@
               "source": "Economy & Jobs | Representative Andrew Garbarino (official U.S. House website)",
               "sourceUrl": "https://garbarino.house.gov/issues/economy-jobs",
               "realWorldImpact": "He would vote to cut federal regulations on small businesses. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
+            "patrick-halpin": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Lowering costs for rent, child care and medical bills"
+                }
+              ],
+              "quote": "Lowering costs from rent to childcare to medical bills",
+              "source": "Halpin for Congress (campaign site)",
+              "sourceUrl": "https://www.halpinforcongress.com/",
+              "realWorldImpact": "Expect support for federal measures on housing, child care and medical costs. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
             }
           },
           "shared": true
@@ -2486,7 +2650,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "patrick-halpin": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Health care that doesn't depend on where you live, your job or your income"
+                }
+              ],
+              "quote": "Healthcare shouldn't depend on your ZIP code, your job, or your bank account.",
+              "source": "Agenda — Halpin for Congress (campaign site)",
+              "sourceUrl": "https://www.halpinforcongress.com/building-a-better-long-island",
+              "realWorldImpact": "He would vote to widen access to coverage. The agenda page doesn't name a specific bill."
+            }
+          },
           "shared": true
         },
         {
@@ -2555,7 +2732,24 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "patrick-halpin": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A secure, orderly and fair immigration system"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Support for law enforcement"
+                }
+              ],
+              "quote": "Keeping our communities safe starts with strong leadership, support for law enforcement, and an immigration system that is secure, orderly, and fair.",
+              "source": "Agenda — Halpin for Congress (campaign site)",
+              "sourceUrl": "https://www.halpinforcongress.com/building-a-better-long-island",
+              "realWorldImpact": "He would back immigration measures that pair enforcement with legal processes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2631,7 +2825,28 @@
             "energy"
           ],
           "description": "Policies on climate change and emissions.",
-          "stances": {},
+          "stances": {
+            "patrick-halpin": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Making polluters pay"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Protecting clean water and air"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Climate resilience on Long Island"
+                }
+              ],
+              "quote": "In Congress, I'll continue fighting to make polluters pay, protect clean water and clean air, strengthen climate resilience, and keep Long Island healthy for generations to come.",
+              "source": "Agenda — Halpin for Congress (campaign site)",
+              "sourceUrl": "https://www.halpinforcongress.com/building-a-better-long-island",
+              "realWorldImpact": "Expect support for federal pollution penalties and coastal resilience funding for Long Island. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         }
       ]
@@ -2651,7 +2866,7 @@
           "id": "michael-j-lipetri-jr",
           "name": "Michael J. LiPetri Jr.",
           "party": "Republican, Conservative",
-          "occupation": ""
+          "occupation": "Former New York State Assemblyman"
         },
         {
           "id": "thomas-r-suozzi",
@@ -2679,6 +2894,18 @@
           ],
           "description": "Jobs, prices and the cost of living.",
           "stances": {
+            "michael-j-lipetri-jr": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Letting Americans keep more of what they earn"
+                }
+              ],
+              "quote": "Affordability starts with letting Americans keep more of what they earn.",
+              "source": "Mike LiPetri for Congress (campaign site)",
+              "sourceUrl": "https://www.mikelipetriforcongress.com/",
+              "realWorldImpact": "He would vote for further federal tax cuts. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
             "thomas-r-suozzi": {
               "positions": [
                 {
@@ -2711,6 +2938,22 @@
           ],
           "description": "Health insurance, costs and access to care.",
           "stances": {
+            "michael-j-lipetri-jr": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Restoring the patient-doctor relationship"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Insurance companies and bureaucrats controlling health care"
+                }
+              ],
+              "quote": "We must restore the bond between patients and their doctors, not insurance companies and bureaucrats who wish to control the system.",
+              "source": "Mike LiPetri for Congress (campaign site)",
+              "sourceUrl": "https://www.mikelipetriforcongress.com/",
+              "realWorldImpact": "Expect support for measures limiting insurer and government control over treatment decisions. The site doesn't name a specific bill."
+            },
             "thomas-r-suozzi": {
               "positions": [
                 {
@@ -2745,6 +2988,18 @@
           ],
           "description": "U.S. policy toward the conflict with Iran.",
           "stances": {
+            "michael-j-lipetri-jr": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A forceful military response to any terrorist acts by Iran and its allied groups"
+                }
+              ],
+              "quote": "Hamas, Hezbollah, the Houthis, and the Terror Republic of Iran must know that any acts of terrorism will be responded to with relentless and unmatched force.",
+              "source": "Mike LiPetri for Congress (campaign site)",
+              "sourceUrl": "https://www.mikelipetriforcongress.com/",
+              "realWorldImpact": "He would vote for military funding and action against Iran and allied groups. Congress controls war funding, but the President directs military operations."
+            },
             "thomas-r-suozzi": {
               "positions": [
                 {
@@ -2772,6 +3027,22 @@
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
           "stances": {
+            "michael-j-lipetri-jr": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Lifting the SALT cap"
+                },
+                {
+                  "stance": "supports",
+                  "text": "No federal tax on tips, overtime or Social Security"
+                }
+              ],
+              "quote": "That means building off the success of the Trump tax cuts - including lifting the SALT tax cap to protect New York families and eliminating taxes on tips, overtime, and Social Security.",
+              "source": "Mike LiPetri for Congress (campaign site)",
+              "sourceUrl": "https://www.mikelipetriforcongress.com/",
+              "realWorldImpact": "Homeowners in high-tax areas, tipped and hourly workers, and retirees would pay less federal tax. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
             "thomas-r-suozzi": {
               "positions": [
                 {
@@ -2818,6 +3089,22 @@
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
           "stances": {
+            "michael-j-lipetri-jr": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Deporting people here illegally who commit crimes"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Requiring all immigrants to enter legally"
+                }
+              ],
+              "quote": "We must continue to deport those criminals here illegally and demand that every immigrant - like our parents and grandparents - enter this country legally and with pride.",
+              "source": "Mike LiPetri for Congress (campaign site)",
+              "sourceUrl": "https://www.mikelipetriforcongress.com/",
+              "realWorldImpact": "He would vote for stronger deportation and border enforcement. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
             "thomas-r-suozzi": {
               "positions": [
                 {
@@ -2867,6 +3154,18 @@
           ],
           "description": "Crime, policing and public safety.",
           "stances": {
+            "michael-j-lipetri-jr": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Full support for police officers and their families"
+                }
+              ],
+              "quote": "These officers and their families deserve and have earned our full and unapologetic support.",
+              "source": "Mike LiPetri for Congress (campaign site)",
+              "sourceUrl": "https://www.mikelipetriforcongress.com/",
+              "realWorldImpact": "Expect support for federal funding for police. Day-to-day policing is run by local police departments."
+            },
             "thomas-r-suozzi": {
               "positions": [
                 {
@@ -2893,6 +3192,18 @@
           ],
           "description": "U.S. policy toward Israel, Gaza and the Palestinian territories.",
           "stances": {
+            "michael-j-lipetri-jr": {
+              "positions": [
+                {
+                  "stance": "opposes",
+                  "text": "Boycotts, divestment and sanctions against Israel"
+                }
+              ],
+              "quote": "Any attempt to boycott, divest from, or sanction Israel must be shut down, eliminated, and swiftly dealt with.",
+              "source": "Mike LiPetri for Congress (campaign site)",
+              "sourceUrl": "https://www.mikelipetriforcongress.com/",
+              "realWorldImpact": "He would vote for federal limits on boycotts of Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
             "thomas-r-suozzi": {
               "positions": [
                 {
@@ -3705,7 +4016,7 @@
           "id": "claire-valdez",
           "name": "Claire Valdez",
           "party": "Democratic, Working Families",
-          "occupation": ""
+          "occupation": "Member of the New York State Assembly; union organizer"
         },
         {
           "id": "melvin-rivera",
@@ -3733,7 +4044,20 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "claire-valdez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "An affordable, worker-focused, climate-friendly economy"
+                }
+              ],
+              "quote": "Americans deserve an economy that is affordable, worker-focused, and climate-friendly.",
+              "source": "Issues | Claire Valdez for Congress (campaign site)",
+              "sourceUrl": "https://clairevaldezforcongress.com/issues",
+              "realWorldImpact": "Expect support for labor, affordability and green-economy measures. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -3748,7 +4072,24 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "claire-valdez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Sponsoring Medicare for All"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Insurance companies denying care for profit"
+                }
+              ],
+              "quote": "In Congress, Claire will sponsor Medicare for All on Day One and fight the insurance companies that profit from denying care and driving up costs.",
+              "source": "Issues | Claire Valdez for Congress (campaign site)",
+              "sourceUrl": "https://clairevaldezforcongress.com/issues",
+              "realWorldImpact": "Medicare for All would replace private and employer insurance with one public plan, paid for through taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -3761,7 +4102,20 @@
             "military"
           ],
           "description": "U.S. policy toward the conflict with Iran.",
-          "stances": {},
+          "stances": {
+            "claire-valdez": {
+              "positions": [
+                {
+                  "stance": "opposes",
+                  "text": "The U.S. war with Iran"
+                }
+              ],
+              "quote": "The U.S.-Israeli war on Iran put this failed logic on full display.",
+              "source": "Claire Valdez for Congress (campaign site)",
+              "sourceUrl": "https://clairevaldezforcongress.com/",
+              "realWorldImpact": "She would vote against funding for the war. Congress controls war funding, but the President directs military operations."
+            }
+          },
           "shared": true
         },
         {
@@ -3775,7 +4129,28 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "claire-valdez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A guaranteed living-wage job"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Paid parental and sick leave"
+                },
+                {
+                  "stance": "supports",
+                  "text": "A dignified retirement"
+                }
+              ],
+              "quote": "Ensure everyone has the freedom to live a good life by guaranteeing a job with a living wage, paid parental and sick leave, quality health care, and a dignified retirement;",
+              "source": "Issues | Claire Valdez for Congress (campaign site)",
+              "sourceUrl": "https://clairevaldezforcongress.com/issues",
+              "realWorldImpact": "Workers without paid leave would gain it, and the federal government would guarantee jobs at a living wage. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -3804,7 +4179,20 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "claire-valdez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Abolishing ICE"
+                }
+              ],
+              "quote": "In Congress, Claire Valdez will fight to dismantle and abolish ICE.",
+              "source": "Claire Valdez for Congress (campaign site)",
+              "sourceUrl": "https://clairevaldezforcongress.com/",
+              "realWorldImpact": "She would vote to eliminate the federal immigration enforcement agency in its current form. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -3815,7 +4203,20 @@
             "reproductive health"
           ],
           "description": "Access to and limits on abortion.",
-          "stances": {},
+          "stances": {
+            "claire-valdez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Safe, accessible abortion for everyone, without exception"
+                }
+              ],
+              "quote": "Safe, accessible abortion is a right that should be afforded to everyone, without exception.",
+              "source": "Issues | Claire Valdez for Congress (campaign site)",
+              "sourceUrl": "https://clairevaldezforcongress.com/issues",
+              "realWorldImpact": "She would vote for federal protection of abortion access. In New York, abortion is already protected by state law."
+            }
+          },
           "shared": true
         },
         {
@@ -3840,7 +4241,24 @@
             "foreign policy"
           ],
           "description": "U.S. policy toward Israel, Gaza and the Palestinian territories.",
-          "stances": {},
+          "stances": {
+            "claire-valdez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Palestinian freedom"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "All U.S. weapons sales and military aid to Israel"
+                }
+              ],
+              "quote": "Push to end all weapons sales and military aid to Israel and fight for Palestinian freedom;",
+              "source": "Issues | Claire Valdez for Congress (campaign site)",
+              "sourceUrl": "https://clairevaldezforcongress.com/issues",
+              "realWorldImpact": "She would vote to stop U.S. military aid and arms sales to Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -3854,7 +4272,20 @@
             "technology"
           ],
           "description": "Building large data centers for artificial intelligence, including energy and water use.",
-          "stances": {},
+          "stances": {
+            "claire-valdez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Tough AI regulation to protect energy bills, the environment and jobs"
+                }
+              ],
+              "quote": "Push for tough AI regulation, so its rapid expansion doesn't increase energy bills, degrade the environment or lay off millions of workers",
+              "source": "Issues | Claire Valdez for Congress (campaign site)",
+              "sourceUrl": "https://clairevaldezforcongress.com/issues",
+              "realWorldImpact": "Expect support for federal limits on AI data centers' energy use and on AI-driven layoffs. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -3867,7 +4298,24 @@
             "energy"
           ],
           "description": "Policies on climate change and emissions.",
-          "stances": {},
+          "stances": {
+            "claire-valdez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Treating climate change as the top global threat"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Global cooperation and investment on climate"
+                }
+              ],
+              "quote": "Treat climate change as the preeminent global threat it is, promoting cooperation and global investments.",
+              "source": "Issues | Claire Valdez for Congress (campaign site)",
+              "sourceUrl": "https://clairevaldezforcongress.com/issues",
+              "realWorldImpact": "Expect votes for large federal climate spending and international climate agreements. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         }
       ]

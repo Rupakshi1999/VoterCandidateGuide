@@ -2,6 +2,15 @@
 
 One entry per research run, newest first. See section 4 of claude.md for the steps.
 
+## 2026-10-31: Congress gaps filled (second pass)
+
+- Found and verified campaign sites for 5 more candidates: Halpin (CD 2, halpinforcongress.com), LiPetri (CD 3, mikelipetriforcongress.com), Valdez (CD 7, clairevaldezforcongress.com), Lander (CD 10, bradlanderforcongress.com), Lasher (CD 12, micahlasher.com). 31 positions, all verified word for word.
+- Left out: attack lines aimed at an opponent (Halpin on Garbarino), slogans too vague to state a position, and a general anti-Trump pledge filed under health care. Lander's immigration position is restated neutrally; his quote is shown as written.
+- Corrected count: there are **37** congressional candidates (the previous entry said 39 and 25 missing; it was 23). Now 19 have positions; 18 don't.
+- **Still no campaign site found (18):** CD 4 Tarnoff; CD 5 Marsh; CD 6 Chou; CD 7 Rivera, Ghaznavi; CD 8 Mizrahi; CD 9 Azumah; CD 10 Moore (two candidate trackers report she has no campaign website); CD 11 DeCillis; CD 12 Ortiz, Negron; CD 13 Williams; CD 14 Hysenaj; CD 15 Sapaskis, Duran, Vega, Easton; CD 16 Cinquemani. Mostly Republican challengers in safe NYC seats and minor-party candidates. Next try: their FEC filings (fec.gov lists a committee website when one is registered) and the borough Republican Party candidate pages.
+
+**Next run:** the 18 above via FEC; DiNapoli; then State Senate and Assembly.
+
 ## 2026-10-31: Congress (CD 2–16) researched, first pass
 
 - 53 positions for 14 of 39 candidates, all verified word for word against live pages.

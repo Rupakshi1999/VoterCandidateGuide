@@ -1,15 +1,140 @@
 {
   "name": "Claire Valdez",
-  "occupation": "",
+  "occupation": "Member of the New York State Assembly; union organizer",
   "race": "cd-7",
   "ballotLines": [
     "Democratic",
     "Working Families"
   ],
   "priorOffice": null,
-  "positions": [],
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "An affordable, worker-focused, climate-friendly economy"
+      ],
+      "opposes": [],
+      "quote": "Americans deserve an economy that is affordable, worker-focused, and climate-friendly.",
+      "source": {
+        "title": "Issues | Claire Valdez for Congress (campaign site)",
+        "url": "https://clairevaldezforcongress.com/issues"
+      },
+      "impact": "Expect support for labor, affordability and green-economy measures. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Sponsoring Medicare for All"
+      ],
+      "opposes": [
+        "Insurance companies denying care for profit"
+      ],
+      "quote": "In Congress, Claire will sponsor Medicare for All on Day One and fight the insurance companies that profit from denying care and driving up costs.",
+      "source": {
+        "title": "Issues | Claire Valdez for Congress (campaign site)",
+        "url": "https://clairevaldezforcongress.com/issues"
+      },
+      "impact": "Medicare for All would replace private and employer insurance with one public plan, paid for through taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "A guaranteed living-wage job",
+        "Paid parental and sick leave",
+        "A dignified retirement"
+      ],
+      "opposes": [],
+      "quote": "Ensure everyone has the freedom to live a good life by guaranteeing a job with a living wage, paid parental and sick leave, quality health care, and a dignified retirement;",
+      "source": {
+        "title": "Issues | Claire Valdez for Congress (campaign site)",
+        "url": "https://clairevaldezforcongress.com/issues"
+      },
+      "impact": "Workers without paid leave would gain it, and the federal government would guarantee jobs at a living wage. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "iran",
+      "supports": [],
+      "opposes": [
+        "The U.S. war with Iran"
+      ],
+      "quote": "The U.S.-Israeli war on Iran put this failed logic on full display.",
+      "source": {
+        "title": "Claire Valdez for Congress (campaign site)",
+        "url": "https://clairevaldezforcongress.com/"
+      },
+      "impact": "She would vote against funding for the war. Congress controls war funding, but the President directs military operations."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Abolishing ICE"
+      ],
+      "opposes": [],
+      "quote": "In Congress, Claire Valdez will fight to dismantle and abolish ICE.",
+      "source": {
+        "title": "Claire Valdez for Congress (campaign site)",
+        "url": "https://clairevaldezforcongress.com/"
+      },
+      "impact": "She would vote to eliminate the federal immigration enforcement agency in its current form. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "abortion",
+      "supports": [
+        "Safe, accessible abortion for everyone, without exception"
+      ],
+      "opposes": [],
+      "quote": "Safe, accessible abortion is a right that should be afforded to everyone, without exception.",
+      "source": {
+        "title": "Issues | Claire Valdez for Congress (campaign site)",
+        "url": "https://clairevaldezforcongress.com/issues"
+      },
+      "impact": "She would vote for federal protection of abortion access. In New York, abortion is already protected by state law."
+    },
+    {
+      "issue": "israel-palestine",
+      "supports": [
+        "Palestinian freedom"
+      ],
+      "opposes": [
+        "All U.S. weapons sales and military aid to Israel"
+      ],
+      "quote": "Push to end all weapons sales and military aid to Israel and fight for Palestinian freedom;",
+      "source": {
+        "title": "Issues | Claire Valdez for Congress (campaign site)",
+        "url": "https://clairevaldezforcongress.com/issues"
+      },
+      "impact": "She would vote to stop U.S. military aid and arms sales to Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "ai-data-centers",
+      "supports": [
+        "Tough AI regulation to protect energy bills, the environment and jobs"
+      ],
+      "opposes": [],
+      "quote": "Push for tough AI regulation, so its rapid expansion doesn't increase energy bills, degrade the environment or lay off millions of workers",
+      "source": {
+        "title": "Issues | Claire Valdez for Congress (campaign site)",
+        "url": "https://clairevaldezforcongress.com/issues"
+      },
+      "impact": "Expect support for federal limits on AI data centers' energy use and on AI-driven layoffs. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "climate-change",
+      "supports": [
+        "Treating climate change as the top global threat",
+        "Global cooperation and investment on climate"
+      ],
+      "opposes": [],
+      "quote": "Treat climate change as the preeminent global threat it is, promoting cooperation and global investments.",
+      "source": {
+        "title": "Issues | Claire Valdez for Congress (campaign site)",
+        "url": "https://clairevaldezforcongress.com/issues"
+      },
+      "impact": "Expect votes for large federal climate spending and international climate agreements. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

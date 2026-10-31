@@ -1,15 +1,71 @@
 {
   "name": "Patrick Halpin",
-  "occupation": "",
+  "occupation": "Chair, Town of Babylon Planning Board; former Suffolk County Executive",
   "race": "cd-2",
   "ballotLines": [
     "Democratic",
     "Working Families"
   ],
   "priorOffice": null,
-  "positions": [],
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Lowering costs for rent, child care and medical bills"
+      ],
+      "opposes": [],
+      "quote": "Lowering costs from rent to childcare to medical bills",
+      "source": {
+        "title": "Halpin for Congress (campaign site)",
+        "url": "https://www.halpinforcongress.com/"
+      },
+      "impact": "Expect support for federal measures on housing, child care and medical costs. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Health care that doesn't depend on where you live, your job or your income"
+      ],
+      "opposes": [],
+      "quote": "Healthcare shouldn't depend on your ZIP code, your job, or your bank account.",
+      "source": {
+        "title": "Agenda — Halpin for Congress (campaign site)",
+        "url": "https://www.halpinforcongress.com/building-a-better-long-island"
+      },
+      "impact": "He would vote to widen access to coverage. The agenda page doesn't name a specific bill."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "A secure, orderly and fair immigration system",
+        "Support for law enforcement"
+      ],
+      "opposes": [],
+      "quote": "Keeping our communities safe starts with strong leadership, support for law enforcement, and an immigration system that is secure, orderly, and fair.",
+      "source": {
+        "title": "Agenda — Halpin for Congress (campaign site)",
+        "url": "https://www.halpinforcongress.com/building-a-better-long-island"
+      },
+      "impact": "He would back immigration measures that pair enforcement with legal processes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "climate-change",
+      "supports": [
+        "Making polluters pay",
+        "Protecting clean water and air",
+        "Climate resilience on Long Island"
+      ],
+      "opposes": [],
+      "quote": "In Congress, I'll continue fighting to make polluters pay, protect clean water and clean air, strengthen climate resilience, and keep Long Island healthy for generations to come.",
+      "source": {
+        "title": "Agenda — Halpin for Congress (campaign site)",
+        "url": "https://www.halpinforcongress.com/building-a-better-long-island"
+      },
+      "impact": "Expect support for federal pollution penalties and coastal resilience funding for Long Island. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }
