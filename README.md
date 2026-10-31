@@ -4,6 +4,17 @@ A free, static, non-partisan voter guide: compare local candidates side by side,
 
 No backend. The site is `index.html` plus `data/election.json`, so it can be hosted for $0 on GitHub Pages, Netlify or Vercel.
 
+## Publish on GitHub Pages ($0)
+
+1. Push to GitHub: `git push origin main`.
+2. On GitHub: **Settings → Pages → Build and deployment → Deploy from a branch**, branch `main`, folder `/ (root)`, **Save**.
+3. A few minutes later the site is live at `https://rupakshi1999.github.io/VoterCandidateGuide/`. Every push to `main` updates it.
+4. Tell Google about it: add the site in [Google Search Console](https://search.google.com/search-console) and submit `sitemap.xml`.
+
+No domain or verification is needed for the address above. **Optional custom domain:** buy one (about $10–15/year), add it under Settings → Pages → Custom domain, and follow GitHub's DNS steps. GitHub also recommends verifying the domain (Settings → Pages → "Add a verified domain") so nobody else can claim it. Then update the URLs in `index.html` (canonical and `og:url`), `robots.txt` and `sitemap.xml`.
+
+`.nojekyll` tells GitHub Pages to serve the files as they are. `data/sources/` is never committed, so the downloaded Board of Elections PDFs aren't published.
+
 ## Run it locally
 
 The page loads `data/election.json`, so open it through a local server (double-clicking `index.html` won't load the data):

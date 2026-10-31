@@ -7,7 +7,8 @@
     "coverageFormAction": "",
     "coverageFormTownField": "",
     "coverageFormZipField": "",
-    "coverageFormEmailField": ""
+    "coverageFormEmailField": "",
+    "correctionsUrl": "https://github.com/Rupakshi1999/VoterCandidateGuide/issues/new"
   },
   "zipIndex": {},
   "races": [

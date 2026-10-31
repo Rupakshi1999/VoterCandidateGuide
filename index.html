@@ -3,9 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Local Voter Guide: Side-by-Side Candidate Comparison</title>
-<meta name="description" content="Non-partisan, side-by-side comparison of local candidates. Every stance is tied to a verbatim quote and a primary source, with plain-language real-world impacts.">
+<title>NYC & Nassau County Voter Guide: Compare Candidates Side by Side</title>
+<meta name="description" content="Non-partisan guide to every race on your ballot in New York City and Nassau County. See where candidates stand, side by side, with each position tied to a quote and its primary source.">
 <meta name="theme-color" content="#1e293b">
+<!-- Search and link previews. If you move to a custom domain, update these URLs, robots.txt and sitemap.xml. -->
+<link rel="canonical" href="https://rupakshi1999.github.io/VoterCandidateGuide/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Local Voter Guide">
+<meta property="og:title" content="NYC & Nassau County Voter Guide: Compare Candidates Side by Side">
+<meta property="og:description" content="Non-partisan guide to every race on your ballot in New York City and Nassau County. See where candidates stand, side by side, with each position tied to a quote and its primary source.">
+<meta property="og:url" content="https://rupakshi1999.github.io/VoterCandidateGuide/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23334155'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preload" href="data/election.json" as="fetch" crossorigin>
 <!--
   Styling: hand-written CSS (no Tailwind Play CDN). The Play CDN ships a ~300 KB
@@ -175,6 +184,10 @@
   .page.slide-prev { animation: slide-prev .22s ease-out; }
   @keyframes slide-next { from { transform: translateX(24px); opacity: .4; } to { transform: none; opacity: 1; } }
   @keyframes slide-prev { from { transform: translateX(-24px); opacity: .4; } to { transform: none; opacity: 1; } }
+  .report { margin: 0; padding: 10px 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  .report a { color: var(--ink-2); }
+  .footer-links a { color: var(--ink-2); }
+  footer p { margin: 0 0 6px; }
   .not-on-record { margin: 0; padding: 12px 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
   .record { background: var(--surface); border: 1px solid var(--line-2); border-radius: 8px; }
   .record summary { padding: 10px 12px; cursor: pointer; font-weight: 600; font-size: 14px; }
@@ -331,7 +344,8 @@
 
 <footer>
   <div class="wrap">
-    Non-partisan. Candidates are listed in alphabetical order by last name. No candidate, party or campaign funds this guide.
+    <p>Non-partisan. Candidates are listed in alphabetical order by last name. No candidate, party or campaign funds this guide.</p>
+    <p class="footer-links"><a href="privacy.html">Privacy policy</a> · <a id="correctionsLink" href="https://github.com/Rupakshi1999/VoterCandidateGuide/issues/new" rel="noopener">Report a correction</a></p>
   </div>
 </footer>
 
@@ -504,6 +518,15 @@ function renderBacking(race, judicial) {
   </details>`;
 }
 
+/* Corrections go to meta.correctionsUrl (default: this repo's GitHub issues). For GitHub,
+   the race is pre-filled in the issue title so reports are easy to sort. */
+function correctionUrl(race) {
+  const base = electionDatabase.meta.correctionsUrl || "https://github.com/Rupakshi1999/VoterCandidateGuide/issues/new";
+  if (!race || !/github\.com\/.+\/issues\/new/.test(base)) return base;
+  return `${base}?${new URLSearchParams({ title: `Correction: ${race.office}, ${race.district}`,
+    body: "What's wrong, and a link to the primary source that shows the correct information:\n\n" })}`;
+}
+
 function renderRace({ race, issues, unanswered, hitCands }) {
   const judicial = race.kind === "judicial";
   const shown = issues;
@@ -546,6 +569,7 @@ function renderRace({ race, issues, unanswered, hitCands }) {
     </div>
     ${issueHtml}
     ${notOnRecord}
+    <p class="report">Spot an error? <a href="${esc(correctionUrl(race))}" target="_blank" rel="noopener">Report a correction for this race</a></p>
   </article>`;
 }
 
@@ -1036,6 +1060,7 @@ dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); }); //
   const date = new Date(m.electionDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
   $("#metaLine").textContent = `${m.jurisdiction} · Election day ${date} · Data last updated ${m.lastUpdated}`;
   $("#demoTag").hidden = !m.isSampleData;
+  $("#correctionsLink").href = correctionUrl();
   buildChecks();
   readHash();
   qEl.value = state.query;
