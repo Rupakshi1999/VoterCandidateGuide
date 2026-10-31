@@ -9,12 +9,26 @@ cd-13,U.S. House of Representatives,Federal,Congressional District 13,cd:13,offi
 cd-14,U.S. House of Representatives,Federal,Congressional District 14,cd:14,office,1
 cd-15,U.S. House of Representatives,Federal,Congressional District 15,cd:15,office,1
 cd-16,U.S. House of Representatives,Federal,Congressional District 16,cd:16,office,1
+cd-2,U.S. House of Representatives,Federal,Congressional District 2,cd:2,office,1
 cd-3,U.S. House of Representatives,Federal,Congressional District 3,cd:3,office,1
+cd-4,U.S. House of Representatives,Federal,Congressional District 4,cd:4,office,1
 cd-5,U.S. House of Representatives,Federal,Congressional District 5,cd:5,office,1
 cd-6,U.S. House of Representatives,Federal,Congressional District 6,cd:6,office,1
 cd-7,U.S. House of Representatives,Federal,Congressional District 7,cd:7,office,1
 cd-8,U.S. House of Representatives,Federal,Congressional District 8,cd:8,office,1
 cd-9,U.S. House of Representatives,Federal,Congressional District 9,cd:9,office,1
+ad-10,State Assembly,State Legislature,Assembly District 10,ad:10,office,1
+ad-11,State Assembly,State Legislature,Assembly District 11,ad:11,office,1
+ad-13,State Assembly,State Legislature,Assembly District 13,ad:13,office,1
+ad-14,State Assembly,State Legislature,Assembly District 14,ad:14,office,1
+ad-15,State Assembly,State Legislature,Assembly District 15,ad:15,office,1
+ad-16,State Assembly,State Legislature,Assembly District 16,ad:16,office,1
+ad-17,State Assembly,State Legislature,Assembly District 17,ad:17,office,1
+ad-18,State Assembly,State Legislature,Assembly District 18,ad:18,office,1
+ad-19,State Assembly,State Legislature,Assembly District 19,ad:19,office,1
+ad-20,State Assembly,State Legislature,Assembly District 20,ad:20,office,1
+ad-21,State Assembly,State Legislature,Assembly District 21,ad:21,office,1
+ad-22,State Assembly,State Legislature,Assembly District 22,ad:22,office,1
 ad-23,State Assembly,State Legislature,Assembly District 23,ad:23,office,1
 ad-24,State Assembly,State Legislature,Assembly District 24,ad:24,office,1
 ad-25,State Assembly,State Legislature,Assembly District 25,ad:25,office,1
@@ -80,6 +94,7 @@ ad-84,State Assembly,State Legislature,Assembly District 84,ad:84,office,1
 ad-85,State Assembly,State Legislature,Assembly District 85,ad:85,office,1
 ad-86,State Assembly,State Legislature,Assembly District 86,ad:86,office,1
 ad-87,State Assembly,State Legislature,Assembly District 87,ad:87,office,1
+ad-9,State Assembly,State Legislature,Assembly District 9,ad:9,office,1
 sd-10,State Senate,State Legislature,Senate District 10,sd:10,office,1
 sd-11,State Senate,State Legislature,Senate District 11,sd:11,office,1
 sd-12,State Senate,State Legislature,Senate District 12,sd:12,office,1
@@ -107,8 +122,37 @@ sd-33,State Senate,State Legislature,Senate District 33,sd:33,office,1
 sd-34,State Senate,State Legislature,Senate District 34,sd:34,office,1
 sd-36,State Senate,State Legislature,Senate District 36,sd:36,office,1
 sd-47,State Senate,State Legislature,Senate District 47,sd:47,office,1
+sd-5,State Senate,State Legislature,Senate District 5,sd:5,office,1
 sd-59,State Senate,State Legislature,Senate District 59,sd:59,office,1
+sd-6,State Senate,State Legislature,Senate District 6,sd:6,office,1
+sd-7,State Senate,State Legislature,Senate District 7,sd:7,office,1
+sd-8,State Senate,State Legislature,Senate District 8,sd:8,office,1
+sd-9,State Senate,State Legislature,Senate District 9,sd:9,office,1
 council-3,City Council,City,Council District 3,council:3,office,1
+nassau-leg-1,Nassau County Legislature,County,Legislative District 1,nassau-leg:1,office,1
+nassau-leg-10,Nassau County Legislature,County,Legislative District 10,nassau-leg:10,office,1
+nassau-leg-11,Nassau County Legislature,County,Legislative District 11,nassau-leg:11,office,1
+nassau-leg-12,Nassau County Legislature,County,Legislative District 12,nassau-leg:12,office,1
+nassau-leg-13,Nassau County Legislature,County,Legislative District 13,nassau-leg:13,office,1
+nassau-leg-14,Nassau County Legislature,County,Legislative District 14,nassau-leg:14,office,1
+nassau-leg-15,Nassau County Legislature,County,Legislative District 15,nassau-leg:15,office,1
+nassau-leg-16,Nassau County Legislature,County,Legislative District 16,nassau-leg:16,office,1
+nassau-leg-17,Nassau County Legislature,County,Legislative District 17,nassau-leg:17,office,1
+nassau-leg-18,Nassau County Legislature,County,Legislative District 18,nassau-leg:18,office,1
+nassau-leg-19,Nassau County Legislature,County,Legislative District 19,nassau-leg:19,office,1
+nassau-leg-2,Nassau County Legislature,County,Legislative District 2,nassau-leg:2,office,1
+nassau-leg-3,Nassau County Legislature,County,Legislative District 3,nassau-leg:3,office,1
+nassau-leg-4,Nassau County Legislature,County,Legislative District 4,nassau-leg:4,office,1
+nassau-leg-5,Nassau County Legislature,County,Legislative District 5,nassau-leg:5,office,1
+nassau-leg-6,Nassau County Legislature,County,Legislative District 6,nassau-leg:6,office,1
+nassau-leg-7,Nassau County Legislature,County,Legislative District 7,nassau-leg:7,office,1
+nassau-leg-8,Nassau County Legislature,County,Legislative District 8,nassau-leg:8,office,1
+nassau-leg-9,Nassau County Legislature,County,Legislative District 9,nassau-leg:9,office,1
+supervisor-hempstead,Supervisor,Town,Town of Hempstead,town:hempstead,office,1
+supervisor-north-hempstead,Supervisor,Town,Town of North Hempstead,town:north-hempstead,office,1
+supervisor-oyster-bay,Supervisor,Town,Town of Oyster Bay,town:oyster-bay,office,1
+town-clerk-hempstead,Town Clerk,Town,Town of Hempstead,town:hempstead,office,1
+town-clerk-oyster-bay,Town Clerk,Town,Town of Oyster Bay,town:oyster-bay,office,1
 civil-bronx-1,Civil Court,Judicial,"1st Municipal Court District, the Bronx",civil:bronx-1,judicial,1
 civil-bronx-2,Civil Court,Judicial,"2nd Municipal Court District, the Bronx",civil:bronx-2,judicial,1
 civil-kings,Civil Court,Judicial,"Kings County (Brooklyn), countywide",county:kings,judicial,4
@@ -130,7 +174,12 @@ civil-queens-3,Civil Court,Judicial,"3rd Municipal Court District, Queens",civil
 civil-queens-4,Civil Court,Judicial,"4th Municipal Court District, Queens",civil:queens-4,judicial,1
 civil-richmond,Civil Court,Judicial,"Richmond County (Staten Island), countywide",county:richmond,judicial,1
 civil-richmond-1,Civil Court,Judicial,"1st Municipal Court District, Staten Island",civil:richmond-1,judicial,1
+district-court-nassau-2,Nassau County District Court,Judicial,2nd District: Town of Hempstead and City of Long Beach,town:hempstead|town:long-beach,judicial,3
+district-court-nassau-3,Nassau County District Court,Judicial,3rd District: Town of North Hempstead,town:north-hempstead,judicial,2
+district-court-nassau-4,Nassau County District Court,Judicial,4th District: Town of Oyster Bay and City of Glen Cove,town:oyster-bay|town:glen-cove,judicial,1
+family-court-nassau,Family Court,Judicial,Nassau County,county:nassau,judicial,2
 supreme-jd-1,State Supreme Court,Judicial,1st Judicial District,jd:1,judicial,6
+supreme-jd-10,State Supreme Court,Judicial,10th Judicial District (Nassau and Suffolk),jd:10,judicial,8
 supreme-jd-11,State Supreme Court,Judicial,11th Judicial District,jd:11,judicial,3
 supreme-jd-12,State Supreme Court,Judicial,12th Judicial District,jd:12,judicial,1
 supreme-jd-13,State Supreme Court,Judicial,13th Judicial District,jd:13,judicial,1

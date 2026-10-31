@@ -71,6 +71,7 @@ Research is done in Claude Code sessions, not through the paid API. Run once for
 **District keys:** every race's `district_id` must be one of the keys the page's address lookup produces, or no address will match it (the build warns about this):
 * `state:ny`, `city:nyc`, `county:<name>` (`nassau`, `new-york`, `kings`, `queens`, `bronx`, `richmond`), `borough:<name>` (NYC), `town:<name>` (Nassau towns and cities, e.g. `town:hempstead`), `place:<name>` (Nassau villages and cities, e.g. `place:garden-city`)
 * `cd:N` congressional, `sd:N` state senate, `ad:N` state assembly, `council:N` NYC Council, `nassau-leg:N` Nassau County Legislature, `school:<name>` school district, `jd:N` NY Supreme Court judicial district (Manhattan 1, Brooklyn 2, Nassau 10, Queens 11, Bronx 12, Staten Island 13)
+* A race covering several areas lists them separated by `|`, e.g. `town:hempstead|town:long-beach`.
 * Names are lowercase with hyphens, matching the U.S. Census Bureau's names (e.g. "Garden City Union Free School District" -> `school:garden-city-union-free-school-district`).
 
 **Known gaps:** Civil Court Municipal Court Districts (`civil:<county>-N`) have no public lookup either; those races are reachable by candidate search only. Nassau County Legislature districts have no public lookup service, so the page tells Nassau voters to check that district on the state voter lookup. If Nassau County publishes a boundary map service later, add it to the address lookup in `index.html` (section 8).

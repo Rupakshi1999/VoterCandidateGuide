@@ -359,7 +359,7 @@ function computeView() {
   const view = [];
 
   for (const race of electionDatabase.races) {
-    if (ballot && !ballot.has(race.districtId)) continue;
+    if (ballot && !race.districtIds.some((k) => ballot.has(k))) continue;
     const hitCands = new Set(race.candidates.filter((c) => ts.some((t) => norm(c.name).includes(t))).map((c) => c.id));
     if (ts.length && !hitCands.size) continue;
     // Show only issues at least one candidate in this race has a sourced position on.
@@ -625,7 +625,7 @@ $("#clearBtn").addEventListener("click", () => { qEl.value = ""; candidateBox.cl
    - Nassau County Legislature: no public lookup service exists, so voters are
      pointed to the state's official voter lookup for that one district.
    The address never goes into the URL, storage or analytics.
-   race.districtId keys: state:ny, cd:N, sd:N, ad:N, county:<name>, city:nyc,
+   race.districtIds keys (a race may list several): state:ny, cd:N, sd:N, ad:N, county:<name>, city:nyc,
    borough:<name>, town:<name>, place:<name>, school:<name>, council:N, jd:N, nassau-leg:N
    ===================================================================== */
 const COVERED_COUNTIES = { nassau: 10, "new-york": 1, kings: 2, queens: 11, bronx: 12, richmond: 13 }; // -> NY Supreme Court judicial district
@@ -799,7 +799,7 @@ function coverageForm(b) {
 function ballotNotices(viewLength) {
   const b = state.ballot;
   if (!b || b.demo) return "";
-  const notes = [`<p class="notice-box small"><strong>Your districts:</strong> ${b.labels.map(esc).join(" · ")}</p>`];
+  const notes = [`<p class="notice-box small"><strong>Your districts:</strong> ${[...new Set(b.labels)].map(esc).join(" · ")}</p>`];
   if (!b.covered || !viewLength) {
     notes.push(`<section class="notice-box" aria-labelledby="coverage-h">
       <h2 id="coverage-h">${b.covered ? "We haven't added the races for your districts yet" : "We don't cover your area yet"}</h2>

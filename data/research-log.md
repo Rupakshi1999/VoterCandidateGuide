@@ -2,6 +2,18 @@
 
 One entry per research run, newest first. See section 4 of claude.md for the steps.
 
+## 2026-10-31: Nassau ballot loaded
+
+**Source:** Nassau County Board of Elections "Candidate List - 2026", marked subject to change (`data/sources/nassau-2026-candidates-list.pdf`, not committed).
+
+- Added 49 Nassau races and 112 candidates: Congressional Districts 2 and 4, State Senate 5–9, Assembly 9–22, Town of Hempstead (Supervisor, Clerk), North Hempstead (Supervisor), Oyster Bay (Supervisor, Clerk), County Legislature 1–19, Supreme Court 10th Judicial District (8 seats), Family Court, District Court 2nd–4th Districts. Totals now 187 races, 367 candidates.
+- Statewide races and Congressional District 3 appear on both the NYC and Nassau lists; candidates and ballot lines match exactly.
+- Page 7 of the PDF (Family Court and District Court) had scrambled text and was entered by hand: every candidate there is listed on Democratic, Republican and Conservative. Confirmed against the PDF's page 7 text by the site owner: all 8 names, seat counts and ballot lines match.
+- District Court areas come from the Uniform District Court Act § 2405: 2nd = Town of Hempstead and City of Long Beach, 3rd = Town of North Hempstead, 4th = Town of Oyster Bay and City of Glen Cove. Races can now list several district keys (`town:hempstead|town:long-beach`).
+- The 10th Judicial District also covers Suffolk County; only Nassau's list was used, which should be the same district-wide.
+
+**Next run:** research Attorney General (James, Komatireddy) and Comptroller (DiNapoli, Hernandez); then congressional races (CD 2–16); then State Senate and Assembly; then judicial ratings.
+
 ## 2026-10-31: NYC ballot loaded; governor race researched
 
 **Source:** NYC Board of Elections "The Contest List", General Election 2026, printed 9/11/2026, marked tentative (`data/sources/general-contest-list-2026-09-11.pdf`, not committed). The full state certification couldn't be downloaded (the site blocks automated requests).

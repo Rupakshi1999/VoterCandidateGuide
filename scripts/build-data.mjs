@@ -111,7 +111,8 @@ function build(t) {
     const seats = Number(r.seats || 1);
     if (!Number.isInteger(seats) || seats < 1) return err("races", i, `seats must be a whole number, not "${r.seats}"`);
     races.set(r.race_id, { id: r.race_id, kind, office: r.office, category: r.category, district: r.district,
-      districtId: r.district_id, seats, candidates: [], issues: [] });
+      // A race can span several areas: "town:hempstead|town:long-beach" matches either.
+      districtIds: r.district_id.split("|").map((k) => k.trim()).filter(Boolean), seats, candidates: [], issues: [] });
   });
 
   const candidates = new Map();
@@ -194,8 +195,8 @@ function build(t) {
   const KEY = /^(state:ny|city:nyc|(cd|sd|ad|council|jd|nassau-leg):\d+|(county|borough|town|place|school):[a-z0-9-]+|civil:[a-z-]+-\d+)$/;
   const demoDistricts = new Set(Object.values(zipIndex).flat());
   for (const race of races.values())
-    if (!KEY.test(race.districtId) && !demoDistricts.has(race.districtId))
-      warnings.push(`race ${race.id}: district_id "${race.districtId}" isn't a lookup key (e.g. cd:4, sd:6, ad:19, council:4, county:nassau), so no address will match it`);
+    for (const key of race.districtIds) if (!KEY.test(key) && !demoDistricts.has(key))
+      warnings.push(`race ${race.id}: district_id "${key}" isn't a lookup key (e.g. cd:4, sd:6, ad:19, council:4, county:nassau), so no address will match it`);
 
   for (const race of races.values()) {
     // Missing stances on race-specific issues are worth a warning; on shared concerns they're expected.
