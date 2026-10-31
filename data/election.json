@@ -3,23 +3,30 @@
     "jurisdiction": "Sampleville",
     "electionDate": "2026-11-03",
     "lastUpdated": "2026-10-31",
-    "isSampleData": true
+    "isSampleData": true,
+    "coverageFormAction": "",
+    "coverageFormTownField": "",
+    "coverageFormZipField": "",
+    "coverageFormEmailField": ""
   },
   "zipIndex": {
     "00101": [
       "citywide",
       "council-1",
-      "school-north"
+      "school-north",
+      "state"
     ],
     "00102": [
       "citywide",
       "council-2",
-      "school-north"
+      "school-north",
+      "state"
     ]
   },
   "races": [
     {
       "id": "mayor",
+      "kind": "office",
       "office": "Mayor",
       "category": "City Executive",
       "district": "Citywide",
@@ -59,16 +66,216 @@
                 "sourceUrl": "https://example.org/sampleville/council-minutes-2023-09-05"
               }
             ]
-          }
+          },
+          "endorsements": [
+            {
+              "endorser": "Sampleville Transit Riders Union",
+              "type": "Organization",
+              "date": "2026-08-02",
+              "source": "Riders Union endorsement announcement",
+              "sourceUrl": "https://example.org/sampleville/riders-union-endorses"
+            }
+          ]
         },
         {
           "id": "c2",
           "name": "Marcus Ohlin",
           "party": "Nonpartisan",
-          "occupation": "Small Business Owner"
+          "occupation": "Small Business Owner",
+          "endorsements": [
+            {
+              "endorser": "Sampleville Chamber of Commerce",
+              "type": "Organization",
+              "date": "2026-08-20",
+              "source": "Chamber of Commerce PAC endorsements",
+              "sourceUrl": "https://example.org/sampleville/chamber-pac-2026"
+            }
+          ]
         }
       ],
       "issues": [
+        {
+          "id": "economy",
+          "name": "The Economy",
+          "tags": [
+            "economy",
+            "jobs",
+            "inflation",
+            "cost of living",
+            "prices",
+            "wages"
+          ],
+          "description": "Jobs, prices and the cost of living.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "healthcare",
+          "name": "Health Care",
+          "tags": [
+            "health care",
+            "healthcare",
+            "insurance",
+            "medicaid",
+            "medicare",
+            "hospitals"
+          ],
+          "description": "Health insurance, costs and access to care.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "iran",
+          "name": "The Situation in Iran",
+          "tags": [
+            "iran",
+            "war",
+            "foreign policy",
+            "military"
+          ],
+          "description": "U.S. policy toward the conflict with Iran.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "income-gap",
+          "name": "Income and Wealth Gap",
+          "tags": [
+            "income",
+            "wealth",
+            "inequality",
+            "taxes",
+            "minimum wage"
+          ],
+          "description": "How income and wealth are distributed, including taxes and wages.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "gas-prices",
+          "name": "Gas Prices",
+          "tags": [
+            "gas",
+            "energy",
+            "fuel",
+            "utilities",
+            "prices"
+          ],
+          "description": "Fuel and energy costs for households.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "immigration",
+          "name": "Immigration",
+          "tags": [
+            "immigration",
+            "ice",
+            "deportation",
+            "border",
+            "asylum",
+            "legal aid"
+          ],
+          "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
+          "stances": {
+            "c1": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "City-funded legal aid to help immigrant families stay together"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Local police holding people for ICE without a judge's warrant"
+                }
+              ],
+              "quote": "Our police should focus on local safety. I'd fund a legal-aid office for immigrant families.",
+              "source": "Community Town Hall, Eastside Library",
+              "sourceUrl": "https://example.org/sampleville/townhall-eastside",
+              "realWorldImpact": "The city budget would include roughly $1.2M a year for legal aid and outreach. Local police would limit honoring federal detainer requests without a judicial warrant."
+            },
+            "c2": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Local police cooperating with ICE detainer requests under federal law"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Spending city money on immigrant legal services"
+                }
+              ],
+              "quote": "The city should follow federal law and not spend local dollars on federal responsibilities.",
+              "source": "Mayoral Debate, League of Voters Forum",
+              "sourceUrl": "https://example.org/sampleville/debate-2026-09-14",
+              "realWorldImpact": "No new city spending on immigrant legal services would be added to the budget. Local police would continue to honor federal detainer requests under existing practice."
+            }
+          },
+          "shared": true
+        },
+        {
+          "id": "abortion",
+          "name": "Abortion",
+          "tags": [
+            "abortion",
+            "reproductive health"
+          ],
+          "description": "Access to and limits on abortion.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "crime",
+          "name": "Crime",
+          "tags": [
+            "crime",
+            "police",
+            "public safety"
+          ],
+          "description": "Crime, policing and public safety.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "israel-palestine",
+          "name": "Israeli-Palestinian Conflict",
+          "tags": [
+            "israel",
+            "gaza",
+            "palestine",
+            "foreign policy"
+          ],
+          "description": "U.S. policy toward Israel, Gaza and the Palestinian territories.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "ai-data-centers",
+          "name": "AI Data Centers",
+          "tags": [
+            "ai",
+            "data centers",
+            "artificial intelligence",
+            "energy",
+            "technology"
+          ],
+          "description": "Building large data centers for artificial intelligence, including energy and water use.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "climate-change",
+          "name": "Climate Change",
+          "tags": [
+            "climate",
+            "environment",
+            "emissions",
+            "energy"
+          ],
+          "description": "Policies on climate change and emissions.",
+          "stances": {},
+          "shared": true
+        },
         {
           "id": "transit",
           "name": "Public Transit Funding",
@@ -158,56 +365,12 @@
               "realWorldImpact": "Permits would move faster and fees could drop, which may increase new market-rate housing. There would be little direct city spending on income-restricted units."
             }
           }
-        },
-        {
-          "id": "immigration",
-          "name": "Immigration",
-          "tags": [
-            "immigration",
-            "federal policy",
-            "public safety",
-            "legal aid"
-          ],
-          "description": "City funding for immigrant legal aid and how local police coordinate with federal immigration enforcement.",
-          "stances": {
-            "c1": {
-              "positions": [
-                {
-                  "stance": "supports",
-                  "text": "City-funded legal aid to help immigrant families stay together"
-                },
-                {
-                  "stance": "opposes",
-                  "text": "Local police holding people for ICE without a judge's warrant"
-                }
-              ],
-              "quote": "Our police should focus on local safety. I'd fund a legal-aid office for immigrant families.",
-              "source": "Community Town Hall, Eastside Library",
-              "sourceUrl": "https://example.org/sampleville/townhall-eastside",
-              "realWorldImpact": "The city budget would include roughly $1.2M a year for legal aid and outreach. Local police would limit honoring federal detainer requests without a judicial warrant."
-            },
-            "c2": {
-              "positions": [
-                {
-                  "stance": "supports",
-                  "text": "Local police cooperating with ICE detainer requests under federal law"
-                },
-                {
-                  "stance": "opposes",
-                  "text": "Spending city money on immigrant legal services"
-                }
-              ],
-              "quote": "The city should follow federal law and not spend local dollars on federal responsibilities.",
-              "source": "Mayoral Debate, League of Voters Forum",
-              "sourceUrl": "https://example.org/sampleville/debate-2026-09-14",
-              "realWorldImpact": "No new city spending on immigrant legal services would be added to the budget. Local police would continue to honor federal detainer requests under existing practice."
-            }
-          }
         }
       ]
     },
     {
       "id": "council-1",
+      "kind": "office",
       "office": "City Council",
       "category": "Legislative",
       "district": "District 1",
@@ -255,6 +418,155 @@
         }
       ],
       "issues": [
+        {
+          "id": "economy",
+          "name": "The Economy",
+          "tags": [
+            "economy",
+            "jobs",
+            "inflation",
+            "cost of living",
+            "prices",
+            "wages"
+          ],
+          "description": "Jobs, prices and the cost of living.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "healthcare",
+          "name": "Health Care",
+          "tags": [
+            "health care",
+            "healthcare",
+            "insurance",
+            "medicaid",
+            "medicare",
+            "hospitals"
+          ],
+          "description": "Health insurance, costs and access to care.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "iran",
+          "name": "The Situation in Iran",
+          "tags": [
+            "iran",
+            "war",
+            "foreign policy",
+            "military"
+          ],
+          "description": "U.S. policy toward the conflict with Iran.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "income-gap",
+          "name": "Income and Wealth Gap",
+          "tags": [
+            "income",
+            "wealth",
+            "inequality",
+            "taxes",
+            "minimum wage"
+          ],
+          "description": "How income and wealth are distributed, including taxes and wages.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "gas-prices",
+          "name": "Gas Prices",
+          "tags": [
+            "gas",
+            "energy",
+            "fuel",
+            "utilities",
+            "prices"
+          ],
+          "description": "Fuel and energy costs for households.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "immigration",
+          "name": "Immigration",
+          "tags": [
+            "immigration",
+            "ice",
+            "deportation",
+            "border",
+            "asylum",
+            "legal aid"
+          ],
+          "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "abortion",
+          "name": "Abortion",
+          "tags": [
+            "abortion",
+            "reproductive health"
+          ],
+          "description": "Access to and limits on abortion.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "crime",
+          "name": "Crime",
+          "tags": [
+            "crime",
+            "police",
+            "public safety"
+          ],
+          "description": "Crime, policing and public safety.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "israel-palestine",
+          "name": "Israeli-Palestinian Conflict",
+          "tags": [
+            "israel",
+            "gaza",
+            "palestine",
+            "foreign policy"
+          ],
+          "description": "U.S. policy toward Israel, Gaza and the Palestinian territories.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "ai-data-centers",
+          "name": "AI Data Centers",
+          "tags": [
+            "ai",
+            "data centers",
+            "artificial intelligence",
+            "energy",
+            "technology"
+          ],
+          "description": "Building large data centers for artificial intelligence, including energy and water use.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "climate-change",
+          "name": "Climate Change",
+          "tags": [
+            "climate",
+            "environment",
+            "emissions",
+            "energy"
+          ],
+          "description": "Policies on climate change and emissions.",
+          "stances": {},
+          "shared": true
+        },
         {
           "id": "safety",
           "name": "Public Safety Budget",
@@ -374,6 +686,7 @@
     },
     {
       "id": "council-2",
+      "kind": "office",
       "office": "City Council",
       "category": "Legislative",
       "district": "District 2",
@@ -393,6 +706,155 @@
         }
       ],
       "issues": [
+        {
+          "id": "economy",
+          "name": "The Economy",
+          "tags": [
+            "economy",
+            "jobs",
+            "inflation",
+            "cost of living",
+            "prices",
+            "wages"
+          ],
+          "description": "Jobs, prices and the cost of living.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "healthcare",
+          "name": "Health Care",
+          "tags": [
+            "health care",
+            "healthcare",
+            "insurance",
+            "medicaid",
+            "medicare",
+            "hospitals"
+          ],
+          "description": "Health insurance, costs and access to care.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "iran",
+          "name": "The Situation in Iran",
+          "tags": [
+            "iran",
+            "war",
+            "foreign policy",
+            "military"
+          ],
+          "description": "U.S. policy toward the conflict with Iran.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "income-gap",
+          "name": "Income and Wealth Gap",
+          "tags": [
+            "income",
+            "wealth",
+            "inequality",
+            "taxes",
+            "minimum wage"
+          ],
+          "description": "How income and wealth are distributed, including taxes and wages.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "gas-prices",
+          "name": "Gas Prices",
+          "tags": [
+            "gas",
+            "energy",
+            "fuel",
+            "utilities",
+            "prices"
+          ],
+          "description": "Fuel and energy costs for households.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "immigration",
+          "name": "Immigration",
+          "tags": [
+            "immigration",
+            "ice",
+            "deportation",
+            "border",
+            "asylum",
+            "legal aid"
+          ],
+          "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "abortion",
+          "name": "Abortion",
+          "tags": [
+            "abortion",
+            "reproductive health"
+          ],
+          "description": "Access to and limits on abortion.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "crime",
+          "name": "Crime",
+          "tags": [
+            "crime",
+            "police",
+            "public safety"
+          ],
+          "description": "Crime, policing and public safety.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "israel-palestine",
+          "name": "Israeli-Palestinian Conflict",
+          "tags": [
+            "israel",
+            "gaza",
+            "palestine",
+            "foreign policy"
+          ],
+          "description": "U.S. policy toward Israel, Gaza and the Palestinian territories.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "ai-data-centers",
+          "name": "AI Data Centers",
+          "tags": [
+            "ai",
+            "data centers",
+            "artificial intelligence",
+            "energy",
+            "technology"
+          ],
+          "description": "Building large data centers for artificial intelligence, including energy and water use.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "climate-change",
+          "name": "Climate Change",
+          "tags": [
+            "climate",
+            "environment",
+            "emissions",
+            "energy"
+          ],
+          "description": "Policies on climate change and emissions.",
+          "stances": {},
+          "shared": true
+        },
         {
           "id": "smallbiz",
           "name": "Small Business Taxes & Incentives",
@@ -438,6 +900,7 @@
     },
     {
       "id": "school-north",
+      "kind": "office",
       "office": "School Board",
       "category": "Education",
       "district": "North Unified, Seat 3",
@@ -457,6 +920,155 @@
         }
       ],
       "issues": [
+        {
+          "id": "economy",
+          "name": "The Economy",
+          "tags": [
+            "economy",
+            "jobs",
+            "inflation",
+            "cost of living",
+            "prices",
+            "wages"
+          ],
+          "description": "Jobs, prices and the cost of living.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "healthcare",
+          "name": "Health Care",
+          "tags": [
+            "health care",
+            "healthcare",
+            "insurance",
+            "medicaid",
+            "medicare",
+            "hospitals"
+          ],
+          "description": "Health insurance, costs and access to care.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "iran",
+          "name": "The Situation in Iran",
+          "tags": [
+            "iran",
+            "war",
+            "foreign policy",
+            "military"
+          ],
+          "description": "U.S. policy toward the conflict with Iran.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "income-gap",
+          "name": "Income and Wealth Gap",
+          "tags": [
+            "income",
+            "wealth",
+            "inequality",
+            "taxes",
+            "minimum wage"
+          ],
+          "description": "How income and wealth are distributed, including taxes and wages.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "gas-prices",
+          "name": "Gas Prices",
+          "tags": [
+            "gas",
+            "energy",
+            "fuel",
+            "utilities",
+            "prices"
+          ],
+          "description": "Fuel and energy costs for households.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "immigration",
+          "name": "Immigration",
+          "tags": [
+            "immigration",
+            "ice",
+            "deportation",
+            "border",
+            "asylum",
+            "legal aid"
+          ],
+          "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "abortion",
+          "name": "Abortion",
+          "tags": [
+            "abortion",
+            "reproductive health"
+          ],
+          "description": "Access to and limits on abortion.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "crime",
+          "name": "Crime",
+          "tags": [
+            "crime",
+            "police",
+            "public safety"
+          ],
+          "description": "Crime, policing and public safety.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "israel-palestine",
+          "name": "Israeli-Palestinian Conflict",
+          "tags": [
+            "israel",
+            "gaza",
+            "palestine",
+            "foreign policy"
+          ],
+          "description": "U.S. policy toward Israel, Gaza and the Palestinian territories.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "ai-data-centers",
+          "name": "AI Data Centers",
+          "tags": [
+            "ai",
+            "data centers",
+            "artificial intelligence",
+            "energy",
+            "technology"
+          ],
+          "description": "Building large data centers for artificial intelligence, including energy and water use.",
+          "stances": {},
+          "shared": true
+        },
+        {
+          "id": "climate-change",
+          "name": "Climate Change",
+          "tags": [
+            "climate",
+            "environment",
+            "emissions",
+            "energy"
+          ],
+          "description": "Policies on climate change and emissions.",
+          "stances": {},
+          "shared": true
+        },
         {
           "id": "schoolbudget",
           "name": "Education Budget",
@@ -500,6 +1112,132 @@
               "source": "Teague Campaign Website: Fiscal Plan",
               "sourceUrl": "https://example.org/sampleville/teague-fiscal",
               "realWorldImpact": "No new school tax would be proposed in the near term. Any raises for teachers would depend on savings found through the audit."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "supreme-2",
+      "kind": "judicial",
+      "office": "State Supreme Court",
+      "category": "Judicial",
+      "district": "Statewide, Seat 2",
+      "districtId": "state",
+      "candidates": [
+        {
+          "id": "c10",
+          "name": "Miriam Castellano",
+          "party": "Democratic, Working Families",
+          "occupation": "Associate Justice",
+          "record": {
+            "office": "State Supreme Court, Seat 2",
+            "years": "2018–present",
+            "actions": [
+              {
+                "date": "2025-04-17",
+                "action": "Wrote the majority opinion in",
+                "outcome": "Decided 5–2",
+                "text": "Harlow v. Sampleville Housing Authority, requiring hearings before public-housing evictions",
+                "source": "State Supreme Court Opinion No. 24-118",
+                "sourceUrl": "https://example.org/sampleville/opinion-24-118"
+              },
+              {
+                "date": "2023-11-02",
+                "action": "Dissented in",
+                "outcome": "Decided 4–3",
+                "text": "State v. Reyes, which allowed evidence from a warrantless phone search",
+                "source": "State Supreme Court Opinion No. 22-301",
+                "sourceUrl": "https://example.org/sampleville/opinion-22-301"
+              }
+            ]
+          },
+          "endorsements": [
+            {
+              "endorser": "State Trial Lawyers Association",
+              "type": "Organization",
+              "date": "2026-09-03",
+              "source": "Trial Lawyers endorsement list",
+              "sourceUrl": "https://example.org/sampleville/trial-lawyers-2026"
+            }
+          ],
+          "ratings": [
+            {
+              "rater": "State Bar Judicial Evaluation Panel",
+              "rating": "Highly Qualified",
+              "date": "2026-08-15",
+              "source": "State Bar 2026 judicial ratings",
+              "sourceUrl": "https://example.org/sampleville/bar-ratings-2026"
+            }
+          ]
+        },
+        {
+          "id": "c11",
+          "name": "Owen Pryor",
+          "party": "Republican, Conservative",
+          "occupation": "Former County Prosecutor",
+          "endorsements": [
+            {
+              "endorser": "State Police Benevolent Association",
+              "type": "Union",
+              "date": "2026-09-10",
+              "source": "PBA endorsement press release",
+              "sourceUrl": "https://example.org/sampleville/pba-2026"
+            }
+          ],
+          "ratings": [
+            {
+              "rater": "State Bar Judicial Evaluation Panel",
+              "rating": "Qualified",
+              "date": "2026-08-15",
+              "source": "State Bar 2026 judicial ratings",
+              "sourceUrl": "https://example.org/sampleville/bar-ratings-2026"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "id": "judicial-approach",
+          "name": "Judicial Approach",
+          "tags": [
+            "courts",
+            "precedent",
+            "judicial philosophy"
+          ],
+          "description": "How each candidate says they decide cases.",
+          "stances": {
+            "c10": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Following past court decisions unless they are clearly wrong"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Explaining rulings in plain language"
+                }
+              ],
+              "quote": "I follow precedent unless it is clearly wrong, and I write opinions people can actually read.",
+              "source": "Castellano Campaign: About the Justice",
+              "sourceUrl": "https://example.org/sampleville/castellano-about",
+              "realWorldImpact": "Rulings would likely stay close to past decisions, so outcomes in similar cases are more predictable. Fewer sudden changes in how state law is applied."
+            },
+            "c11": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Reading laws by their plain text"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Judges adding exceptions the legislature didn't write"
+                }
+              ],
+              "quote": "A judge's job is to apply the words the legislature passed, not to add exceptions of their own.",
+              "source": "State Bar Candidate Forum, Sept 2026",
+              "sourceUrl": "https://example.org/sampleville/bar-forum-2026",
+              "realWorldImpact": "Rulings would lean on the literal wording of statutes, which can change results where laws are vague. Fixing unclear laws would fall more on the legislature."
             }
           }
         }

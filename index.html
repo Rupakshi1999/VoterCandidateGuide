@@ -120,6 +120,23 @@
   .vs { align-self: center; font-size: 12px; color: var(--muted); }
   .served { display: block; margin-top: 4px; font-size: 11px; font-style: normal; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
   .records { display: grid; gap: 8px; margin-top: 12px; }
+  .judicial-note { margin: 12px 0 0; font-size: 13px; color: var(--ink-2); }
+  .backing-grid { display: grid; gap: 12px; padding: 0 12px 12px; grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .backing-grid { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); } }
+  .backing-col { border-top: 1px solid var(--line); padding-top: 10px; font-size: 14px; }
+  .backing-h { margin: 8px 0 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .backing ul { padding: 0; gap: 8px; }
+  .backing li { border: 0; padding: 0; }
+  .backing .kind { font-size: 11px; color: var(--muted); }
+  .notice-box { background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 16px; margin: 0 0 16px; }
+  .notice-box h2 { margin: 0 0 4px; font-size: 17px; }
+  .notice-box p { margin: 0 0 12px; color: var(--ink-2); }
+  .notice-box.small { font-size: 14px; padding: 12px 16px; }
+  .notice-box.small, .notice-box > p:last-child { margin-bottom: 16px; }
+  .coverage-form { display: grid; gap: 10px; max-width: 420px; }
+  .coverage-form label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+  .coverage-form .btn { justify-self: start; }
+  .not-on-record { margin: 0; padding: 12px 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
   .record { background: var(--surface); border: 1px solid var(--line-2); border-radius: 8px; }
   .record summary { padding: 10px 12px; cursor: pointer; font-weight: 600; font-size: 14px; }
   .record summary span { display: block; font-weight: 400; font-size: 12px; color: var(--muted); }
@@ -221,7 +238,7 @@
           </div>
           <ul id="addrSuggest" class="suggest" role="listbox" aria-label="Address suggestions" hidden></ul>
         </div>
-        <p class="hint" id="addrHint">As you type, your text is sent to the free Photon address service (OpenStreetMap) for suggestions. This site doesn't store it. Demo ballots: ZIP <code>00101</code> or <code>00102</code>.</p>
+        <p class="hint" id="addrHint">As you type, your text goes to Photon (OpenStreetMap) for suggestions, and the address you choose goes to the U.S. Census Bureau to find your districts. This site doesn't store it. Demo ballots: ZIP <code>00101</code> or <code>00102</code>.</p>
       </form>
     </div>
   </div>
@@ -296,17 +313,15 @@ electionDatabase.races.forEach((r) => r.candidates.sort((a, b) => lastName(a.nam
 /* =====================================================================
    3. STATE (mirrored in the URL hash so results are shareable)
    ===================================================================== */
-const state = { query: "", zip: "", issueFilters: {}, allRaces: false, allFilter: "" };
+const state = { query: "", ballot: null, issueFilters: {}, allRaces: false, allFilter: "" };
 
 function readHash() {
   const p = new URLSearchParams(location.hash.slice(1));
   state.query = p.get("q") || "";
-  state.zip = p.get("zip") || "";
 }
 function writeHash() {
   const p = new URLSearchParams();
   if (state.query) p.set("q", state.query);
-  if (state.zip) p.set("zip", state.zip);
   const h = p.toString();
   // Shareable links are a convenience; some contexts (file previews, sandboxed iframes) forbid this.
   try { history.replaceState(null, "", h ? "#" + h : location.pathname + location.search); } catch {}
@@ -339,15 +354,18 @@ function raceFilter(id) {
 }
 function computeView() {
   const ts = terms();
-  const ballot = state.zip ? electionDatabase.zipIndex[state.zip] : null;
+  const ballot = state.ballot?.keys;
   const view = [];
 
   for (const race of electionDatabase.races) {
-    if (ballot && !ballot.includes(race.districtId)) continue;
+    if (ballot && !ballot.has(race.districtId)) continue;
     const hitCands = new Set(race.candidates.filter((c) => ts.some((t) => norm(c.name).includes(t))).map((c) => c.id));
     if (ts.length && !hitCands.size) continue;
-    if (state.allRaces && raceFilter(race.id) && !race.issues.some((i) => issueHit(i, raceFilter(race.id)))) continue;
-    view.push({ race, issues: race.issues, hitCands });
+    // Show only issues at least one candidate in this race has a sourced position on.
+    const answered = race.issues.filter((i) => race.candidates.some((c) => isGrounded(i.stances[c.id])));
+    const unanswered = race.issues.filter((i) => !answered.includes(i));
+    if (state.allRaces && raceFilter(race.id) && !answered.some((i) => issueHit(i, raceFilter(race.id)))) continue;
+    view.push({ race, issues: answered, unanswered, hitCands });
   }
   return view;
 }
@@ -378,11 +396,11 @@ function recordActions(c) {
   return (c.record?.actions || []).filter((a) => a.date && a.action && a.text && a.source && safeUrl(a.sourceUrl))
     .sort((a, b) => b.date.localeCompare(a.date));
 }
-function renderRecord(c) {
+function renderRecord(c, judicial) {
   const acts = recordActions(c);
   const fmt = (d) => new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
   return `<details class="record">
-    <summary>${esc(c.name)}'s record in office <span>${esc(c.record.office)}, ${esc(c.record.years)} · ${acts.length} action${acts.length === 1 ? "" : "s"}</span></summary>
+    <summary>${esc(c.name)}'s record ${judicial ? "on the bench" : "in office"} <span>${esc(c.record.office)}, ${esc(c.record.years)} · ${acts.length} action${acts.length === 1 ? "" : "s"}</span></summary>
     <ul>${acts.map((a) => `<li>
       <div class="when">${fmt(a.date)}${a.outcome ? ` · ${esc(a.outcome)}` : ""}</div>
       <div><b>${esc(a.action)}</b> ${esc(a.text.charAt(0).toLowerCase() + a.text.slice(1))}</div>
@@ -391,18 +409,43 @@ function renderRecord(c) {
   </details>`;
 }
 
-function renderRace({ race, issues, hitCands }) {
+/* Ratings and endorsements, one column per candidate so every candidate is shown the same way. */
+const sourced = (list) => (list || []).filter((x) => x.source && safeUrl(x.sourceUrl));
+function renderBacking(race, judicial) {
+  const any = race.candidates.some((c) => sourced(c.endorsements).length || sourced(c.ratings).length);
+  if (!any) return "";
+  const src = (x) => `<a href="${esc(x.sourceUrl)}" target="_blank" rel="noopener nofollow">${esc(x.source)}</a>`;
+  const col = (c) => {
+    const ratings = sourced(c.ratings), ends = sourced(c.endorsements);
+    return `<div class="backing-col"><strong>${esc(c.name)}</strong>
+      ${judicial ? `<div class="backing-h">Qualification ratings</div>${ratings.length
+        ? `<ul>${ratings.map((r) => `<li><b>${esc(r.rating)}</b> from ${esc(r.rater)}<div class="src">Source: ${src(r)}</div></li>`).join("")}</ul>`
+        : `<p class="missing">None on record.</p>`}` : ""}
+      <div class="backing-h">Endorsements</div>${ends.length
+        ? `<ul>${ends.map((e) => `<li>${esc(e.endorser)}${e.type ? ` <span class="kind">${esc(e.type)}</span>` : ""}<div class="src">Source: ${src(e)}</div></li>`).join("")}</ul>`
+        : `<p class="missing">None on record.</p>`}
+    </div>`;
+  };
+  return `<details class="record backing">
+    <summary>${judicial ? "Ratings &amp; endorsements" : "Endorsements"} <span>Listed the same way for every candidate. No endorser is featured over another.</span></summary>
+    <div class="backing-grid" style="--n:${race.candidates.length}">${race.candidates.map(col).join("")}</div>
+  </details>`;
+}
+
+function renderRace({ race, issues, unanswered, hitCands }) {
+  const judicial = race.kind === "judicial";
   const filter = raceFilter(race.id);
   const shown = filter ? issues.filter((i) => issueHit(i, filter)) : issues;
 
   const roster = race.candidates.map((c) =>
     `<div class="person${hitCands.has(c.id) ? " hit" : ""}"><strong>${esc(c.name)}</strong><span>${esc(c.party)} · ${esc(c.occupation)}</span>${
-      recordActions(c).length ? `<em class="served">Has held office</em>` : ""}</div>`
+      recordActions(c).length ? `<em class="served">${judicial ? "Has served as a judge" : "Has held office"}</em>` : ""}</div>`
   ).join('<span class="vs">vs</span>');
-  const records = race.candidates.filter((c) => recordActions(c).length).map(renderRecord).join("");
+  const records = race.candidates.filter((c) => recordActions(c).length).map((c) => renderRecord(c, judicial)).join("");
 
   const issueHtml = shown.length ? shown.map((issue) => `
     <section class="issue" aria-labelledby="h-${race.id}-${issue.id}">
+      ${issue.shared ? `<div class="eyebrow" title="One of the 11 issues U.S. voters rated most important in Gallup's October 2026 poll">Top U.S. voter concern</div>` : ""}
       <h3 id="h-${race.id}-${issue.id}">${esc(issue.name)}</h3>
       <p class="desc">${esc(issue.description)}</p>
       <div class="grid" style="--n:${race.candidates.length}">
@@ -410,26 +453,30 @@ function renderRace({ race, issues, hitCands }) {
       </div>
     </section>`).join("")
     : `<div class="issue"><p class="missing">No issues in this race match “${esc(filter)}”.</p></div>`;
+  const notOnRecord = !filter && unanswered.length
+    ? `<p class="not-on-record">Not yet on record in this race: ${unanswered.map((i) => esc(i.name)).join(", ")}.</p>` : "";
 
   return `<article class="race" id="race-${race.id}">
     <div class="race-head">
-      <div class="eyebrow">${esc(race.category)} · ${race.candidates.length} candidates</div>
+      <div class="eyebrow">${esc(race.category)} · ${race.candidates.length} candidate${race.candidates.length === 1 ? "" : "s"}</div>
       <h2>${esc(race.office)}: ${esc(race.district)}</h2>
       <div class="roster">${roster}</div>
-      ${records ? `<div class="records">${records}</div>` : ""}
+      ${records || renderBacking(race, judicial) ? `<div class="records">${records}${renderBacking(race, judicial)}</div>` : ""}
+      ${judicial ? `<p class="judicial-note">Judges generally can't promise how they would rule, so this race focuses on each candidate's record and how they say they decide cases.</p>` : ""}
     </div>
-    <div class="issue-filter">
+    ${issues.length ? `<div class="issue-filter">
       <label class="sr-only" for="f-${race.id}">Filter issues in ${esc(race.office)}, ${esc(race.district)}</label>
       <div class="row">
         <input class="text" id="f-${race.id}" data-race="${race.id}" type="search" autocomplete="off"
                placeholder="Search issues" value="${esc(state.allRaces ? state.allFilter : state.issueFilters[race.id] || "")}">
         <button type="button" class="btn ghost all-toggle" data-all="${race.id}" aria-pressed="${state.allRaces}">Apply to all races</button>
       </div>
-      <div class="chips">${race.issues.map((i) =>
+      <div class="chips">${issues.map((i) =>
         `<button type="button" class="chip" data-race="${race.id}" data-tag="${esc(norm(i.name))}" aria-pressed="${filter === norm(i.name)}">${esc(i.name)}</button>`
       ).join("")}</div>
     </div>
-    ${issueHtml}
+    ${issueHtml}` : ""}
+    ${notOnRecord}
   </article>`;
 }
 
@@ -438,24 +485,25 @@ function render() {
   const ts = terms();
   const parts = [];
 
-  if (state.zip) parts.push(`<span class="chip" aria-pressed="true">Ballot for ZIP ${esc(state.zip)}</span>`);
+  if (state.ballot) parts.push(`<span class="chip" aria-pressed="true">Ballot for ${esc(state.ballot.label)}</span>`);
   const missing = unmatchedNames();
   if (ts.length) parts.push(`<span>Showing results for <strong>${ts.map(esc).join(", ")}</strong></span>`);
   if (missing.length && view.length) parts.push(`<span>${esc(notInGuide(missing))}.</span>`);
   parts.push(`<span>${view.length} race${view.length === 1 ? "" : "s"}</span>`);
   if (state.allRaces && state.allFilter.trim()) parts.push(`<span class="chip" aria-pressed="true">Issue “${esc(state.allFilter.trim())}” in all races</span>`);
-  if (state.zip || ts.length || (state.allRaces && state.allFilter.trim())) parts.push(`<button class="chip" type="button" id="resetAll">Show all races</button>`);
+  if (state.ballot || ts.length || (state.allRaces && state.allFilter.trim())) parts.push(`<button class="chip" type="button" id="resetAll">Show all races</button>`);
   $("#status").innerHTML = parts.join("");
 
+  const notices = ballotNotices(view.length);
   if (!view.length) {
-    $("#results").innerHTML = state.allRaces && state.allFilter.trim()
+    $("#results").innerHTML = notices || (state.allRaces && state.allFilter.trim()
       ? `<div class="empty">No race has an issue matching “${esc(state.allFilter.trim())}”. Try another issue, or turn off “Apply to all races”.</div>`
-      : `<div class="empty">${esc(notInGuide(missing.length ? missing : ts))}. Check the spelling, or clear the search to see every race.</div>`;
+      : `<div class="empty">${esc(notInGuide(missing.length ? missing : ts))}. Check the spelling, or clear the search to see every race.</div>`);
     return;
   }
 
   // In-feed ad after the 2nd race block.
-  $("#results").innerHTML = view.map((v, i) => renderRace(v) + (i === 1 && view.length > 2
+  $("#results").innerHTML = notices + view.map((v, i) => renderRace(v) + (i === 1 && view.length > 2
     ? `<!-- ================= ADSENSE SLOT: in-feed (START) ================= -->
        <div class="ad" aria-hidden="true">Advertisement</div>
        <!-- ================= ADSENSE SLOT: in-feed (END) ================= -->` : "")).join("");
@@ -554,7 +602,7 @@ let debounce;
 function applyQuery() {
   state.query = qEl.value;
   // Each box is its own view: searching a candidate replaces the address ballot.
-  if (state.query.trim() && state.zip) { state.zip = ""; addrEl.value = ""; addrHint.innerHTML = ADDR_HINT; }
+  if (state.query.trim() && state.ballot) { state.ballot = null; addrEl.value = ""; addrHint.innerHTML = ADDR_HINT; }
   writeHash();
   render();
 }
@@ -567,19 +615,32 @@ $("#clearBtn").addEventListener("click", () => { qEl.value = ""; candidateBox.cl
 
 /* =====================================================================
    8. ADDRESS -> BALLOT
-   Suggestions come from Photon (free OpenStreetMap geocoder, no API key).
-   Its public server is fair-use only: before launch, self-host Photon or move
-   to a keyed free tier (e.g. Geoapify). The address is only ever sent to that
-   one service; it never goes into the URL, storage or analytics.
-   The chosen address's ZIP is matched against zipIndex. A real build would
-   map the address's coordinates to precinct boundaries instead.
+   - Suggestions: Photon (free OpenStreetMap geocoder). Fair-use only: before
+     launch, self-host Photon or move to a keyed free tier (e.g. Geoapify).
+   - Districts: the U.S. Census Geocoder (free, no key) turns the address or its
+     coordinates into county, town/village, school, congressional and state
+     legislative districts. It blocks cross-site requests, so it's called as JSONP.
+   - NYC Council districts: NYC Open Data, sent only the coordinates.
+   - Nassau County Legislature: no public lookup service exists, so voters are
+     pointed to the state's official voter lookup for that one district.
+   The address never goes into the URL, storage or analytics.
+   race.districtId keys: state:ny, cd:N, sd:N, ad:N, county:<name>, city:nyc,
+   borough:<name>, town:<name>, place:<name>, school:<name>, council:N, jd:N, nassau-leg:N
    ===================================================================== */
+const COVERED_COUNTIES = { nassau: 10, "new-york": 1, kings: 2, queens: 11, bronx: 12, richmond: 13 }; // -> NY Supreme Court judicial district
+const NYC_COUNTIES = new Set(["new-york", "kings", "queens", "bronx", "richmond"]);
+const CENSUS = "https://geocoding.geo.census.gov/geocoder/geographies/";
+const CENSUS_PARAMS = "benchmark=Public_AR_Current&vintage=Current_Current&layers=all";
+const NYC_COUNCIL = "https://data.cityofnewyork.us/resource/872g-cjhh.json";
+const VOTER_LOOKUP = "https://voterlookup.elections.ny.gov/";
+const slug = (s) => norm(s).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 const addrEl = $("#addr"), addrHint = $("#addrHint");
 const ADDR_HINT = addrHint.innerHTML;
-let addrAbort, addrTimer;
+let addrAbort, addrTimer, lookupSeq = 0;
 
-const demoAddresses = Object.keys(electionDatabase.zipIndex).map((zip) =>
-  ({ line1: `${electionDatabase.meta.jurisdiction} demo ballot`, line2: `ZIP ${zip}`, zip }));
+const demoAddresses = Object.keys(electionDatabase.zipIndex || {}).map((zip) =>
+  ({ line1: `${electionDatabase.meta.jurisdiction} demo ballot`, line2: `ZIP ${zip}`, zip, demo: true }));
 
 async function fetchAddresses(text) {
   const q = text.trim();
@@ -594,20 +655,99 @@ async function fetchAddresses(text) {
     const data = await res.json();
     const seen = new Set();
     const found = data.features
-      .map((f) => f.properties)
-      .filter((p) => p.countrycode === "US")
-      .map((p) => ({
+      .filter((f) => f.properties.countrycode === "US")
+      .map(({ properties: p, geometry: g }) => ({
         line1: [p.housenumber, p.street || p.name].filter(Boolean).join(" "),
         line2: [p.city || p.locality || p.county, [p.state, p.postcode].filter(Boolean).join(" ")].filter(Boolean).join(", "),
-        zip: (p.postcode || "").slice(0, 5)
+        zip: (p.postcode || "").slice(0, 5),
+        lon: g?.coordinates?.[0], lat: g?.coordinates?.[1]
       }))
       .filter((a) => { const k = a.line1 + a.line2; return a.line1 && !seen.has(k) && seen.add(k); })
       .slice(0, 6);
     return [...demos, ...found];
   } catch (err) {
-    if (err.name !== "AbortError") addrHint.textContent = "Address suggestions are unavailable right now. You can still type an address with a ZIP and press My ballot.";
+    if (err.name !== "AbortError") addrHint.textContent = "Address suggestions are unavailable right now. You can still type your full address and press My ballot.";
     return demos;
   }
+}
+
+function jsonp(url) {
+  return new Promise((resolve, reject) => {
+    const name = `__census${Date.now()}${Math.floor(Math.random() * 1e6)}`;
+    const script = document.createElement("script");
+    const done = () => { clearTimeout(timer); delete window[name]; script.remove(); };
+    const timer = setTimeout(() => { done(); reject(new Error("timed out")); }, 15000);
+    window[name] = (data) => { done(); resolve(data); };
+    script.onerror = () => { done(); reject(new Error("network error")); };
+    script.src = `${url}&format=jsonp&callback=${name}`;
+    document.head.appendChild(script);
+  });
+}
+
+/* Census geographies -> district keys used in races.district_id. Layer names include
+   the vintage ("120th Congressional Districts"), so they're matched by suffix. */
+function districtKeys(geo) {
+  const layer = (re) => Object.entries(geo).find(([k]) => re.test(k))?.[1] || [];
+  const base = (re) => layer(re).map((g) => g.BASENAME);
+  const keys = new Set(), labels = [];
+  if (base(/^States$/)[0] === "New York") keys.add("state:ny");
+  const county = slug(base(/^Counties$/)[0] || "");
+  const nyc = NYC_COUNTIES.has(county);
+  if (county) { keys.add(`county:${county}`); labels.push(layer(/^Counties$/)[0].NAME); }
+  if (nyc) keys.add("city:nyc");
+  if (COVERED_COUNTIES[county]) keys.add(`jd:${COVERED_COUNTIES[county]}`);
+  // Census NAMEs read "North Hempstead town", "Mineola village"; flip them for display.
+  const display = (name) => name.replace(/^(.*) (town|village|city|borough)$/, (_, n, t) => `${t[0].toUpperCase()}${t.slice(1)} of ${n}`);
+  for (const g of layer(/^County Subdivisions$/)) { keys.add(`${nyc ? "borough" : "town"}:${slug(g.BASENAME)}`); labels.push(nyc ? g.BASENAME : display(g.NAME)); }
+  if (!nyc) for (const g of layer(/^Incorporated Places$/)) { keys.add(`place:${slug(g.BASENAME)}`); labels.push(display(g.NAME)); }
+  for (const b of base(/Congressional Districts$/)) { keys.add(`cd:${+b}`); labels.push(`Congressional District ${+b}`); }
+  for (const b of base(/Legislative Districts - Upper$/)) { keys.add(`sd:${+b}`); labels.push(`State Senate District ${+b}`); }
+  for (const b of base(/Legislative Districts - Lower$/)) { keys.add(`ad:${+b}`); labels.push(`Assembly District ${+b}`); }
+  for (const g of layer(/School Districts$/)) { keys.add(`school:${slug(g.BASENAME)}`); labels.push(g.NAME); }
+  const town = base(/^Incorporated Places$/)[0] || base(/^County Subdivisions$/)[0] || "";
+  return { keys, labels, county, nyc, covered: county in COVERED_COUNTIES, town };
+}
+
+async function lookupBallot({ address, lat, lon, label, zip }) {
+  const mine = ++lookupSeq;
+  addrHint.textContent = "Finding your districts…";
+  let geo, matched = label;
+  try {
+    if (Number.isFinite(lat) && Number.isFinite(lon)) {
+      geo = (await jsonp(`${CENSUS}coordinates?x=${lon}&y=${lat}&${CENSUS_PARAMS}`)).result?.geographies;
+    } else {
+      const m = (await jsonp(`${CENSUS}onelineaddress?address=${encodeURIComponent(address)}&${CENSUS_PARAMS}`)).result?.addressMatches?.[0];
+      if (m) ({ geographies: geo, matchedAddress: matched, coordinates: { x: lon, y: lat } } = m);
+    }
+  } catch {
+    if (mine === lookupSeq) addrHint.textContent = "The district lookup service didn't respond. Please try again in a moment.";
+    return;
+  }
+  if (mine !== lookupSeq) return;
+  if (!geo) { addrHint.textContent = "We couldn't find that address. Choose one of the suggestions, or include the city and ZIP code."; return; }
+
+  const d = districtKeys(geo);
+  if (d.nyc) {
+    try {
+      const url = `${NYC_COUNCIL}?${new URLSearchParams({ $select: "coundist", $where: `intersects(the_geom, 'POINT (${lon} ${lat})')` })}`;
+      const council = (await (await fetch(url)).json())[0]?.coundist;
+      if (council) { d.keys.add(`council:${+council}`); d.labels.push(`City Council District ${+council}`); } else d.councilUnknown = true;
+    } catch { d.councilUnknown = true; }
+  }
+  if (mine !== lookupSeq) return;
+  state.ballot = { ...d, label: matched, zip: zip || (matched.match(/\b\d{5}\b/) || [])[0] || "" };
+  state.query = ""; qEl.value = ""; // full ballot, not a candidate search
+  addrHint.textContent = d.covered ? `Showing the races for ${matched}.` : `${matched} isn't in the area this guide covers yet.`;
+  writeHash();
+  render();
+}
+
+function showDemoBallot(zip) {
+  state.ballot = { keys: new Set(electionDatabase.zipIndex[zip]), covered: true, label: `ZIP ${zip} (demo)`, zip, demo: true };
+  state.query = ""; qEl.value = "";
+  addrHint.textContent = `Showing the demo ballot for ZIP ${zip}.`;
+  writeHash();
+  render();
 }
 
 const addrBox = combobox({
@@ -616,8 +756,9 @@ const addrBox = combobox({
   getItems: fetchAddresses,
   renderItem: (a) => `${esc(a.line1)}<small>${esc(a.line2)}</small>`,
   onChoose(a) {
-    addrEl.value = a.zip && a.line2 === `ZIP ${a.zip}` ? a.line2 : `${a.line1}, ${a.line2}`;
-    showBallot(a.zip);
+    addrEl.value = a.demo ? a.line2 : `${a.line1}, ${a.line2}`;
+    if (a.demo) showDemoBallot(a.zip);
+    else lookupBallot({ lat: a.lat, lon: a.lon, address: addrEl.value, label: addrEl.value, zip: a.zip });
   }
 });
 
@@ -627,23 +768,69 @@ addrEl.addEventListener("input", () => {
   addrTimer = setTimeout(addrBox.refresh, 250);
 });
 
-function showBallot(zip) {
-  if (!zip) { addrHint.textContent = "Please choose a suggestion or include a 5-digit ZIP code."; return; }
-  if (!electionDatabase.zipIndex[zip]) {
-    addrHint.textContent = `We don't have ballot data for ZIP ${zip} yet. Demo ballots: 00101, 00102.`;
-    return;
-  }
-  addrHint.textContent = `Showing every race on the ballot for ZIP ${zip}.`;
-  state.zip = zip;
-  state.query = ""; qEl.value = ""; // full ballot, not a candidate search
-  writeHash();
-  render();
-}
-
 $("#addrForm").addEventListener("submit", (e) => {
   e.preventDefault();
   addrBox.close();
-  showBallot((addrEl.value.match(/\b\d{5}\b/) || [])[0]);
+  const text = addrEl.value.trim();
+  if (/^\d{5}$/.test(text) && electionDatabase.zipIndex?.[text]) return showDemoBallot(text);
+  if (text.length < 8) { addrHint.textContent = "Please enter your street address with city or ZIP code, or choose a suggestion."; return; }
+  lookupBallot({ address: text, label: text });
+});
+
+/* ---------- Coverage request: for addresses outside the guide, or districts not added yet ----------
+   Sends only town, ZIP and an optional email to a Google Form the owner sets up
+   (meta keys coverageFormAction / coverageFormTownField / coverageFormZipField /
+   coverageFormEmailField). Responses land in the owner's Google Sheet. */
+function coverageForm(b) {
+  const m = electionDatabase.meta;
+  if (!/^https:\/\/docs\.google\.com\/forms\//.test(m.coverageFormAction || "")) {
+    return `<p class="hint">Coverage requests aren't open yet. Please check back soon.</p>`;
+  }
+  return `<form class="coverage-form" id="coverageForm">
+    <label>Town or city<input class="text" name="town" required value="${esc(b.town || "")}"></label>
+    <label>ZIP code<input class="text" name="zip" required inputmode="numeric" pattern="\\d{5}" value="${esc(b.zip || "")}"></label>
+    ${m.coverageFormEmailField ? `<label>Email (optional, only to tell you when your area is added)<input class="text" name="email" type="email" autocomplete="email"></label>` : ""}
+    <button class="btn" type="submit">Request my area</button>
+    <p class="hint">We only ask for your town and ZIP code, never your street address.</p>
+  </form>`;
+}
+
+function ballotNotices(viewLength) {
+  const b = state.ballot;
+  if (!b || b.demo) return "";
+  const notes = [`<p class="notice-box small"><strong>Your districts:</strong> ${b.labels.map(esc).join(" · ")}</p>`];
+  if (!b.covered || !viewLength) {
+    notes.push(`<section class="notice-box" aria-labelledby="coverage-h">
+      <h2 id="coverage-h">${b.covered ? "We haven't added the races for your districts yet" : "We don't cover your area yet"}</h2>
+      <p>${b.covered
+        ? "This guide covers Nassau County and New York City, but the races on your ballot haven't been researched yet."
+        : "This guide currently covers Nassau County and New York City."} Tell us where you vote and we'll prioritize adding it.</p>
+      ${coverageForm(b)}
+    </section>`);
+  }
+  if (b.covered && b.county === "nassau") notes.push(`<p class="notice-box small">Your Nassau County Legislature district can't be matched automatically yet.
+    Look it up on the <a href="${VOTER_LOOKUP}" target="_blank" rel="noopener">New York State voter lookup</a>, then search for your legislator above.</p>`);
+  if (b.councilUnknown) notes.push(`<p class="notice-box small">We couldn't confirm your NYC Council district.
+    Look it up on the <a href="${VOTER_LOOKUP}" target="_blank" rel="noopener">New York State voter lookup</a>.</p>`);
+  return notes.join("");
+}
+
+document.addEventListener("submit", async (e) => {
+  if (e.target.id !== "coverageForm") return;
+  e.preventDefault();
+  const m = electionDatabase.meta, f = new FormData(e.target);
+  const body = new URLSearchParams({ [m.coverageFormTownField]: f.get("town").trim(), [m.coverageFormZipField]: f.get("zip").trim() });
+  if (m.coverageFormEmailField && f.get("email")) body.set(m.coverageFormEmailField, f.get("email").trim());
+  const btn = e.target.querySelector("button");
+  btn.disabled = true; btn.textContent = "Sending…";
+  try {
+    // Google Forms doesn't allow reading the response cross-site; an opaque reply means it was received.
+    await fetch(m.coverageFormAction, { method: "POST", mode: "no-cors", body });
+    e.target.outerHTML = `<p><strong>Thanks!</strong> Your request was sent. We add areas in order of how many people ask.</p>`;
+  } catch {
+    btn.disabled = false; btn.textContent = "Request my area";
+    e.target.insertAdjacentHTML("beforeend", `<p class="hint">That didn't send. Please check your connection and try again.</p>`);
+  }
 });
 
 /* =====================================================================
@@ -685,7 +872,7 @@ results.addEventListener("click", (e) => {
 });
 $("#status").addEventListener("click", (e) => {
   if (e.target.id !== "resetAll") return;
-  state.query = ""; state.zip = ""; state.issueFilters = {}; state.allRaces = false; state.allFilter = "";
+  state.query = ""; state.ballot = null; state.issueFilters = {}; state.allRaces = false; state.allFilter = "";
   qEl.value = ""; addrEl.value = ""; addrHint.innerHTML = ADDR_HINT;
   writeHash(); render();
 });

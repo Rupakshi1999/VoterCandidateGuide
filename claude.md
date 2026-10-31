@@ -27,3 +27,49 @@ Do not use 0–100 scores, sliders, or ideological scales. Show each candidate's
 * **Evidence:** Under the positions, show the verbatim quote and a link to the primary source.
 * **Real-World Impact:** A clear two-sentence explanation of what the stance means for a citizen (local taxes, school budgets, services, federal policy).
 * **Record in Office:** If a candidate has held office before, show a collapsible list of concrete, sourced actions (e.g. "Voted for the 2025 city budget…", "Voted against renewing the ICE detainer agreement…") with date, outcome, and source.
+
+
+#### 4. Monthly Research Run (Claude Code, no API costs)
+
+Research is done in Claude Code sessions, not through the paid API. Run once for a full first pass, then once a month. When the user says "do the monthly research run", follow this section.
+
+**Coverage:** All of Nassau County and all five boroughs of New York City, for the next upcoming general election. Before researching, confirm which offices are on that ballot from the official sources: the NYC Board of Elections (vote.nyc), the Nassau County Board of Elections, and the NYS Board of Elections. Priority order when time is limited:
+1. Races every voter shares: statewide, federal, NYC citywide, and Nassau countywide offices.
+2. Judicial races (State Supreme Court, Civil Court, Surrogate's Court, County Court).
+3. District races: congressional, state senate and assembly, NYC Council, Nassau County Legislature, town offices.
+4. Village offices and school boards last.
+
+**For every non-judicial candidate**, look for a sourced position on:
+* Each race-specific issue in `issues.csv`.
+* The 11 shared voter concerns (`race_id = all`), taken from Gallup's October 2026 poll: the economy, health care, Iran, income and wealth gap, gas prices, immigration, abortion, crime, the Israeli-Palestinian conflict, AI data centers, climate change. Once a year, check Gallup's latest "issues that matter to voters" poll and update this list if it changed.
+* Leave an issue out when there is no sourced position. The page already lists those as "Not yet on record." Never guess or fill gaps.
+
+**For every judicial candidate**, research:
+* Qualification ratings from bar association panels (e.g. the New York City Bar Association, county bar associations, the independent judicial qualification commissions) into `ratings.csv`.
+* Their record on the bench: notable opinions written or joined, how they ruled, with the official opinion as the source, into `record.csv`.
+* Public discipline from the NYS Commission on Judicial Conduct, if any, into `record.csv`.
+* Prior legal experience into `candidates.csv` (`occupation`, `record_office`, `record_years`).
+* Stances only on how they say they decide cases. Judges may not promise rulings, so don't look for supports/opposes on policy.
+
+**For every candidate:**
+* `party` holds their ballot lines exactly as printed on the ballot (New York allows several, e.g. "Democratic, Working Families"). Copy them from the Board of Elections, not from news coverage.
+* Endorsements go in `endorsements.csv`, sourced to the endorser's own announcement. Record notable organizations, unions, newspapers and elected officials the same way for every candidate. Never single out one endorser, including the President or a party leader, in the data or the interface.
+* New votes, sponsored bills or rulings since the last run go in `record.csv`.
+
+**Sources:** primary sources only: campaign websites, official minutes and roll-call votes, court opinions, Board of Elections filings, debate transcripts, and news articles that quote the candidate directly. Never copy from other voter guides (Ballotpedia, Vote411, City & State guides). Quotes must be copied word for word from the page at `source_url`.
+
+**Steps each run:**
+1. Read `data/research-log.md` to see what the last run covered and what it left unfinished.
+2. Update races and candidates from the Board of Elections (new filings, withdrawals, ballot lines).
+3. Research, writing rows into `data/sheets/*.csv`.
+4. Run `node scripts/check-sources.mjs`. Fix or remove every failed row, and list every "check by hand" item for the user.
+5. Run `node scripts/build-data.mjs`.
+6. Add an entry to `data/research-log.md`: date, races covered, rows added or changed, items needing a human check, and what to do next run.
+7. Show the user the diff to review. Never commit or push research without their approval.
+
+**District keys:** every race's `district_id` must be one of the keys the page's address lookup produces, or no address will match it (the build warns about this):
+* `state:ny`, `city:nyc`, `county:<name>` (`nassau`, `new-york`, `kings`, `queens`, `bronx`, `richmond`), `borough:<name>` (NYC), `town:<name>` (Nassau towns and cities, e.g. `town:hempstead`), `place:<name>` (Nassau villages and cities, e.g. `place:garden-city`)
+* `cd:N` congressional, `sd:N` state senate, `ad:N` state assembly, `council:N` NYC Council, `nassau-leg:N` Nassau County Legislature, `school:<name>` school district, `jd:N` NY Supreme Court judicial district (Manhattan 1, Brooklyn 2, Nassau 10, Queens 11, Bronx 12, Staten Island 13)
+* Names are lowercase with hyphens, matching the U.S. Census Bureau's names (e.g. "Garden City Union Free School District" -> `school:garden-city-union-free-school-district`).
+
+**Known gap:** Nassau County Legislature districts have no public lookup service, so the page tells Nassau voters to check that district on the state voter lookup. If Nassau County publishes a boundary map service later, add it to the address lookup in `index.html` (section 8).

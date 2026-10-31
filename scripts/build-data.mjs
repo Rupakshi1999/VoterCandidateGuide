@@ -2,6 +2,7 @@
 /*
   Builds data/election.json from seven spreadsheet tabs:
     meta, districts, races, candidates, issues, stances, record
+  races.kind is "office" (default) or "judicial" (judges: record first, stances optional).
 
   Sources (pick one):
     node scripts/build-data.mjs                     reads data/sheets/*.csv
@@ -17,35 +18,9 @@
 */
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { ROOT, CSV_DIR, TABS, OPTIONAL_TABS, parseCsv } from "./common/sheets.mjs";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const CSV_DIR = path.join(ROOT, "data", "sheets");
 const OUT = path.join(ROOT, "data", "election.json");
-const TABS = ["meta", "districts", "races", "candidates", "issues", "stances", "record"];
-
-/* ---------- CSV ---------- */
-function parseCsv(text) {
-  const rows = [];
-  let row = [], field = "", quoted = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (quoted) {
-      if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
-      else if (c === '"') quoted = false;
-      else field += c;
-    } else if (c === '"') quoted = true;
-    else if (c === ",") { row.push(field); field = ""; }
-    else if (c === "\n" || c === "\r") {
-      if (c === "\r" && text[i + 1] === "\n") i++;
-      row.push(field); rows.push(row); row = []; field = "";
-    } else field += c;
-  }
-  if (field || row.length) { row.push(field); rows.push(row); }
-  const [header = [], ...body] = rows.filter((r) => r.some((v) => v.trim()));
-  const keys = header.map((h) => h.trim().toLowerCase());
-  return body.map((r) => Object.fromEntries(keys.map((k, i) => [k, (r[i] ?? "").trim()])));
-}
 
 async function loadTabs(sheetId, saveCsv) {
   const tabs = {};
@@ -54,11 +29,16 @@ async function loadTabs(sheetId, saveCsv) {
     if (sheetId) {
       const url = `https://docs.google.com/spreadsheets/d/${encodeURIComponent(sheetId)}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
       const res = await fetch(url);
+      if (!res.ok && tab in OPTIONAL_TABS) { tabs[tab] = []; continue; }
       if (!res.ok) throw new Error(`Could not read tab "${tab}" (HTTP ${res.status}). Is the sheet shared as "Anyone with the link"?`);
       text = await res.text();
+      // Google returns the first tab when the named one doesn't exist, so check it's really this tab.
+      if (tab in OPTIONAL_TABS && !text.split("\n")[0].toLowerCase().includes(OPTIONAL_TABS[tab])) { tabs[tab] = []; continue; }
       if (saveCsv) fs.writeFileSync(path.join(CSV_DIR, `${tab}.csv`), text.endsWith("\n") ? text : text + "\n");
     } else {
-      text = fs.readFileSync(path.join(CSV_DIR, `${tab}.csv`), "utf8");
+      const file = path.join(CSV_DIR, `${tab}.csv`);
+      if (tab in OPTIONAL_TABS && !fs.existsSync(file)) { tabs[tab] = []; continue; }
+      text = fs.readFileSync(file, "utf8");
     }
     tabs[tab] = parseCsv(text);
   }
@@ -99,7 +79,9 @@ function build(t) {
   t.races.forEach((r, i) => {
     if (!r.race_id || !r.office || !r.district_id) return err("races", i, "needs race_id, office and district_id");
     if (races.has(r.race_id)) return err("races", i, `duplicate race_id "${r.race_id}"`);
-    races.set(r.race_id, { id: r.race_id, office: r.office, category: r.category, district: r.district,
+    const kind = (r.kind || "office").toLowerCase();
+    if (!["office", "judicial"].includes(kind)) return err("races", i, `kind must be "office" or "judicial", not "${r.kind}"`);
+    races.set(r.race_id, { id: r.race_id, kind, office: r.office, category: r.category, district: r.district,
       districtId: r.district_id, candidates: [], issues: [] });
   });
 
@@ -115,22 +97,25 @@ function build(t) {
     race.candidates.push(c);
   });
 
-  const issues = new Map();
+  // race_id "all" = a shared voter concern asked of every candidate in every non-judicial race.
+  const issues = new Map(), shared = [];
   t.issues.forEach((r, i) => {
+    const isShared = r.race_id.toLowerCase() === "all";
     const race = races.get(r.race_id);
-    if (!race) return err("issues", i, `unknown race_id "${r.race_id}"`);
+    if (!race && !isShared) return err("issues", i, `unknown race_id "${r.race_id}" (use "all" for a shared issue)`);
     if (!r.issue_id || !r.name) return err("issues", i, "needs issue_id and name");
     if (issues.has(r.issue_id)) return err("issues", i, `duplicate issue_id "${r.issue_id}" (issue ids must be unique across races)`);
     const issue = { id: r.issue_id, name: r.name, tags: list(r.tags), description: r.description, stances: {} };
-    issues.set(issue.id, { issue, raceId: race.id });
-    race.issues.push(issue);
+    issues.set(issue.id, { issue, raceId: isShared ? "all" : race.id });
+    if (isShared) shared.push(issue); else race.issues.push(issue);
   });
 
   t.stances.forEach((r, i) => {
     const iss = issues.get(r.issue_id), cand = candidates.get(r.candidate_id);
     if (!iss) return err("stances", i, `unknown issue_id "${r.issue_id}"`);
     if (!cand) return err("stances", i, `unknown candidate_id "${r.candidate_id}"`);
-    if (iss.raceId !== cand.raceId) return err("stances", i, `${r.candidate_id} is not running in ${iss.raceId}`);
+    if (iss.raceId === "all" ? races.get(cand.raceId).kind === "judicial" : iss.raceId !== cand.raceId)
+      return err("stances", i, iss.raceId === "all" ? `${r.candidate_id} is in a judicial race; shared issues don't apply` : `${r.candidate_id} is not running in ${iss.raceId}`);
     const positions = [
       ...lines(r.supports).map((text) => ({ stance: "supports", text })),
       ...lines(r.opposes).map((text) => ({ stance: "opposes", text }))
@@ -153,9 +138,43 @@ function build(t) {
     cand.c.record.actions.push({ date, action: r.action, outcome: r.outcome, text: r.text, source: r.source, sourceUrl: r.source_url });
   });
 
+  // Endorsements: listed for every candidate the same way; no endorser is singled out.
+  t.endorsements.forEach((r, i) => {
+    const cand = candidates.get(r.candidate_id);
+    if (!cand) return err("endorsements", i, `unknown candidate_id "${r.candidate_id}"`);
+    const date = isoDate(r.date || "");
+    const missing = [!r.endorser && "endorser", (date && !isDate(date)) && "date (YYYY-MM-DD)", !r.source && "source",
+      !isUrl(r.source_url) && "source_url (http/https)"].filter(Boolean);
+    if (missing.length) return err("endorsements", i, `${r.candidate_id} missing ${missing.join(", ")}`);
+    (cand.c.endorsements ||= []).push({ endorser: r.endorser, type: r.endorser_type, date, source: r.source, sourceUrl: r.source_url });
+  });
+
+  // Qualification ratings, mainly for judicial candidates (e.g. bar association panels).
+  t.ratings.forEach((r, i) => {
+    const cand = candidates.get(r.candidate_id);
+    if (!cand) return err("ratings", i, `unknown candidate_id "${r.candidate_id}"`);
+    const date = isoDate(r.date || "");
+    const missing = [!r.rater && "rater", !r.rating && "rating", !isDate(date) && "date (YYYY-MM-DD)", !r.source && "source",
+      !isUrl(r.source_url) && "source_url (http/https)"].filter(Boolean);
+    if (missing.length) return err("ratings", i, `${r.candidate_id} missing ${missing.join(", ")}`);
+    (cand.c.ratings ||= []).push({ rater: r.rater, rating: r.rating, date, source: r.source, sourceUrl: r.source_url });
+  });
+
+  // District keys the page's address lookup produces (see index.html section 8).
+  const KEY = /^(state:ny|city:nyc|(cd|sd|ad|council|jd|nassau-leg):\d+|(county|borough|town|place|school):[a-z0-9-]+)$/;
+  const demoDistricts = new Set(Object.values(zipIndex).flat());
+  for (const race of races.values())
+    if (!KEY.test(race.districtId) && !demoDistricts.has(race.districtId))
+      warnings.push(`race ${race.id}: district_id "${race.districtId}" isn't a lookup key (e.g. cd:4, sd:6, ad:19, council:4, county:nassau), so no address will match it`);
+
   for (const race of races.values()) {
+    // Missing stances on race-specific issues are worth a warning; on shared concerns they're expected.
+    const local = race.issues.slice();
+    if (race.kind !== "judicial") race.issues.unshift(...shared.map((issue) => ({ ...issue, shared: true,
+      stances: Object.fromEntries(race.candidates.filter((c) => issue.stances[c.id]).map((c) => [c.id, issue.stances[c.id]])) })));
     if (race.candidates.length < 1) warnings.push(`race ${race.id} has no candidates`);
-    for (const issue of race.issues) for (const c of race.candidates)
+    if (!race.issues.length && race.kind !== "judicial") warnings.push(`race ${race.id} has no issues`);
+    for (const issue of local) for (const c of race.candidates)
       if (!issue.stances[c.id]) warnings.push(`no stance for ${c.name} on "${issue.name}" (page will say "No verified, sourced position")`);
   }
   for (const { c } of candidates.values())

@@ -1,5 +1,6 @@
-race_id,office,category,district,district_id
-mayor,Mayor,City Executive,Citywide,citywide
-council-1,City Council,Legislative,District 1,council-1
-council-2,City Council,Legislative,District 2,council-2
-school-north,School Board,Education,"North Unified, Seat 3",school-north
+race_id,office,category,district,district_id,kind
+mayor,Mayor,City Executive,Citywide,citywide,office
+council-1,City Council,Legislative,District 1,council-1,office
+council-2,City Council,Legislative,District 2,council-2,office
+school-north,School Board,Education,"North Unified, Seat 3",school-north,office
+supreme-2,State Supreme Court,Judicial,"Statewide, Seat 2",state,judicial
