@@ -1,15 +1,87 @@
 {
   "name": "Nicole Malliotakis",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-11",
   "ballotLines": [
     "Republican",
     "Conservative"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 11th District",
+    "years": "2021–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Tackling inflation",
+        "Expanding U.S. energy production"
+      ],
+      "opposes": [],
+      "quote": "Malliotakis is a member of the House Committee on Ways and Means and throughout her tenure in Congress she has been focused on strengthening our economy, securing the southern border, tackling inflation, unleashing America’s energy potential and making New York safe and affordable.",
+      "source": {
+        "title": "Meet Nicole (official U.S. House website)",
+        "url": "https://malliotakis.house.gov/about/meetnicole"
+      },
+      "impact": "Expect votes for more domestic oil and gas production and against new federal spending she sees as inflationary. As a Ways and Means member she works directly on tax law."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "A larger SALT deduction",
+        "A permanent, larger standard deduction and child tax credit",
+        "Tax relief for seniors"
+      ],
+      "opposes": [],
+      "quote": "She successfully fought for key provisions to reduce taxes on hardworking Americans, middle-class families and senior citizens including quadrupling the State and Local Tax (SALT) deduction to $40,000 for individuals and families, increasing and making permanent the Standard Deduction and Child Tax Credit, and delivering the most significant tax relief for senior citizens in a generation.",
+      "source": {
+        "title": "Meet Nicole (official U.S. House website)",
+        "url": "https://malliotakis.house.gov/about/meetnicole"
+      },
+      "impact": "These tax changes are already law and lower federal taxes for many Staten Island and Brooklyn households. She would vote to keep or expand them."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Cracking down on pharmacy benefit managers to lower prescription costs"
+      ],
+      "opposes": [],
+      "quote": "Congresswoman Nicole Malliotakis today joined Robert Annicharico, Owner of Staten Island's Delco Drugs & Specialty Pharmacy, and a bipartisan and bicameral group of colleagues in pushing Congress to pass legislation that would crack down on the predatory practices of Pharmacy Benefit Managers (PBMs) that raise the cost of prescription drugs.",
+      "source": {
+        "title": "Health | Representative Nicole Malliotakis (official U.S. House website)",
+        "url": "https://malliotakis.house.gov/issues/health"
+      },
+      "impact": "Limits on pharmacy benefit managers could lower some prescription drug prices and help independent pharmacies. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "immigration",
+      "supports": [],
+      "opposes": [
+        "Non-citizens voting in New York City elections"
+      ],
+      "quote": "Malliotakis was a lead plaintiff in the successful lawsuit against the City of New York that stopped the City’s law to allow non-citizens to vote in municipal elections from taking effect.",
+      "source": {
+        "title": "Meet Nicole (official U.S. House website)",
+        "url": "https://malliotakis.house.gov/about/meetnicole"
+      },
+      "impact": "Only U.S. citizens can vote in New York City elections after the court ruling she helped bring. She has also said she focuses on securing the southern border."
+    },
+    {
+      "issue": "israel-palestine",
+      "supports": [
+        "Standing by U.S. allies including Israel"
+      ],
+      "opposes": [],
+      "quote": "She has consistently stood by U.S. allies like Greece, Cyprus, and Israel in the face of authoritarian threats and terrorism.",
+      "source": {
+        "title": "Meet Nicole (official U.S. House website)",
+        "url": "https://malliotakis.house.gov/about/meetnicole"
+      },
+      "impact": "She would likely vote for continued U.S. support for Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

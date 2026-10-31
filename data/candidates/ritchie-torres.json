@@ -1,14 +1,44 @@
 {
   "name": "Ritchie Torres",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-15",
   "ballotLines": [
     "Democratic"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 15th District",
+    "years": "2021–present"
+  },
+  "positions": [
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Addressing economic inequality"
+      ],
+      "opposes": [],
+      "quote": "The pandemic has shown us how vital it is to address systemic issues of race, climate change, housing, and economic inequality.",
+      "source": {
+        "title": "Congressman Ritchie Torres (NY-15) (official U.S. House website)",
+        "url": "https://ritchietorres.house.gov/"
+      },
+      "impact": "Expect support for measures aimed at economic inequality. His site doesn't name specific bills."
+    },
+    {
+      "issue": "climate-change",
+      "supports": [
+        "Addressing climate change"
+      ],
+      "opposes": [],
+      "quote": "The pandemic has shown us how vital it is to address systemic issues of race, climate change, housing, and economic inequality.",
+      "source": {
+        "title": "Congressman Ritchie Torres (NY-15) (official U.S. House website)",
+        "url": "https://ritchietorres.house.gov/"
+      },
+      "impact": "Expect support for federal climate measures. His site doesn't name specific bills."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

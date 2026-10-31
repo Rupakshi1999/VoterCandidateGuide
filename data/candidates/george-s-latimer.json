@@ -1,14 +1,58 @@
 {
   "name": "George S. Latimer",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-16",
   "ballotLines": [
     "Democratic"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 16th District",
+    "years": "2025–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Bringing down costs for residents of Westchester and the Bronx"
+      ],
+      "opposes": [],
+      "quote": "Using inclusion and openness as a foreground, he is fighting to bring down costs and make life easier for people in Westchester County and the Bronx.",
+      "source": {
+        "title": "About | Congressman George Latimer (official U.S. House website)",
+        "url": "https://latimer.house.gov/about"
+      },
+      "impact": "Expect a focus on cost-of-living measures. His site doesn't name specific bills."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [],
+      "opposes": [
+        "Cutting Medicaid to pay for tax cuts"
+      ],
+      "quote": "President Trump and Congressional Republicans are working to cut Medicaid by nearly a trillion dollars to pay for tax-breaks for billionaires.",
+      "source": {
+        "title": "Health | Congressman George Latimer (official U.S. House website)",
+        "url": "https://latimer.house.gov/issues/health"
+      },
+      "impact": "He would vote against Medicaid cuts, which affect low-income residents, people with disabilities and nursing home residents. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Wage theft protections",
+        "Banning salary-history questions in hiring"
+      ],
+      "opposes": [],
+      "quote": "Latimer has worked with all stakeholders on key social justice reforms, including the Police Reform and Reimagining Task Force, banning Gay Conversion Therapy, signing the Anti-Wage Theft Law and the Wage History Anti-Discrimination Law among others.",
+      "source": {
+        "title": "About | Congressman George Latimer (official U.S. House website)",
+        "url": "https://latimer.house.gov/about"
+      },
+      "impact": "As Westchester County Executive he signed these local laws. Expect support for similar federal worker protections."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

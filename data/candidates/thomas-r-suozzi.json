@@ -1,14 +1,141 @@
 {
   "name": "Thomas R. Suozzi",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-3",
   "ballotLines": [
     "Democratic"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 3rd District",
+    "years": "2024–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Trade deals that bring manufacturing jobs back to the U.S."
+      ],
+      "opposes": [
+        "Tariffs he says raise prices on groceries, cars and building materials"
+      ],
+      "quote": "Get rid of irresponsible tariffs that are driving up prices on groceries, cars, building materials, and everyday goods — while fighting for trade deals that bring manufacturing jobs back to America.",
+      "source": {
+        "title": "Tom Suozzi's Five-Point American Affordability Plan (campaign site)",
+        "url": "https://suozziforcongress.com/tom-suozzis-five-point-american-affordability-plan/"
+      },
+      "impact": "He would vote to roll back current tariffs, which could lower prices on imported goods. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Keeping the tax credits that lower health insurance premiums",
+        "Funding prevention and primary care",
+        "The WISH Act to make long-term care more affordable"
+      ],
+      "opposes": [],
+      "quote": "Protect and strengthen the tax credits that lower your health insurance premiums, invest in prevention and primary care, and pass the WISH Act to make long-term care more affordable so seniors can stay in their homes.",
+      "source": {
+        "title": "Tom Suozzi's Five-Point American Affordability Plan (campaign site)",
+        "url": "https://suozziforcongress.com/tom-suozzis-five-point-american-affordability-plan/"
+      },
+      "impact": "People who buy insurance through the ACA marketplace would be the most affected by the premium tax credits. Seniors and families paying for long-term care would be affected by the WISH Act."
+    },
+    {
+      "issue": "iran",
+      "supports": [],
+      "opposes": [
+        "Spending on the war with Iran"
+      ],
+      "quote": "Stop pouring taxpayer money into a reckless war.",
+      "source": {
+        "title": "Tom Suozzi's Five-Point American Affordability Plan (campaign site)",
+        "url": "https://suozziforcongress.com/tom-suozzis-five-point-american-affordability-plan/"
+      },
+      "impact": "He would vote against further funding for the war. Congress controls war funding, but the President directs military operations."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Lower taxes for Long Island families",
+        "Restoring the full SALT deduction"
+      ],
+      "opposes": [],
+      "quote": "Tom will Reduce the tax burden on Long Island families and work to restore the full State and Local Tax (SALT) deduction.",
+      "source": {
+        "title": "Suozzi for Congress (campaign site)",
+        "url": "https://suozziforcongress.com/"
+      },
+      "impact": "A full SALT deduction would mainly lower federal taxes for homeowners in high-tax areas like Nassau and Queens. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "A comprehensive package of border security and immigration reforms"
+      ],
+      "opposes": [],
+      "quote": "We need a comprehensive package of reforms to achieve border security and address the unsustainable influx of undocumented migrants.",
+      "source": {
+        "title": "Suozzi for Congress (campaign site)",
+        "url": "https://suozziforcongress.com/"
+      },
+      "impact": "He would back a single bill combining border enforcement with other immigration changes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "abortion",
+      "supports": [
+        "A woman's right to make her own health care decisions, including abortion"
+      ],
+      "opposes": [],
+      "quote": "Tom will always fight to defend a woman's right to make her own healthcare decisions.",
+      "source": {
+        "title": "Suozzi for Congress (campaign site)",
+        "url": "https://suozziforcongress.com/"
+      },
+      "impact": "He would vote against new federal limits on abortion. Abortion access in New York is set mainly by state law."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "Crime reduction through intervention and prevention programs"
+      ],
+      "opposes": [],
+      "quote": "Bringing down crime through common sense reforms centered on intervention and prevention so that people feel safe.",
+      "source": {
+        "title": "Suozzi for Congress (campaign site)",
+        "url": "https://suozziforcongress.com/"
+      },
+      "impact": "Expect support for federal grants to local violence-prevention and intervention programs. Day-to-day policing is run by local police departments."
+    },
+    {
+      "issue": "israel-palestine",
+      "supports": [
+        "Strengthening Israel's regional security",
+        "Combating anti-Israel bias"
+      ],
+      "opposes": [],
+      "quote": "Tom stands with the state of Israel and believes we must continue to strengthen Israel's regional security and combat anti-Israel bias.",
+      "source": {
+        "title": "Suozzi for Congress (campaign site)",
+        "url": "https://suozziforcongress.com/"
+      },
+      "impact": "He would likely vote for continued U.S. military and security aid to Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "climate-change",
+      "supports": [
+        "Bold action on climate change"
+      ],
+      "opposes": [],
+      "quote": "Climate change is real and requires bold solutions to leave a healthier and more sustainable world behind for future generations.",
+      "source": {
+        "title": "Suozzi for Congress (campaign site)",
+        "url": "https://suozziforcongress.com/"
+      },
+      "impact": "He would likely support federal clean-energy and emissions measures. The campaign site doesn't name specific bills."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

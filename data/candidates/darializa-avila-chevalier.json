@@ -7,9 +7,67 @@
     "Working Families"
   ],
   "priorOffice": null,
-  "positions": [],
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Workers' rights and union growth",
+        "A higher minimum wage",
+        "Funding Social Security"
+      ],
+      "opposes": [],
+      "quote": "Darializa will fight to protection workers' rights, increase union density, raise the minimum wage, fund social security, to create and protect job opportunities, and more.",
+      "source": {
+        "title": "Priorities — Darializa For Congress (campaign site)",
+        "url": "https://darializaforcongress.com/issues"
+      },
+      "impact": "Low-wage workers would be most affected by a higher federal minimum wage. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Medicare for All: a free, universal health system"
+      ],
+      "opposes": [],
+      "quote": "Darializa will fight for Medicare for All: a free, universal system that covers primary and mental health care, dental, vision, hearing, reproductive care, long-term care, and lower prescription costs.",
+      "source": {
+        "title": "Priorities — Darializa For Congress (campaign site)",
+        "url": "https://darializaforcongress.com/issues"
+      },
+      "impact": "Medicare for All would replace private and employer insurance with one public plan, paid for through taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Reducing the influence of the wealthy and corporations in politics"
+      ],
+      "opposes": [],
+      "quote": "Our political system is corrupt: it rewards the wealthy elite, corporations, and political machines over working people.",
+      "source": {
+        "title": "Darializa For Congress (campaign site)",
+        "url": "https://darializaforcongress.com/"
+      },
+      "impact": "Expect support for campaign finance and anti-corruption measures. The site doesn't list specific bills."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Expanding pathways to citizenship",
+        "Free legal representation for immigrants"
+      ],
+      "opposes": [
+        "The current deportation system"
+      ],
+      "quote": "Darializa will fight to abolish the deportation machine, expand pathways to citizenship, secure free legal representation for immigrants, and more.",
+      "source": {
+        "title": "Priorities — Darializa For Congress (campaign site)",
+        "url": "https://darializaforcongress.com/issues"
+      },
+      "impact": "Immigrants facing removal could get government-funded lawyers, and more could qualify for citizenship. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

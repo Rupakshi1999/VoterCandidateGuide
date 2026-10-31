@@ -1001,7 +1001,12 @@
           "id": "nicole-malliotakis",
           "name": "Nicole Malliotakis",
           "party": "Republican, Conservative",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 11th District",
+            "years": "2021–present",
+            "actions": []
+          }
         }
       ],
       "issues": [
@@ -1017,7 +1022,24 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "nicole-malliotakis": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Tackling inflation"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Expanding U.S. energy production"
+                }
+              ],
+              "quote": "Malliotakis is a member of the House Committee on Ways and Means and throughout her tenure in Congress she has been focused on strengthening our economy, securing the southern border, tackling inflation, unleashing America’s energy potential and making New York safe and affordable.",
+              "source": "Meet Nicole (official U.S. House website)",
+              "sourceUrl": "https://malliotakis.house.gov/about/meetnicole",
+              "realWorldImpact": "Expect votes for more domestic oil and gas production and against new federal spending she sees as inflationary. As a Ways and Means member she works directly on tax law."
+            }
+          },
           "shared": true
         },
         {
@@ -1032,7 +1054,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "nicole-malliotakis": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Cracking down on pharmacy benefit managers to lower prescription costs"
+                }
+              ],
+              "quote": "Congresswoman Nicole Malliotakis today joined Robert Annicharico, Owner of Staten Island's Delco Drugs & Specialty Pharmacy, and a bipartisan and bicameral group of colleagues in pushing Congress to pass legislation that would crack down on the predatory practices of Pharmacy Benefit Managers (PBMs) that raise the cost of prescription drugs.",
+              "source": "Health | Representative Nicole Malliotakis (official U.S. House website)",
+              "sourceUrl": "https://malliotakis.house.gov/issues/health",
+              "realWorldImpact": "Limits on pharmacy benefit managers could lower some prescription drug prices and help independent pharmacies. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1059,7 +1094,28 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "nicole-malliotakis": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A larger SALT deduction"
+                },
+                {
+                  "stance": "supports",
+                  "text": "A permanent, larger standard deduction and child tax credit"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Tax relief for seniors"
+                }
+              ],
+              "quote": "She successfully fought for key provisions to reduce taxes on hardworking Americans, middle-class families and senior citizens including quadrupling the State and Local Tax (SALT) deduction to $40,000 for individuals and families, increasing and making permanent the Standard Deduction and Child Tax Credit, and delivering the most significant tax relief for senior citizens in a generation.",
+              "source": "Meet Nicole (official U.S. House website)",
+              "sourceUrl": "https://malliotakis.house.gov/about/meetnicole",
+              "realWorldImpact": "These tax changes are already law and lower federal taxes for many Staten Island and Brooklyn households. She would vote to keep or expand them."
+            }
+          },
           "shared": true
         },
         {
@@ -1088,7 +1144,20 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "nicole-malliotakis": {
+              "positions": [
+                {
+                  "stance": "opposes",
+                  "text": "Non-citizens voting in New York City elections"
+                }
+              ],
+              "quote": "Malliotakis was a lead plaintiff in the successful lawsuit against the City of New York that stopped the City’s law to allow non-citizens to vote in municipal elections from taking effect.",
+              "source": "Meet Nicole (official U.S. House website)",
+              "sourceUrl": "https://malliotakis.house.gov/about/meetnicole",
+              "realWorldImpact": "Only U.S. citizens can vote in New York City elections after the court ruling she helped bring. She has also said she focuses on securing the southern border."
+            }
+          },
           "shared": true
         },
         {
@@ -1124,7 +1193,20 @@
             "foreign policy"
           ],
           "description": "U.S. policy toward Israel, Gaza and the Palestinian territories.",
-          "stances": {},
+          "stances": {
+            "nicole-malliotakis": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Standing by U.S. allies including Israel"
+                }
+              ],
+              "quote": "She has consistently stood by U.S. allies like Greece, Cyprus, and Israel in the face of authoritarian threats and terrorism.",
+              "source": "Meet Nicole (official U.S. House website)",
+              "sourceUrl": "https://malliotakis.house.gov/about/meetnicole",
+              "realWorldImpact": "She would likely vote for continued U.S. support for Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1205,7 +1287,20 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "caroline-shinkle": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Targeted deregulation to keep jobs and investment in New York City"
+                }
+              ],
+              "quote": "Support strategic, common-sense deregulation to allow industry and innovation to flourish and combat the mass exodus of jobs, opportunity, investment, and capital out of New York City",
+              "source": "Caroline Shinkle's Priorities (campaign site)",
+              "sourceUrl": "https://www.carolinefornewyork.com/priorities",
+              "realWorldImpact": "She would vote to reduce federal business regulations. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1220,7 +1315,24 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "caroline-shinkle": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "More competition in health care"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Price transparency"
+                }
+              ],
+              "quote": "Reintroduce competition into the healthcare marketplace and enhance price transparency to ensure the system works for patients and providers, not just the insurance companies",
+              "source": "Caroline Shinkle's Priorities (campaign site)",
+              "sourceUrl": "https://www.carolinefornewyork.com/priorities",
+              "realWorldImpact": "Patients could see more published prices for care and more insurance options. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1247,7 +1359,20 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "caroline-shinkle": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Lowering the federal income tax on W-2 wages"
+                }
+              ],
+              "quote": "Protect the Paycheck – allow people to keep more of what they earn by reducing the federal income tax on W-2 wages.",
+              "source": "Caroline Shinkle's Priorities (campaign site)",
+              "sourceUrl": "https://www.carolinefornewyork.com/priorities",
+              "realWorldImpact": "Salaried and hourly workers would pay less federal income tax under her proposal. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1299,7 +1424,20 @@
             "public safety"
           ],
           "description": "Crime, policing and public safety.",
-          "stances": {},
+          "stances": {
+            "caroline-shinkle": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A pro-safety, pro-community law enforcement agenda"
+                }
+              ],
+              "quote": "Prioritize the safety and security of New Yorkers and their livelihoods through a pro-safety, pro-community law enforcement agenda",
+              "source": "Caroline Shinkle's Priorities (campaign site)",
+              "sourceUrl": "https://www.carolinefornewyork.com/priorities",
+              "realWorldImpact": "Expect support for federal funding for police. Day-to-day policing is run by the NYPD."
+            }
+          },
           "shared": true
         },
         {
@@ -1312,7 +1450,20 @@
             "foreign policy"
           ],
           "description": "U.S. policy toward Israel, Gaza and the Palestinian territories.",
-          "stances": {},
+          "stances": {
+            "caroline-shinkle": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Standing with New York City's Jewish community and with Israel"
+                }
+              ],
+              "quote": "Unapologetically stand with the Jewish community of New York City and our ally Israel",
+              "source": "Caroline Shinkle's Priorities (campaign site)",
+              "sourceUrl": "https://www.carolinefornewyork.com/priorities",
+              "realWorldImpact": "She would likely vote for continued U.S. support for Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1381,7 +1532,28 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "darializa-avila-chevalier": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Workers' rights and union growth"
+                },
+                {
+                  "stance": "supports",
+                  "text": "A higher minimum wage"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Funding Social Security"
+                }
+              ],
+              "quote": "Darializa will fight to protection workers' rights, increase union density, raise the minimum wage, fund social security, to create and protect job opportunities, and more.",
+              "source": "Priorities — Darializa For Congress (campaign site)",
+              "sourceUrl": "https://darializaforcongress.com/issues",
+              "realWorldImpact": "Low-wage workers would be most affected by a higher federal minimum wage. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1396,7 +1568,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "darializa-avila-chevalier": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Medicare for All: a free, universal health system"
+                }
+              ],
+              "quote": "Darializa will fight for Medicare for All: a free, universal system that covers primary and mental health care, dental, vision, hearing, reproductive care, long-term care, and lower prescription costs.",
+              "source": "Priorities — Darializa For Congress (campaign site)",
+              "sourceUrl": "https://darializaforcongress.com/issues",
+              "realWorldImpact": "Medicare for All would replace private and employer insurance with one public plan, paid for through taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1423,7 +1608,20 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "darializa-avila-chevalier": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Reducing the influence of the wealthy and corporations in politics"
+                }
+              ],
+              "quote": "Our political system is corrupt: it rewards the wealthy elite, corporations, and political machines over working people.",
+              "source": "Darializa For Congress (campaign site)",
+              "sourceUrl": "https://darializaforcongress.com/",
+              "realWorldImpact": "Expect support for campaign finance and anti-corruption measures. The site doesn't list specific bills."
+            }
+          },
           "shared": true
         },
         {
@@ -1452,7 +1650,28 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "darializa-avila-chevalier": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Expanding pathways to citizenship"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Free legal representation for immigrants"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "The current deportation system"
+                }
+              ],
+              "quote": "Darializa will fight to abolish the deportation machine, expand pathways to citizenship, secure free legal representation for immigrants, and more.",
+              "source": "Priorities — Darializa For Congress (campaign site)",
+              "sourceUrl": "https://darializaforcongress.com/issues",
+              "realWorldImpact": "Immigrants facing removal could get government-funded lawyers, and more could qualify for citizenship. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1535,7 +1754,12 @@
           "id": "alexandria-ocasio-cortez",
           "name": "Alexandria Ocasio-Cortez",
           "party": "Democratic, Working Families",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 14th District",
+            "years": "2019–present",
+            "actions": []
+          }
         },
         {
           "id": "diamant-hysenaj",
@@ -1557,7 +1781,24 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "alexandria-ocasio-cortez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Workers sharing in company profits"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Limits on corporate price increases for medicine and food"
+                }
+              ],
+              "quote": "Congresswoman Ocasio-Cortez is fighting to create a more just economy: one in which workers share in the profits their work creates, and corporations cannot endlessly drive up prices of critical goods like medicine and food.",
+              "source": "Economy | Representative Ocasio-Cortez (official U.S. House website)",
+              "sourceUrl": "https://ocasio-cortez.house.gov/legislation/economy",
+              "realWorldImpact": "Expect support for anti-price-gouging and worker-ownership measures. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1572,7 +1813,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "alexandria-ocasio-cortez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Health care as a human right"
+                }
+              ],
+              "quote": "Healthcare should be a human right, not a privilege for the wealthy.",
+              "source": "Healthcare | Representative Ocasio-Cortez (official U.S. House website)",
+              "sourceUrl": "https://ocasio-cortez.house.gov/legislation/healthcare",
+              "realWorldImpact": "She would vote to expand public coverage toward universal health care. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1599,7 +1853,24 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "alexandria-ocasio-cortez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A minimum tax on large corporations"
+                },
+                {
+                  "stance": "supports",
+                  "text": "A $35 monthly cap on insulin costs"
+                }
+              ],
+              "quote": "Last year, she helped pass the Inflation Reduction Act, which institutes a 15% minimum tax rate on wealthy corporations that have long-avoided paying any taxes at all, and caps the cost of insulin at $35 each month.",
+              "source": "Economy | Representative Ocasio-Cortez (official U.S. House website)",
+              "sourceUrl": "https://ocasio-cortez.house.gov/legislation/economy",
+              "realWorldImpact": "These provisions are already law: large corporations pay at least a 15% minimum tax, and insulin costs for Medicare patients are capped. She would vote to keep or expand them."
+            }
+          },
           "shared": true
         },
         {
@@ -1729,7 +2000,12 @@
           "id": "ritchie-torres",
           "name": "Ritchie Torres",
           "party": "Democratic",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 15th District",
+            "years": "2021–present",
+            "actions": []
+          }
         },
         {
           "id": "stylo-sapaskis",
@@ -1793,7 +2069,20 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "ritchie-torres": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Addressing economic inequality"
+                }
+              ],
+              "quote": "The pandemic has shown us how vital it is to address systemic issues of race, climate change, housing, and economic inequality.",
+              "source": "Congressman Ritchie Torres (NY-15) (official U.S. House website)",
+              "sourceUrl": "https://ritchietorres.house.gov/",
+              "realWorldImpact": "Expect support for measures aimed at economic inequality. His site doesn't name specific bills."
+            }
+          },
           "shared": true
         },
         {
@@ -1885,7 +2174,20 @@
             "energy"
           ],
           "description": "Policies on climate change and emissions.",
-          "stances": {},
+          "stances": {
+            "ritchie-torres": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Addressing climate change"
+                }
+              ],
+              "quote": "The pandemic has shown us how vital it is to address systemic issues of race, climate change, housing, and economic inequality.",
+              "source": "Congressman Ritchie Torres (NY-15) (official U.S. House website)",
+              "sourceUrl": "https://ritchietorres.house.gov/",
+              "realWorldImpact": "Expect support for federal climate measures. His site doesn't name specific bills."
+            }
+          },
           "shared": true
         }
       ]
@@ -1905,7 +2207,12 @@
           "id": "george-s-latimer",
           "name": "George S. Latimer",
           "party": "Democratic",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 16th District",
+            "years": "2025–present",
+            "actions": []
+          }
         },
         {
           "id": "joseph-j-cinquemani",
@@ -1927,7 +2234,20 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "george-s-latimer": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Bringing down costs for residents of Westchester and the Bronx"
+                }
+              ],
+              "quote": "Using inclusion and openness as a foreground, he is fighting to bring down costs and make life easier for people in Westchester County and the Bronx.",
+              "source": "About | Congressman George Latimer (official U.S. House website)",
+              "sourceUrl": "https://latimer.house.gov/about",
+              "realWorldImpact": "Expect a focus on cost-of-living measures. His site doesn't name specific bills."
+            }
+          },
           "shared": true
         },
         {
@@ -1942,7 +2262,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "george-s-latimer": {
+              "positions": [
+                {
+                  "stance": "opposes",
+                  "text": "Cutting Medicaid to pay for tax cuts"
+                }
+              ],
+              "quote": "President Trump and Congressional Republicans are working to cut Medicaid by nearly a trillion dollars to pay for tax-breaks for billionaires.",
+              "source": "Health | Congressman George Latimer (official U.S. House website)",
+              "sourceUrl": "https://latimer.house.gov/issues/health",
+              "realWorldImpact": "He would vote against Medicaid cuts, which affect low-income residents, people with disabilities and nursing home residents. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -1969,7 +2302,24 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "george-s-latimer": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Wage theft protections"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Banning salary-history questions in hiring"
+                }
+              ],
+              "quote": "Latimer has worked with all stakeholders on key social justice reforms, including the Police Reform and Reimagining Task Force, banning Gay Conversion Therapy, signing the Anti-Wage Theft Law and the Wage History Anti-Discrimination Law among others.",
+              "source": "About | Congressman George Latimer (official U.S. House website)",
+              "sourceUrl": "https://latimer.house.gov/about",
+              "realWorldImpact": "As Westchester County Executive he signed these local laws. Expect support for similar federal worker protections."
+            }
+          },
           "shared": true
         },
         {
@@ -2081,7 +2431,12 @@
           "id": "andrew-r-garbarino",
           "name": "Andrew R. Garbarino",
           "party": "Republican, Conservative",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 2nd District",
+            "years": "2021–present",
+            "actions": []
+          }
         },
         {
           "id": "patrick-halpin",
@@ -2103,7 +2458,20 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "andrew-r-garbarino": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Pro-growth policies and less regulation for small businesses"
+                }
+              ],
+              "quote": "The state of small business in America is in crisis and we need pro-growth policies and less red tape to reinvigorate our economy.",
+              "source": "Economy & Jobs | Representative Andrew Garbarino (official U.S. House website)",
+              "sourceUrl": "https://garbarino.house.gov/issues/economy-jobs",
+              "realWorldImpact": "He would vote to cut federal regulations on small businesses. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2145,7 +2513,20 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "andrew-r-garbarino": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Restoring the full SALT deduction"
+                }
+              ],
+              "quote": "One of my most important priorities in Congress is to restore the full State and Local Tax (SALT) deduction.",
+              "source": "Taxes | Representative Andrew Garbarino (official U.S. House website)",
+              "sourceUrl": "https://garbarino.house.gov/issues/taxes",
+              "realWorldImpact": "A full SALT deduction would mainly lower federal taxes for homeowners in high-tax areas like Long Island. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2197,7 +2578,20 @@
             "public safety"
           ],
           "description": "Crime, policing and public safety.",
-          "stances": {},
+          "stances": {
+            "andrew-r-garbarino": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Supporting law enforcement"
+                }
+              ],
+              "quote": "I will always support our men and women in law enforcement and work to restore law and order.",
+              "source": "Representative Andrew Garbarino (official U.S. House website)",
+              "sourceUrl": "https://garbarino.house.gov/",
+              "realWorldImpact": "Expect support for federal funding for police. Day-to-day policing is run by county and village police."
+            }
+          },
           "shared": true
         },
         {
@@ -2263,7 +2657,12 @@
           "id": "thomas-r-suozzi",
           "name": "Thomas R. Suozzi",
           "party": "Democratic",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 3rd District",
+            "years": "2024–present",
+            "actions": []
+          }
         }
       ],
       "issues": [
@@ -2279,7 +2678,24 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "thomas-r-suozzi": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Trade deals that bring manufacturing jobs back to the U.S."
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Tariffs he says raise prices on groceries, cars and building materials"
+                }
+              ],
+              "quote": "Get rid of irresponsible tariffs that are driving up prices on groceries, cars, building materials, and everyday goods — while fighting for trade deals that bring manufacturing jobs back to America.",
+              "source": "Tom Suozzi's Five-Point American Affordability Plan (campaign site)",
+              "sourceUrl": "https://suozziforcongress.com/tom-suozzis-five-point-american-affordability-plan/",
+              "realWorldImpact": "He would vote to roll back current tariffs, which could lower prices on imported goods. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2294,7 +2710,28 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "thomas-r-suozzi": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Keeping the tax credits that lower health insurance premiums"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Funding prevention and primary care"
+                },
+                {
+                  "stance": "supports",
+                  "text": "The WISH Act to make long-term care more affordable"
+                }
+              ],
+              "quote": "Protect and strengthen the tax credits that lower your health insurance premiums, invest in prevention and primary care, and pass the WISH Act to make long-term care more affordable so seniors can stay in their homes.",
+              "source": "Tom Suozzi's Five-Point American Affordability Plan (campaign site)",
+              "sourceUrl": "https://suozziforcongress.com/tom-suozzis-five-point-american-affordability-plan/",
+              "realWorldImpact": "People who buy insurance through the ACA marketplace would be the most affected by the premium tax credits. Seniors and families paying for long-term care would be affected by the WISH Act."
+            }
+          },
           "shared": true
         },
         {
@@ -2307,7 +2744,20 @@
             "military"
           ],
           "description": "U.S. policy toward the conflict with Iran.",
-          "stances": {},
+          "stances": {
+            "thomas-r-suozzi": {
+              "positions": [
+                {
+                  "stance": "opposes",
+                  "text": "Spending on the war with Iran"
+                }
+              ],
+              "quote": "Stop pouring taxpayer money into a reckless war.",
+              "source": "Tom Suozzi's Five-Point American Affordability Plan (campaign site)",
+              "sourceUrl": "https://suozziforcongress.com/tom-suozzis-five-point-american-affordability-plan/",
+              "realWorldImpact": "He would vote against further funding for the war. Congress controls war funding, but the President directs military operations."
+            }
+          },
           "shared": true
         },
         {
@@ -2321,7 +2771,24 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "thomas-r-suozzi": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Lower taxes for Long Island families"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Restoring the full SALT deduction"
+                }
+              ],
+              "quote": "Tom will Reduce the tax burden on Long Island families and work to restore the full State and Local Tax (SALT) deduction.",
+              "source": "Suozzi for Congress (campaign site)",
+              "sourceUrl": "https://suozziforcongress.com/",
+              "realWorldImpact": "A full SALT deduction would mainly lower federal taxes for homeowners in high-tax areas like Nassau and Queens. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2350,7 +2817,20 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "thomas-r-suozzi": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A comprehensive package of border security and immigration reforms"
+                }
+              ],
+              "quote": "We need a comprehensive package of reforms to achieve border security and address the unsustainable influx of undocumented migrants.",
+              "source": "Suozzi for Congress (campaign site)",
+              "sourceUrl": "https://suozziforcongress.com/",
+              "realWorldImpact": "He would back a single bill combining border enforcement with other immigration changes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2361,7 +2841,20 @@
             "reproductive health"
           ],
           "description": "Access to and limits on abortion.",
-          "stances": {},
+          "stances": {
+            "thomas-r-suozzi": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A woman's right to make her own health care decisions, including abortion"
+                }
+              ],
+              "quote": "Tom will always fight to defend a woman's right to make her own healthcare decisions.",
+              "source": "Suozzi for Congress (campaign site)",
+              "sourceUrl": "https://suozziforcongress.com/",
+              "realWorldImpact": "He would vote against new federal limits on abortion. Abortion access in New York is set mainly by state law."
+            }
+          },
           "shared": true
         },
         {
@@ -2373,7 +2866,20 @@
             "public safety"
           ],
           "description": "Crime, policing and public safety.",
-          "stances": {},
+          "stances": {
+            "thomas-r-suozzi": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Crime reduction through intervention and prevention programs"
+                }
+              ],
+              "quote": "Bringing down crime through common sense reforms centered on intervention and prevention so that people feel safe.",
+              "source": "Suozzi for Congress (campaign site)",
+              "sourceUrl": "https://suozziforcongress.com/",
+              "realWorldImpact": "Expect support for federal grants to local violence-prevention and intervention programs. Day-to-day policing is run by local police departments."
+            }
+          },
           "shared": true
         },
         {
@@ -2386,7 +2892,24 @@
             "foreign policy"
           ],
           "description": "U.S. policy toward Israel, Gaza and the Palestinian territories.",
-          "stances": {},
+          "stances": {
+            "thomas-r-suozzi": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Strengthening Israel's regional security"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Combating anti-Israel bias"
+                }
+              ],
+              "quote": "Tom stands with the state of Israel and believes we must continue to strengthen Israel's regional security and combat anti-Israel bias.",
+              "source": "Suozzi for Congress (campaign site)",
+              "sourceUrl": "https://suozziforcongress.com/",
+              "realWorldImpact": "He would likely vote for continued U.S. military and security aid to Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2413,7 +2936,20 @@
             "energy"
           ],
           "description": "Policies on climate change and emissions.",
-          "stances": {},
+          "stances": {
+            "thomas-r-suozzi": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Bold action on climate change"
+                }
+              ],
+              "quote": "Climate change is real and requires bold solutions to leave a healthier and more sustainable world behind for future generations.",
+              "source": "Suozzi for Congress (campaign site)",
+              "sourceUrl": "https://suozziforcongress.com/",
+              "realWorldImpact": "He would likely support federal clean-energy and emissions measures. The campaign site doesn't name specific bills."
+            }
+          },
           "shared": true
         }
       ]
@@ -2439,13 +2975,18 @@
           "id": "jeanine-c-driscoll",
           "name": "Jeanine C. Driscoll",
           "party": "Republican, Conservative",
-          "occupation": ""
+          "occupation": "Hempstead Town Receiver of Taxes"
         },
         {
           "id": "laura-a-gillen",
           "name": "Laura A. Gillen",
           "party": "Democratic",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 4th District",
+            "years": "2025–present",
+            "actions": []
+          }
         }
       ],
       "issues": [
@@ -2461,7 +3002,20 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "laura-a-gillen": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Making Nassau County affordable for buying a home, raising a family and opening a business"
+                }
+              ],
+              "quote": "She is committed to keeping families safe, growing the economy, and making Nassau County a place where people can afford to buy a home, raise a family and open a business.",
+              "source": "Meet Laura | Laura Gillen for Congress (campaign site)",
+              "sourceUrl": "https://lauragillen.com/meet-laura/",
+              "realWorldImpact": "Expect a focus on cost-of-living measures for Nassau families. The campaign page doesn't list specific bills."
+            }
+          },
           "shared": true
         },
         {
@@ -2476,7 +3030,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "laura-a-gillen": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Restoring ACA premium tax credits"
+                }
+              ],
+              "quote": "She has fought to restore critical ACA premium tax credits to lower the cost of health insurance by up to thousands of dollars a month for working families.",
+              "source": "Meet Laura | Laura Gillen for Congress (campaign site)",
+              "sourceUrl": "https://lauragillen.com/meet-laura/",
+              "realWorldImpact": "People who buy insurance through the ACA marketplace could pay less in premiums if the credits are restored. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2503,7 +3070,36 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "jeanine-c-driscoll": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Restoring the full SALT deduction"
+                },
+                {
+                  "stance": "supports",
+                  "text": "More tax relief for Nassau County families and seniors"
+                }
+              ],
+              "quote": "She will continue fighting to lower the tax burden by restoring the full State and Local Tax (SALT) Deduction and providing additional relief for Nassau County families and seniors.",
+              "source": "Jeanine C. Driscoll for Congress (campaign site)",
+              "sourceUrl": "https://driscoll4congress.com/",
+              "realWorldImpact": "A full SALT deduction would mainly lower federal taxes for homeowners in high-tax areas like Nassau. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
+            "laura-a-gillen": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Eliminating the SALT deduction cap"
+                }
+              ],
+              "quote": "She has been a leader in Congress working to eliminate the SALT cap, which has led to double taxation of Long Islanders.",
+              "source": "Meet Laura | Laura Gillen for Congress (campaign site)",
+              "sourceUrl": "https://lauragillen.com/meet-laura/",
+              "realWorldImpact": "Removing the cap would mainly lower federal taxes for homeowners who pay high state and local taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2532,7 +3128,32 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "jeanine-c-driscoll": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Keeping the southern border closed to unauthorized crossings"
+                }
+              ],
+              "quote": "In Congress, Jeanine will stand up for Nassau taxpayers, support law enforcement and ensure the southern border can never be opened again.",
+              "source": "Jeanine C. Driscoll for Congress (campaign site)",
+              "sourceUrl": "https://driscoll4congress.com/",
+              "realWorldImpact": "She would vote for border enforcement measures. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            },
+            "laura-a-gillen": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Extending Temporary Protected Status for Haitians"
+                }
+              ],
+              "quote": "She has led the charge in Congress to extend TPS for law-abiding Haitians in Nassau County and across the country.",
+              "source": "Meet Laura | Laura Gillen for Congress (campaign site)",
+              "sourceUrl": "https://lauragillen.com/meet-laura/",
+              "realWorldImpact": "Haitians with Temporary Protected Status could keep living and working legally in the U.S. if it's extended. The decision rests with the federal government."
+            }
+          },
           "shared": true
         },
         {
@@ -2555,7 +3176,32 @@
             "public safety"
           ],
           "description": "Crime, policing and public safety.",
-          "stances": {},
+          "stances": {
+            "jeanine-c-driscoll": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Supporting law enforcement"
+                }
+              ],
+              "quote": "In Congress, Jeanine will stand up for Nassau taxpayers, support law enforcement and ensure the southern border can never be opened again.",
+              "source": "Jeanine C. Driscoll for Congress (campaign site)",
+              "sourceUrl": "https://driscoll4congress.com/",
+              "realWorldImpact": "Expect support for federal funding for police. Day-to-day policing is run by county and village police."
+            },
+            "laura-a-gillen": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Federal resources for community safety on Long Island"
+                }
+              ],
+              "quote": "She has fought to bring federal resources back home, lower the cost of living, bolster Long Island’s economy and make our communities safer.",
+              "source": "Meet Laura | Laura Gillen for Congress (campaign site)",
+              "sourceUrl": "https://lauragillen.com/meet-laura/",
+              "realWorldImpact": "Expect support for federal public safety grants to Nassau County. Day-to-day policing is run by county and village police."
+            }
+          },
           "shared": true
         },
         {
@@ -2621,7 +3267,12 @@
           "id": "gregory-w-meeks",
           "name": "Gregory W. Meeks",
           "party": "Democratic",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 5th District",
+            "years": "1998–present",
+            "actions": []
+          }
         }
       ],
       "issues": [
@@ -2652,7 +3303,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "gregory-w-meeks": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Health care as a right"
+                }
+              ],
+              "quote": "Access to healthcare is a human right, not a privilege.",
+              "source": "Health | Congressman Gregory Meeks (official U.S. House website)",
+              "sourceUrl": "https://meeks.house.gov/issues/health",
+              "realWorldImpact": "He would vote to expand public health coverage. The page doesn't name specific bills."
+            }
+          },
           "shared": true
         },
         {
@@ -2679,7 +3343,20 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "gregory-w-meeks": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Closing racial and gender wage gaps through labor protections"
+                }
+              ],
+              "quote": "They help close racial and gender wage gaps, ensure that work is met with respect, and build a pathway to the American Dream, especially for those historically shut out.",
+              "source": "Labor | Congressman Gregory Meeks (official U.S. House website)",
+              "sourceUrl": "https://meeks.house.gov/issues/labor",
+              "realWorldImpact": "Expect support for union and labor-protection bills. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2708,7 +3385,24 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "gregory-w-meeks": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A path to citizenship for Dreamers, TPS holders, farmworkers and essential workers"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Stronger protections for asylum seekers and refugees"
+                }
+              ],
+              "quote": "I support comprehensive immigration reform that includes a path to citizenship for Dreamers, Temporary Protected Status (TPS) holders, farmworkers, and essential workers; stronger protections for asylum seekers and refugees; and modernized visa systems that reflect our economic needs and humanitarian values.",
+              "source": "Immigration | Congressman Gregory Meeks (official U.S. House website)",
+              "sourceUrl": "https://meeks.house.gov/issues/immigration",
+              "realWorldImpact": "Millions of long-term residents without permanent status could become eligible for citizenship. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -2791,7 +3485,12 @@
           "id": "grace-meng",
           "name": "Grace Meng",
           "party": "Democratic",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 6th District",
+            "years": "2013–present",
+            "actions": []
+          }
         },
         {
           "id": "joseph-chou",
@@ -2813,7 +3512,20 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "grace-meng": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Stable jobs with wages that support families"
+                }
+              ],
+              "quote": "We must continue to make sure that our nation’s citizens are employed with good, stable, and consistent jobs that provide wages that allow people to take care of their families and their needs.",
+              "source": "Economy and Small Business | Congresswoman Grace Meng (official U.S. House website)",
+              "sourceUrl": "https://meng.house.gov/issues/jobs-and-the-economy",
+              "realWorldImpact": "Expect support for job and wage measures. The page doesn't name specific bills."
+            }
+          },
           "shared": true
         },
         {
@@ -2828,7 +3540,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "grace-meng": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Affordable health care as a right"
+                }
+              ],
+              "quote": "I believe that affordable health care is not a privilege, but a right.",
+              "source": "Health | Congresswoman Grace Meng (official U.S. House website)",
+              "sourceUrl": "https://meng.house.gov/issues/local-issues",
+              "realWorldImpact": "She would vote to expand affordable coverage. The page doesn't name specific bills."
+            }
+          },
           "shared": true
         },
         {
@@ -2884,7 +3609,20 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "grace-meng": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Commonsense immigration reform"
+                }
+              ],
+              "quote": "It is imperative that we pass commonsense immigration reform to preserve a compassionate, functional, and secure immigration system.",
+              "source": "Immigration | Congresswoman Grace Meng (official U.S. House website)",
+              "sourceUrl": "https://meng.house.gov/issues/energy-and-environment",
+              "realWorldImpact": "She would back a broad immigration reform bill. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -3149,7 +3887,12 @@
           "id": "hakeem-s-jeffries",
           "name": "Hakeem S. Jeffries",
           "party": "Democratic",
-          "occupation": ""
+          "occupation": "U.S. Representative; House Democratic Leader",
+          "record": {
+            "office": "U.S. House, New York's 8th District",
+            "years": "2013–present",
+            "actions": []
+          }
         },
         {
           "id": "lewis-mizrahi",
@@ -3186,7 +3929,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "hakeem-s-jeffries": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Making life-saving medical care affordable"
+                }
+              ],
+              "quote": "No one should have to make a decision between accessing life-saving medical care and putting food on the table.",
+              "source": "Healthcare – Congressman Hakeem Jeffries (official U.S. House website)",
+              "sourceUrl": "https://jeffries.house.gov/healthcare/",
+              "realWorldImpact": "He would vote to lower out-of-pocket medical costs. As Democratic Leader he also shapes which health bills his party pushes."
+            }
+          },
           "shared": true
         },
         {
@@ -3213,7 +3969,24 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "hakeem-s-jeffries": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "The PRO Act, protecting workers' right to organize"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Ending pay discrimination against women"
+                }
+              ],
+              "quote": "I have worked with my House colleagues to introduce the Richard L. Trumka Protecting the Right to Organize (PRO) Act, landmark legislation that will protect the essential right of workers to organize for better working conditions.",
+              "source": "Economy and Workforce – Congressman Hakeem Jeffries (official U.S. House website)",
+              "sourceUrl": "https://jeffries.house.gov/economy-and-workforce/",
+              "realWorldImpact": "The PRO Act would make it easier for workers to form unions. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {
@@ -3253,7 +4026,20 @@
             "reproductive health"
           ],
           "description": "Access to and limits on abortion.",
-          "stances": {},
+          "stances": {
+            "hakeem-s-jeffries": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A woman's right to choose"
+                }
+              ],
+              "quote": "Additionally, a women’s right to choose is non-negotiable.",
+              "source": "Healthcare – Congressman Hakeem Jeffries (official U.S. House website)",
+              "sourceUrl": "https://jeffries.house.gov/healthcare/",
+              "realWorldImpact": "He would vote against new federal limits on abortion. Abortion access in New York is set mainly by state law."
+            }
+          },
           "shared": true
         },
         {
@@ -3265,7 +4051,20 @@
             "public safety"
           ],
           "description": "Crime, policing and public safety.",
-          "stances": {},
+          "stances": {
+            "hakeem-s-jeffries": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Sentencing reform, including retroactive relief for crack cocaine sentences"
+                }
+              ],
+              "quote": "The FIRST STEP Act provided retroactive relief for the shameful crack cocaine sentencing disparity that unfairly destroyed lives, families and communities.",
+              "source": "About – Congressman Hakeem Jeffries (official U.S. House website)",
+              "sourceUrl": "https://jeffries.house.gov/about/",
+              "realWorldImpact": "Some people in federal prison for crack cocaine offenses became eligible for shorter sentences under this law. Expect support for further federal sentencing changes."
+            }
+          },
           "shared": true
         },
         {
@@ -3331,7 +4130,12 @@
           "id": "yvette-d-clarke",
           "name": "Yvette D. Clarke",
           "party": "Democratic",
-          "occupation": ""
+          "occupation": "U.S. Representative",
+          "record": {
+            "office": "U.S. House, New York's 9th District",
+            "years": "2007–present",
+            "actions": []
+          }
         }
       ],
       "issues": [
@@ -3362,7 +4166,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "yvette-d-clarke": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Medicare for All / universal health care"
+                }
+              ],
+              "quote": "Congresswoman Clarke is also the co-chair of the Medicare for All Caucus, where she fights for the right to universal health care.",
+              "source": "About - Congresswoman Yvette Clarke (official U.S. House website)",
+              "sourceUrl": "https://clarke.house.gov/about/",
+              "realWorldImpact": "Medicare for All would replace private and employer insurance with one public plan, paid for through taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+            }
+          },
           "shared": true
         },
         {

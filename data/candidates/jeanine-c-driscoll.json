@@ -1,15 +1,56 @@
 {
   "name": "Jeanine C. Driscoll",
-  "occupation": "",
+  "occupation": "Hempstead Town Receiver of Taxes",
   "race": "cd-4",
   "ballotLines": [
     "Republican",
     "Conservative"
   ],
   "priorOffice": null,
-  "positions": [],
+  "positions": [
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Restoring the full SALT deduction",
+        "More tax relief for Nassau County families and seniors"
+      ],
+      "opposes": [],
+      "quote": "She will continue fighting to lower the tax burden by restoring the full State and Local Tax (SALT) Deduction and providing additional relief for Nassau County families and seniors.",
+      "source": {
+        "title": "Jeanine C. Driscoll for Congress (campaign site)",
+        "url": "https://driscoll4congress.com/"
+      },
+      "impact": "A full SALT deduction would mainly lower federal taxes for homeowners in high-tax areas like Nassau. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Keeping the southern border closed to unauthorized crossings"
+      ],
+      "opposes": [],
+      "quote": "In Congress, Jeanine will stand up for Nassau taxpayers, support law enforcement and ensure the southern border can never be opened again.",
+      "source": {
+        "title": "Jeanine C. Driscoll for Congress (campaign site)",
+        "url": "https://driscoll4congress.com/"
+      },
+      "impact": "She would vote for border enforcement measures. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "Supporting law enforcement"
+      ],
+      "opposes": [],
+      "quote": "In Congress, Jeanine will stand up for Nassau taxpayers, support law enforcement and ensure the southern border can never be opened again.",
+      "source": {
+        "title": "Jeanine C. Driscoll for Congress (campaign site)",
+        "url": "https://driscoll4congress.com/"
+      },
+      "impact": "Expect support for federal funding for police. Day-to-day policing is run by county and village police."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

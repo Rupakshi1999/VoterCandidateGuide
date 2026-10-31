@@ -1,15 +1,58 @@
 {
   "name": "Andrew R. Garbarino",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-2",
   "ballotLines": [
     "Republican",
     "Conservative"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 2nd District",
+    "years": "2021–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Pro-growth policies and less regulation for small businesses"
+      ],
+      "opposes": [],
+      "quote": "The state of small business in America is in crisis and we need pro-growth policies and less red tape to reinvigorate our economy.",
+      "source": {
+        "title": "Economy & Jobs | Representative Andrew Garbarino (official U.S. House website)",
+        "url": "https://garbarino.house.gov/issues/economy-jobs"
+      },
+      "impact": "He would vote to cut federal regulations on small businesses. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Restoring the full SALT deduction"
+      ],
+      "opposes": [],
+      "quote": "One of my most important priorities in Congress is to restore the full State and Local Tax (SALT) deduction.",
+      "source": {
+        "title": "Taxes | Representative Andrew Garbarino (official U.S. House website)",
+        "url": "https://garbarino.house.gov/issues/taxes"
+      },
+      "impact": "A full SALT deduction would mainly lower federal taxes for homeowners in high-tax areas like Long Island. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "Supporting law enforcement"
+      ],
+      "opposes": [],
+      "quote": "I will always support our men and women in law enforcement and work to restore law and order.",
+      "source": {
+        "title": "Representative Andrew Garbarino (official U.S. House website)",
+        "url": "https://garbarino.house.gov/"
+      },
+      "impact": "Expect support for federal funding for police. Day-to-day policing is run by county and village police."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

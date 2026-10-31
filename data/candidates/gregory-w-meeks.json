@@ -1,14 +1,58 @@
 {
   "name": "Gregory W. Meeks",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-5",
   "ballotLines": [
     "Democratic"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 5th District",
+    "years": "1998–present"
+  },
+  "positions": [
+    {
+      "issue": "immigration",
+      "supports": [
+        "A path to citizenship for Dreamers, TPS holders, farmworkers and essential workers",
+        "Stronger protections for asylum seekers and refugees"
+      ],
+      "opposes": [],
+      "quote": "I support comprehensive immigration reform that includes a path to citizenship for Dreamers, Temporary Protected Status (TPS) holders, farmworkers, and essential workers; stronger protections for asylum seekers and refugees; and modernized visa systems that reflect our economic needs and humanitarian values.",
+      "source": {
+        "title": "Immigration | Congressman Gregory Meeks (official U.S. House website)",
+        "url": "https://meeks.house.gov/issues/immigration"
+      },
+      "impact": "Millions of long-term residents without permanent status could become eligible for citizenship. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Health care as a right"
+      ],
+      "opposes": [],
+      "quote": "Access to healthcare is a human right, not a privilege.",
+      "source": {
+        "title": "Health | Congressman Gregory Meeks (official U.S. House website)",
+        "url": "https://meeks.house.gov/issues/health"
+      },
+      "impact": "He would vote to expand public health coverage. The page doesn't name specific bills."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Closing racial and gender wage gaps through labor protections"
+      ],
+      "opposes": [],
+      "quote": "They help close racial and gender wage gaps, ensure that work is met with respect, and build a pathway to the American Dream, especially for those historically shut out.",
+      "source": {
+        "title": "Labor | Congressman Gregory Meeks (official U.S. House website)",
+        "url": "https://meeks.house.gov/issues/labor"
+      },
+      "impact": "Expect support for union and labor-protection bills. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

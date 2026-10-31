@@ -2,6 +2,17 @@
 
 One entry per research run, newest first. See section 4 of claude.md for the steps.
 
+## 2026-10-31: Congress (CD 2–16) researched, first pass
+
+- 53 positions for 14 of 39 candidates, all verified word for word against live pages.
+  - From 2026 campaign sites (confirmed by "Paid for by" line): Suozzi (CD 3, 9 positions), Gillen and Driscoll (CD 4), Shinkle (CD 12), Avila Chevalier (CD 13).
+  - From official house.gov sites (incumbents with no campaign site found; labeled as such in the source title): Garbarino (CD 2), Meeks (CD 5), Meng (CD 6), Jeffries (CD 8), Clarke (CD 9), Malliotakis (CD 11), Ocasio-Cortez (CD 14), Torres (CD 15), Latimer (CD 16).
+- Passages that named a topic without stating a position were left out (e.g. Garbarino on health care, Clarke's list of focus areas, Jeffries's "know your rights" notice).
+- **No campaign site found yet (25 candidates):** CD 2 Halpin; CD 3 LiPetri; CD 4 Tarnoff; CD 5 Marsh; CD 6 Chou; CD 7 Valdez, Rivera, Ghaznavi; CD 8 Mizrahi; CD 9 Azumah; CD 10 Lander, Moore; CD 11 DeCillis; CD 12 Lasher, Ortiz, Negron; CD 13 Williams; CD 14 Hysenaj; CD 15 Sapaskis, Duran, Vega, Easton; CD 16 Cinquemani. Several races now show one candidate's positions next to "No verified, sourced position" for the other. Highest priority to fix: LiPetri (CD 3), Halpin (CD 2), Lander and Moore (CD 10), Lasher (CD 12), Valdez (CD 7). Try each name with "for Congress", the FEC candidate page, or county party candidate pages for the official URL.
+- Incumbents' `priorOffice` years are from their House service; record entries (votes) aren't researched yet.
+
+**Next run:** fill the 25 candidates above, then DiNapoli, then State Senate and Assembly.
+
 ## 2026-10-31: Attorney General and Comptroller researched
 
 - **Attorney General.** Letitia James: 5 positions (economy, health care, immigration, crime, income gap) from jamesforny.com/priorities (tishjames.com redirects there; "Paid for by James for NY 2026"). Saritha Komatireddy: 2 positions (crime: safe buffer zones around Jewish schools and synagogues; income gap: opposes a homeowner tax hike) from sarithafornewyork.com.

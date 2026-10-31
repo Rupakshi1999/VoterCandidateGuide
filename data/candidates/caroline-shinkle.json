@@ -7,9 +7,76 @@
     "Conservative"
   ],
   "priorOffice": null,
-  "positions": [],
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Targeted deregulation to keep jobs and investment in New York City"
+      ],
+      "opposes": [],
+      "quote": "Support strategic, common-sense deregulation to allow industry and innovation to flourish and combat the mass exodus of jobs, opportunity, investment, and capital out of New York City",
+      "source": {
+        "title": "Caroline Shinkle's Priorities (campaign site)",
+        "url": "https://www.carolinefornewyork.com/priorities"
+      },
+      "impact": "She would vote to reduce federal business regulations. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Lowering the federal income tax on W-2 wages"
+      ],
+      "opposes": [],
+      "quote": "Protect the Paycheck – allow people to keep more of what they earn by reducing the federal income tax on W-2 wages.",
+      "source": {
+        "title": "Caroline Shinkle's Priorities (campaign site)",
+        "url": "https://www.carolinefornewyork.com/priorities"
+      },
+      "impact": "Salaried and hourly workers would pay less federal income tax under her proposal. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "More competition in health care",
+        "Price transparency"
+      ],
+      "opposes": [],
+      "quote": "Reintroduce competition into the healthcare marketplace and enhance price transparency to ensure the system works for patients and providers, not just the insurance companies",
+      "source": {
+        "title": "Caroline Shinkle's Priorities (campaign site)",
+        "url": "https://www.carolinefornewyork.com/priorities"
+      },
+      "impact": "Patients could see more published prices for care and more insurance options. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "A pro-safety, pro-community law enforcement agenda"
+      ],
+      "opposes": [],
+      "quote": "Prioritize the safety and security of New Yorkers and their livelihoods through a pro-safety, pro-community law enforcement agenda",
+      "source": {
+        "title": "Caroline Shinkle's Priorities (campaign site)",
+        "url": "https://www.carolinefornewyork.com/priorities"
+      },
+      "impact": "Expect support for federal funding for police. Day-to-day policing is run by the NYPD."
+    },
+    {
+      "issue": "israel-palestine",
+      "supports": [
+        "Standing with New York City's Jewish community and with Israel"
+      ],
+      "opposes": [],
+      "quote": "Unapologetically stand with the Jewish community of New York City and our ally Israel",
+      "source": {
+        "title": "Caroline Shinkle's Priorities (campaign site)",
+        "url": "https://www.carolinefornewyork.com/priorities"
+      },
+      "impact": "She would likely vote for continued U.S. support for Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

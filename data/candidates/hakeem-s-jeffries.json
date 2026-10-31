@@ -1,14 +1,71 @@
 {
   "name": "Hakeem S. Jeffries",
-  "occupation": "",
+  "occupation": "U.S. Representative; House Democratic Leader",
   "race": "cd-8",
   "ballotLines": [
     "Democratic"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 8th District",
+    "years": "2013–present"
+  },
+  "positions": [
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Making life-saving medical care affordable"
+      ],
+      "opposes": [],
+      "quote": "No one should have to make a decision between accessing life-saving medical care and putting food on the table.",
+      "source": {
+        "title": "Healthcare – Congressman Hakeem Jeffries (official U.S. House website)",
+        "url": "https://jeffries.house.gov/healthcare/"
+      },
+      "impact": "He would vote to lower out-of-pocket medical costs. As Democratic Leader he also shapes which health bills his party pushes."
+    },
+    {
+      "issue": "abortion",
+      "supports": [
+        "A woman's right to choose"
+      ],
+      "opposes": [],
+      "quote": "Additionally, a women’s right to choose is non-negotiable.",
+      "source": {
+        "title": "Healthcare – Congressman Hakeem Jeffries (official U.S. House website)",
+        "url": "https://jeffries.house.gov/healthcare/"
+      },
+      "impact": "He would vote against new federal limits on abortion. Abortion access in New York is set mainly by state law."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "The PRO Act, protecting workers' right to organize",
+        "Ending pay discrimination against women"
+      ],
+      "opposes": [],
+      "quote": "I have worked with my House colleagues to introduce the Richard L. Trumka Protecting the Right to Organize (PRO) Act, landmark legislation that will protect the essential right of workers to organize for better working conditions.",
+      "source": {
+        "title": "Economy and Workforce – Congressman Hakeem Jeffries (official U.S. House website)",
+        "url": "https://jeffries.house.gov/economy-and-workforce/"
+      },
+      "impact": "The PRO Act would make it easier for workers to form unions. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "Sentencing reform, including retroactive relief for crack cocaine sentences"
+      ],
+      "opposes": [],
+      "quote": "The FIRST STEP Act provided retroactive relief for the shameful crack cocaine sentencing disparity that unfairly destroyed lives, families and communities.",
+      "source": {
+        "title": "About – Congressman Hakeem Jeffries (official U.S. House website)",
+        "url": "https://jeffries.house.gov/about/"
+      },
+      "impact": "Some people in federal prison for crack cocaine offenses became eligible for shorter sentences under this law. Expect support for further federal sentencing changes."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

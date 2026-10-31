@@ -1,15 +1,60 @@
 {
   "name": "Alexandria Ocasio-Cortez",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-14",
   "ballotLines": [
     "Democratic",
     "Working Families"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 14th District",
+    "years": "2019–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Workers sharing in company profits",
+        "Limits on corporate price increases for medicine and food"
+      ],
+      "opposes": [],
+      "quote": "Congresswoman Ocasio-Cortez is fighting to create a more just economy: one in which workers share in the profits their work creates, and corporations cannot endlessly drive up prices of critical goods like medicine and food.",
+      "source": {
+        "title": "Economy | Representative Ocasio-Cortez (official U.S. House website)",
+        "url": "https://ocasio-cortez.house.gov/legislation/economy"
+      },
+      "impact": "Expect support for anti-price-gouging and worker-ownership measures. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Health care as a human right"
+      ],
+      "opposes": [],
+      "quote": "Healthcare should be a human right, not a privilege for the wealthy.",
+      "source": {
+        "title": "Healthcare | Representative Ocasio-Cortez (official U.S. House website)",
+        "url": "https://ocasio-cortez.house.gov/legislation/healthcare"
+      },
+      "impact": "She would vote to expand public coverage toward universal health care. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "A minimum tax on large corporations",
+        "A $35 monthly cap on insulin costs"
+      ],
+      "opposes": [],
+      "quote": "Last year, she helped pass the Inflation Reduction Act, which institutes a 15% minimum tax rate on wealthy corporations that have long-avoided paying any taxes at all, and caps the cost of insulin at $35 each month.",
+      "source": {
+        "title": "Economy | Representative Ocasio-Cortez (official U.S. House website)",
+        "url": "https://ocasio-cortez.house.gov/legislation/economy"
+      },
+      "impact": "These provisions are already law: large corporations pay at least a 15% minimum tax, and insulin costs for Medicare patients are capped. She would vote to keep or expand them."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

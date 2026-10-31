@@ -1,14 +1,57 @@
 {
   "name": "Grace Meng",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-6",
   "ballotLines": [
     "Democratic"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 6th District",
+    "years": "2013–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Stable jobs with wages that support families"
+      ],
+      "opposes": [],
+      "quote": "We must continue to make sure that our nation’s citizens are employed with good, stable, and consistent jobs that provide wages that allow people to take care of their families and their needs.",
+      "source": {
+        "title": "Economy and Small Business | Congresswoman Grace Meng (official U.S. House website)",
+        "url": "https://meng.house.gov/issues/jobs-and-the-economy"
+      },
+      "impact": "Expect support for job and wage measures. The page doesn't name specific bills."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Affordable health care as a right"
+      ],
+      "opposes": [],
+      "quote": "I believe that affordable health care is not a privilege, but a right.",
+      "source": {
+        "title": "Health | Congresswoman Grace Meng (official U.S. House website)",
+        "url": "https://meng.house.gov/issues/local-issues"
+      },
+      "impact": "She would vote to expand affordable coverage. The page doesn't name specific bills."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Commonsense immigration reform"
+      ],
+      "opposes": [],
+      "quote": "It is imperative that we pass commonsense immigration reform to preserve a compassionate, functional, and secure immigration system.",
+      "source": {
+        "title": "Immigration | Congresswoman Grace Meng (official U.S. House website)",
+        "url": "https://meng.house.gov/issues/energy-and-environment"
+      },
+      "impact": "She would back a broad immigration reform bill. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

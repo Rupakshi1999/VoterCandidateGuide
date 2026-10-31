@@ -1,14 +1,83 @@
 {
   "name": "Laura A. Gillen",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-4",
   "ballotLines": [
     "Democratic"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 4th District",
+    "years": "2025–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Making Nassau County affordable for buying a home, raising a family and opening a business"
+      ],
+      "opposes": [],
+      "quote": "She is committed to keeping families safe, growing the economy, and making Nassau County a place where people can afford to buy a home, raise a family and open a business.",
+      "source": {
+        "title": "Meet Laura | Laura Gillen for Congress (campaign site)",
+        "url": "https://lauragillen.com/meet-laura/"
+      },
+      "impact": "Expect a focus on cost-of-living measures for Nassau families. The campaign page doesn't list specific bills."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Restoring ACA premium tax credits"
+      ],
+      "opposes": [],
+      "quote": "She has fought to restore critical ACA premium tax credits to lower the cost of health insurance by up to thousands of dollars a month for working families.",
+      "source": {
+        "title": "Meet Laura | Laura Gillen for Congress (campaign site)",
+        "url": "https://lauragillen.com/meet-laura/"
+      },
+      "impact": "People who buy insurance through the ACA marketplace could pay less in premiums if the credits are restored. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Eliminating the SALT deduction cap"
+      ],
+      "opposes": [],
+      "quote": "She has been a leader in Congress working to eliminate the SALT cap, which has led to double taxation of Long Islanders.",
+      "source": {
+        "title": "Meet Laura | Laura Gillen for Congress (campaign site)",
+        "url": "https://lauragillen.com/meet-laura/"
+      },
+      "impact": "Removing the cap would mainly lower federal taxes for homeowners who pay high state and local taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Extending Temporary Protected Status for Haitians"
+      ],
+      "opposes": [],
+      "quote": "She has led the charge in Congress to extend TPS for law-abiding Haitians in Nassau County and across the country.",
+      "source": {
+        "title": "Meet Laura | Laura Gillen for Congress (campaign site)",
+        "url": "https://lauragillen.com/meet-laura/"
+      },
+      "impact": "Haitians with Temporary Protected Status could keep living and working legally in the U.S. if it's extended. The decision rests with the federal government."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "Federal resources for community safety on Long Island"
+      ],
+      "opposes": [],
+      "quote": "She has fought to bring federal resources back home, lower the cost of living, bolster Long Island’s economy and make our communities safer.",
+      "source": {
+        "title": "Meet Laura | Laura Gillen for Congress (campaign site)",
+        "url": "https://lauragillen.com/meet-laura/"
+      },
+      "impact": "Expect support for federal public safety grants to Nassau County. Day-to-day policing is run by county and village police."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

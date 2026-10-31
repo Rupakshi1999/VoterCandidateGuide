@@ -1,14 +1,31 @@
 {
   "name": "Yvette D. Clarke",
-  "occupation": "",
+  "occupation": "U.S. Representative",
   "race": "cd-9",
   "ballotLines": [
     "Democratic"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "U.S. House, New York's 9th District",
+    "years": "2007–present"
+  },
+  "positions": [
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Medicare for All / universal health care"
+      ],
+      "opposes": [],
+      "quote": "Congresswoman Clarke is also the co-chair of the Medicare for All Caucus, where she fights for the right to universal health care.",
+      "source": {
+        "title": "About - Congresswoman Yvette Clarke (official U.S. House website)",
+        "url": "https://clarke.house.gov/about/"
+      },
+      "impact": "Medicare for All would replace private and employer insurance with one public plan, paid for through taxes. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }
