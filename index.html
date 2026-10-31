@@ -56,6 +56,28 @@
   .notice p { margin: 6px 0 2px 24px; opacity: .9; }
   @media (max-width: 599px) { .notice .wide-only { display: none; } .notice details { padding: 6px 16px; } }
 
+  /* ---------- Header + filter panel ---------- */
+  .header-bar { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .filter-btn { display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+  .badge { min-width: 20px; padding: 1px 6px; border-radius: 999px; background: var(--surface); color: var(--ink-2); font-size: 12px; text-align: center; }
+  dialog.filters {
+    margin: 0 0 0 auto; padding: 0; border: 0; width: min(440px, 100%); height: 100%; max-height: 100%;
+    background: var(--surface); color: var(--ink); box-shadow: -8px 0 30px rgba(15, 23, 42, .18);
+  }
+  dialog.filters[open] { display: flex; flex-direction: column; }
+  dialog.filters::backdrop { background: rgba(15, 23, 42, .45); }
+  .filters-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  .filters-head h2 { margin: 0; font-size: 18px; }
+  .filters-body { flex: 1; overflow-y: auto; padding: 16px; display: grid; gap: 16px; align-content: start; }
+  .filters-body .field { padding: 0; border: 0; }
+  .filters-foot { display: flex; justify-content: space-between; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--line); }
+  .checks { border: 0; margin: 0; padding: 0; }
+  .checks legend { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+  .checks > div { display: grid; gap: 2px; }
+  .check { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 15px; cursor: pointer; }
+  .check input { width: 18px; height: 18px; accent-color: var(--ink-2); }
+  .chip.removable span { margin-left: 2px; color: var(--muted); }
+
   /* ---------- Header + inputs ---------- */
   header { padding: 24px 0 8px; }
   h1 { font-size: clamp(22px, 4vw, 30px); line-height: 1.2; margin: 0 0 4px; letter-spacing: -.01em; }
@@ -64,8 +86,6 @@
     display: inline-block; margin-top: 8px; padding: 2px 8px; border: 1px dashed var(--line-2);
     border-radius: 999px; font-size: 12px; color: var(--muted);
   }
-  .inputs { display: grid; gap: 12px; grid-template-columns: 1fr; margin: 16px 0; }
-  @media (min-width: 800px) { .inputs { grid-template-columns: 3fr 2fr; } }
   .field {
     background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px;
   }
@@ -162,12 +182,6 @@
   .record ul { list-style: none; margin: 0; padding: 0 12px 12px; display: grid; gap: 10px; }
   .record li { border-top: 1px solid var(--line); padding-top: 10px; font-size: 14px; display: grid; gap: 2px; }
   .record .when { font-size: 12px; color: var(--muted); }
-  .issue-filter { padding: 12px 16px; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
-  .issue-filter .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .all-toggle { font-size: 13px; padding: 8px 12px; }
-  .all-toggle[aria-pressed="true"] { background: var(--ink-2); color: var(--surface); }
-  .all-toggle[aria-pressed="true"]::before { content: "✓ "; }
-
   .issue { padding: 0 16px; border-bottom: 1px solid var(--line); }
   .issue:last-child { border-bottom: 0; }
   .issue > summary { list-style: none; cursor: pointer; padding: 14px 0; display: flex; align-items: center; gap: 12px; }
@@ -231,16 +245,44 @@
   </details>
 </div>
 
-<header>
-  <div class="wrap">
-    <h1>Local Voter Guide</h1>
-    <p class="sub" id="metaLine"></p>
-    <span class="demo-tag" id="demoTag" hidden>Prototype: all candidates, quotes and sources below are fictional sample data</span>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <div>
+      <h1>Local Voter Guide</h1>
+      <p class="sub" id="metaLine"></p>
+      <span class="demo-tag" id="demoTag" hidden>Prototype: all candidates, quotes and sources below are fictional sample data</span>
+    </div>
+    <button class="btn filter-btn" type="button" id="filterBtn" aria-haspopup="dialog" aria-controls="filters">
+      Filters <span class="badge" id="filterCount" hidden></span>
+    </button>
+  </div>
+</header>
 
-    <div class="inputs">
+<!-- Filter panel: address, candidate, issues, races. Results update as you change it. -->
+<dialog id="filters" class="filters" aria-labelledby="filters-h">
+  <div class="filters-head">
+    <h2 id="filters-h">Filters</h2>
+    <button class="btn ghost" type="button" id="closeFilters" aria-label="Close filters">✕</button>
+  </div>
+  <div class="filters-body">
+      <!-- Address lookup: resolves to the races on your ballot -->
+      <form class="field" id="addrForm">
+        <label for="addr">Address</label>
+        <div class="combo">
+          <div class="row">
+            <input id="addr" class="text" type="text" autocomplete="off" spellcheck="false"
+                   placeholder="Start typing your street address"
+                   role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="addrSuggest">
+            <button class="btn" type="submit">Find</button>
+          </div>
+          <ul id="addrSuggest" class="suggest" role="listbox" aria-label="Address suggestions" hidden></ul>
+        </div>
+        <p class="hint" id="addrHint">As you type, your text goes to Photon (OpenStreetMap) for suggestions, and the address you choose goes to the U.S. Census Bureau to find your districts. This site doesn't store it.</p>
+      </form>
+
       <!-- Candidate search (comma-separate several names) -->
       <div class="field">
-        <label for="q">Find a candidate</label>
+        <label for="q">Candidate</label>
         <div class="combo">
           <div class="row">
             <input id="q" class="text" type="search" autocomplete="off" spellcheck="false"
@@ -250,26 +292,24 @@
           </div>
           <ul id="suggest" class="suggest" role="listbox" aria-label="Candidate suggestions" hidden></ul>
         </div>
-        <p class="hint">Their whole race opens with every rival side by side. Separate names with commas to see several races.</p>
+        <p class="hint">Their race opens with every rival side by side. Separate names with commas.</p>
       </div>
 
-      <!-- Address lookup: resolves to the races on your ballot -->
-      <form class="field" id="addrForm">
-        <label for="addr">Your address (for your full ballot)</label>
-        <div class="combo">
-          <div class="row">
-            <input id="addr" class="text" type="text" autocomplete="off" spellcheck="false"
-                   placeholder="Start typing your street address"
-                   role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="addrSuggest">
-            <button class="btn" type="submit">My ballot</button>
-          </div>
-          <ul id="addrSuggest" class="suggest" role="listbox" aria-label="Address suggestions" hidden></ul>
-        </div>
-        <p class="hint" id="addrHint">As you type, your text goes to Photon (OpenStreetMap) for suggestions, and the address you choose goes to the U.S. Census Bureau to find your districts. This site doesn't store it.</p>
-      </form>
-    </div>
+
+    <fieldset class="checks">
+      <legend>Issues</legend>
+      <div id="issueChecks"></div>
+    </fieldset>
+    <fieldset class="checks">
+      <legend>Races</legend>
+      <div id="raceChecks"></div>
+    </fieldset>
   </div>
-</header>
+  <div class="filters-foot">
+    <button class="btn ghost" type="button" id="clearFilters">Clear all</button>
+    <button class="btn" type="button" id="doneFilters">Show races</button>
+  </div>
+</dialog>
 
 <main class="wrap">
   <!-- ================= ADSENSE SLOT: top-leaderboard (START) =================
@@ -340,17 +380,21 @@ electionDatabase.races.forEach((r) => r.candidates.sort((a, b) => lastName(a.nam
 /* =====================================================================
    3. STATE (mirrored in the URL hash so results are shareable)
    ===================================================================== */
-const state = { query: "", ballot: null, category: "", openIssues: new Set(), issueFilters: {}, allRaces: false, allFilter: "" };
+const state = { query: "", ballot: null, category: "", openIssues: new Set(), issues: new Set(), offices: new Set() };
 
 function readHash() {
   const p = new URLSearchParams(location.hash.slice(1));
   state.query = p.get("q") || "";
   state.category = p.get("c") || "";
+  state.issues = new Set((p.get("i") || "").split(",").filter(Boolean));
+  state.offices = new Set((p.get("r") || "").split("|").filter(Boolean));
 }
 function writeHash() {
   const p = new URLSearchParams();
   if (state.query) p.set("q", state.query);
   if (state.category) p.set("c", state.category);
+  if (state.issues.size) p.set("i", [...state.issues].join(","));
+  if (state.offices.size) p.set("r", [...state.offices].join("|"));
   const h = p.toString();
   // Shareable links are a convenience; some contexts (file previews, sandboxed iframes) forbid this.
   try { history.replaceState(null, "", h ? "#" + h : location.pathname + location.search); } catch {}
@@ -374,13 +418,6 @@ function notInGuide(names) {
   const list = names.map((n) => `‘${n}’`).join(", ");
   return `No candidate named ${list} in this guide yet`;
 }
-function issueHit(issue, t) {
-  return norm(issue.name).includes(t) || issue.tags.some((tag) => tag.includes(t));
-}
-// The issue filter for a race: the shared one when "Apply to all races" is on.
-function raceFilter(id) {
-  return norm(state.allRaces ? state.allFilter : state.issueFilters[id] || "");
-}
 function computeView() {
   const ts = terms();
   const ballot = state.ballot?.keys;
@@ -388,12 +425,18 @@ function computeView() {
 
   for (const race of electionDatabase.races) {
     if (ballot && !race.districtIds.some((k) => ballot.has(k))) continue;
+    if (state.offices.size && !state.offices.has(race.office)) continue;
     const hitCands = new Set(race.candidates.filter((c) => ts.some((t) => norm(c.name).includes(t))).map((c) => c.id));
     if (ts.length && !hitCands.size) continue;
     // Show only issues at least one candidate in this race has a sourced position on.
-    const answered = race.issues.filter((i) => race.candidates.some((c) => isGrounded(i.stances[c.id])));
-    const unanswered = race.issues.filter((i) => !answered.includes(i));
-    if (state.allRaces && raceFilter(race.id) && !answered.some((i) => issueHit(i, raceFilter(race.id)))) continue;
+    let answered = race.issues.filter((i) => race.candidates.some((c) => isGrounded(i.stances[c.id])));
+    let unanswered = race.issues.filter((i) => !answered.includes(i));
+    if (state.issues.size) {
+      // Issue filter: keep only the chosen issues, and only races where someone is on record on one of them.
+      answered = answered.filter((i) => state.issues.has(i.id));
+      unanswered = [];
+      if (!answered.length) continue;
+    }
     view.push({ race, issues: answered, unanswered, hitCands });
   }
   return view;
@@ -463,8 +506,8 @@ function renderBacking(race, judicial) {
 
 function renderRace({ race, issues, unanswered, hitCands }) {
   const judicial = race.kind === "judicial";
-  const filter = raceFilter(race.id);
-  const shown = filter ? issues.filter((i) => issueHit(i, filter)) : issues;
+  const shown = issues;
+  const filtered = state.issues.size > 0; // chosen issues open automatically
 
   const roster = race.candidates.map((c) =>
     `<div class="person${hitCands.has(c.id) ? " hit" : ""}"><strong>${esc(c.name)}</strong>${c.runningMate ? `<span class="mate">with ${esc(c.runningMate)} for Lt. Governor</span>` : ""}<span>${[c.party, c.occupation].filter(Boolean).map(esc).join(" · ")}</span>${
@@ -473,10 +516,10 @@ function renderRace({ race, issues, unanswered, hitCands }) {
   const records = race.candidates.filter((c) => recordActions(c).length).map((c) => renderRecord(c, judicial)).join("");
 
   // Each issue is a dropdown: every issue is visible up front, positions open on tap.
-  const issueHtml = shown.length ? shown.map((issue) => {
+  const issueHtml = shown.map((issue) => {
     const key = `${race.id}:${issue.id}`;
     const onRecord = race.candidates.filter((c) => isGrounded(issue.stances[c.id])).length;
-    return `<details class="issue" data-key="${esc(key)}"${filter || state.openIssues.has(key) ? " open" : ""}>
+    return `<details class="issue" data-key="${esc(key)}"${filtered || state.openIssues.has(key) ? " open" : ""}>
       <summary>
         <span class="issue-name">
           ${issue.shared ? `<span class="eyebrow" title="One of the 11 issues U.S. voters rated most important in Gallup's October 2026 poll">Top U.S. voter concern</span>` : ""}
@@ -489,9 +532,8 @@ function renderRace({ race, issues, unanswered, hitCands }) {
         ${race.candidates.map((c) => renderCell(race, issue, c, hitCands.has(c.id))).join("")}
       </div>
     </details>`;
-  }).join("")
-    : `<div class="issue"><p class="missing">No issues in this race match “${esc(filter)}”.</p></div>`;
-  const notOnRecord = !filter && unanswered.length
+  }).join("");
+  const notOnRecord = unanswered.length
     ? `<p class="not-on-record">Not yet on record in this race: ${unanswered.map((i) => esc(i.name)).join(", ")}.</p>` : "";
 
   return `<article class="race" id="race-${race.id}">
@@ -502,18 +544,7 @@ function renderRace({ race, issues, unanswered, hitCands }) {
       ${records || renderBacking(race, judicial) ? `<div class="records">${records}${renderBacking(race, judicial)}</div>` : ""}
       ${judicial ? `<p class="judicial-note">Judges generally can't promise how they would rule, so this race focuses on each candidate's record and how they say they decide cases.</p>` : ""}
     </div>
-    ${issues.length ? `<div class="issue-filter">
-      <label class="sr-only" for="f-${race.id}">Filter issues in ${esc(race.office)}, ${esc(race.district)}</label>
-      <div class="row">
-        <input class="text" id="f-${race.id}" data-race="${race.id}" type="search" autocomplete="off"
-               placeholder="Search issues" value="${esc(state.allRaces ? state.allFilter : state.issueFilters[race.id] || "")}">
-        <button type="button" class="btn ghost all-toggle" data-all="${race.id}" aria-pressed="${state.allRaces}">Apply to all races</button>
-      </div>
-      <div class="chips">${issues.map((i) =>
-        `<button type="button" class="chip" data-race="${race.id}" data-tag="${esc(norm(i.name))}" aria-pressed="${filter === norm(i.name)}">${esc(i.name)}</button>`
-      ).join("")}</div>
-    </div>
-    ${issueHtml}` : ""}
+    ${issueHtml}
     ${notOnRecord}
   </article>`;
 }
@@ -523,20 +554,26 @@ function render() {
   const ts = terms();
   const parts = [];
 
-  if (state.ballot) parts.push(`<span class="chip" aria-pressed="true">Ballot for ${esc(state.ballot.label)}</span>`);
   const missing = unmatchedNames();
-  if (ts.length) parts.push(`<span>Showing results for <strong>${ts.map(esc).join(", ")}</strong></span>`);
-  if (missing.length && view.length) parts.push(`<span>${esc(notInGuide(missing))}.</span>`);
+  const chip = (label, attr) => `<button class="chip removable" type="button" ${attr} aria-label="Remove filter: ${esc(label)}">${esc(label)} <span aria-hidden="true">✕</span></button>`;
   parts.push(`<span>${view.length} race${view.length === 1 ? "" : "s"}</span>`);
-  if (state.allRaces && state.allFilter.trim()) parts.push(`<span class="chip" aria-pressed="true">Issue “${esc(state.allFilter.trim())}” in all races</span>`);
-  if (state.ballot || ts.length || (state.allRaces && state.allFilter.trim())) parts.push(`<button class="chip" type="button" id="resetAll">Show all races</button>`);
+  if (state.ballot) parts.push(chip(`Address: ${state.ballot.label}`, 'data-clear="ballot"'));
+  if (ts.length) parts.push(chip(`Candidate: ${state.query.split(",").map((t) => t.trim()).filter(Boolean).join(", ")}`, 'data-clear="query"'));
+  for (const id of state.issues) parts.push(chip(`Issue: ${issueNames.get(id) || id}`, `data-clear-issue="${esc(id)}"`));
+  for (const office of state.offices) parts.push(chip(`Race: ${office}`, `data-clear-office="${esc(office)}"`));
+  if (filterCount() > 1) parts.push(`<button class="chip" type="button" id="resetAll">Clear all</button>`);
+  if (missing.length && view.length) parts.push(`<span>${esc(notInGuide(missing))}.</span>`);
   $("#status").innerHTML = parts.join("");
+  const count = filterCount();
+  $("#filterCount").hidden = !count;
+  $("#filterCount").textContent = count;
+  $("#doneFilters").textContent = `Show ${view.length} race${view.length === 1 ? "" : "s"}`;
 
   const notices = ballotNotices(view.length);
   if (!view.length) {
-    $("#results").innerHTML = notices || (state.allRaces && state.allFilter.trim()
-      ? `<div class="empty">No race has an issue matching “${esc(state.allFilter.trim())}”. Try another issue, or turn off “Apply to all races”.</div>`
-      : `<div class="empty">${esc(notInGuide(missing.length ? missing : ts))}. Check the spelling, or clear the search to see every race.</div>`);
+    $("#results").innerHTML = notices || (missing.length
+      ? `<div class="empty">${esc(notInGuide(missing))}. Check the spelling, or remove a filter to see more races.</div>`
+      : `<div class="empty">No races match these filters. Remove one of the filters above to see more.</div>`);
     return;
   }
 
@@ -672,8 +709,7 @@ const candidateBox = combobox({
 let debounce;
 function applyQuery() {
   state.query = qEl.value;
-  // Each box is its own view: searching a candidate replaces the address ballot.
-  if (state.query.trim() && state.ballot) { state.ballot = null; addrEl.value = ""; addrHint.innerHTML = ADDR_HINT; }
+  state.category = "";
   writeHash();
   render();
 }
@@ -807,7 +843,7 @@ async function lookupBallot({ address, lat, lon, label, zip }) {
   }
   if (mine !== lookupSeq) return;
   state.ballot = { ...d, label: matched, zip: zip || (matched.match(/\b\d{5}\b/) || [])[0] || "" };
-  state.query = ""; qEl.value = ""; state.category = ""; // full ballot from its first page, not a candidate search
+  state.category = ""; // start the ballot on its first page
   addrHint.textContent = d.covered ? `Showing the races for ${matched}.` : `${matched} isn't in the area this guide covers yet.`;
   writeHash();
   render();
@@ -905,19 +941,9 @@ document.addEventListener("submit", async (e) => {
 });
 
 /* =====================================================================
-   9. DELEGATED EVENTS (per-race issue filter, chips, reset)
+   9. DELEGATED EVENTS (category tabs, issue dropdowns, swipes, filter chips)
    ===================================================================== */
 const results = $("#results");
-results.addEventListener("input", (e) => {
-  const el = e.target.closest("input[data-race]");
-  if (!el) return;
-  if (state.allRaces) state.allFilter = el.value;
-  else state.issueFilters[el.dataset.race] = el.value;
-  const pos = el.selectionStart;
-  render();
-  const again = document.getElementById(el.id);
-  if (again) { again.focus(); again.setSelectionRange(pos, pos); }
-});
 results.addEventListener("click", (e) => {
   const tab = e.target.closest("button[data-cat]");
   if (tab) {
@@ -926,27 +952,6 @@ results.addEventListener("click", (e) => {
     document.querySelector(`.cat-tabs button[data-cat="${CSS.escape(state.category)}"]`)?.focus({ preventScroll: true });
     return;
   }
-  const toggle = e.target.closest("button[data-all]");
-  if (toggle) {
-    const id = toggle.dataset.all;
-    if (state.allRaces) {
-      // Turning off keeps the filter on this race only.
-      state.issueFilters = { [id]: state.allFilter };
-      state.allRaces = false; state.allFilter = "";
-    } else {
-      state.allRaces = true; state.allFilter = state.issueFilters[id] || "";
-    }
-    render();
-    document.querySelector(`button[data-all="${id}"]`)?.focus();
-    return;
-  }
-  const chip = e.target.closest("button[data-tag]");
-  if (!chip) return;
-  const id = chip.dataset.race;
-  const next = raceFilter(id) === chip.dataset.tag ? "" : chip.dataset.tag;
-  if (state.allRaces) state.allFilter = next; else state.issueFilters[id] = next;
-  render();
-  document.querySelector(`button[data-race="${id}"][data-tag="${CSS.escape(chip.dataset.tag)}"]`)?.focus();
 });
 // Remember which issue dropdowns the voter opened, so re-drawing the page doesn't close them.
 // (Clicks only: issues opened automatically by a filter shouldn't stay open afterwards.)
@@ -972,11 +977,56 @@ results.addEventListener("touchend", (e) => {
 }, { passive: true });
 
 $("#status").addEventListener("click", (e) => {
-  if (e.target.id !== "resetAll") return;
-  state.query = ""; state.ballot = null; state.category = ""; state.issueFilters = {}; state.allRaces = false; state.allFilter = "";
+  const b = e.target.closest("button");
+  if (!b) return;
+  if (b.id === "resetAll") return clearAllFilters();
+  if (b.dataset.clear === "ballot") { state.ballot = null; addrEl.value = ""; addrHint.innerHTML = ADDR_HINT; }
+  else if (b.dataset.clear === "query") { state.query = ""; qEl.value = ""; }
+  else if (b.dataset.clearIssue) state.issues.delete(b.dataset.clearIssue);
+  else if (b.dataset.clearOffice) state.offices.delete(b.dataset.clearOffice);
+  else return;
+  state.category = "";
+  syncChecks(); writeHash(); render();
+});
+
+/* ---------- Filter panel (header button): address, candidate, issue and race filters ---------- */
+const dlg = $("#filters");
+let issueNames = new Map();
+
+function filterCount() {
+  return (state.ballot ? 1 : 0) + (terms().length ? 1 : 0) + state.issues.size + state.offices.size;
+}
+function buildChecks() {
+  const offices = [];
+  for (const r of electionDatabase.races) {
+    for (const i of r.issues) if (!issueNames.has(i.id)) issueNames.set(i.id, i.name);
+    if (!offices.includes(r.office)) offices.push(r.office);
+  }
+  const box = (name, value, label) => `<label class="check"><input type="checkbox" name="${name}" value="${esc(value)}"> ${esc(label)}</label>`;
+  $("#issueChecks").innerHTML = [...issueNames].map(([id, label]) => box("issue", id, label)).join("");
+  $("#raceChecks").innerHTML = offices.map((o) => box("office", o, o)).join("");
+}
+function syncChecks() {
+  for (const cb of dlg.querySelectorAll('input[name="issue"]')) cb.checked = state.issues.has(cb.value);
+  for (const cb of dlg.querySelectorAll('input[name="office"]')) cb.checked = state.offices.has(cb.value);
+}
+function clearAllFilters() {
+  state.query = ""; state.ballot = null; state.category = ""; state.issues.clear(); state.offices.clear();
   qEl.value = ""; addrEl.value = ""; addrHint.innerHTML = ADDR_HINT;
+  syncChecks(); writeHash(); render();
+}
+dlg.addEventListener("change", (e) => {
+  const cb = e.target, set = cb.name === "issue" ? state.issues : cb.name === "office" ? state.offices : null;
+  if (!set) return;
+  if (cb.checked) set.add(cb.value); else set.delete(cb.value);
+  state.category = "";
   writeHash(); render();
 });
+$("#filterBtn").addEventListener("click", () => { syncChecks(); dlg.showModal(); });
+$("#closeFilters").addEventListener("click", () => dlg.close());
+$("#doneFilters").addEventListener("click", () => dlg.close());
+$("#clearFilters").addEventListener("click", clearAllFilters);
+dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); }); // tap outside the panel
 
 /* =====================================================================
    10. INIT
@@ -986,10 +1036,12 @@ $("#status").addEventListener("click", (e) => {
   const date = new Date(m.electionDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
   $("#metaLine").textContent = `${m.jurisdiction} · Election day ${date} · Data last updated ${m.lastUpdated}`;
   $("#demoTag").hidden = !m.isSampleData;
+  buildChecks();
   readHash();
   qEl.value = state.query;
+  syncChecks();
   render();
-  window.addEventListener("hashchange", () => { readHash(); qEl.value = state.query; render(); });
+  window.addEventListener("hashchange", () => { readHash(); qEl.value = state.query; syncChecks(); render(); });
 })();
 </script>
 </body>
