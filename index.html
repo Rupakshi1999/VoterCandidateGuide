@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local Voter Guide: Side-by-Side Candidate Comparison</title>
+<meta name="description" content="Non-partisan, side-by-side comparison of local candidates. Every stance is tied to a verbatim quote and a primary source, with plain-language real-world impacts.">
+<meta name="theme-color" content="#1e293b">
+<!--
+  Styling: hand-written CSS (no Tailwind Play CDN). The Play CDN ships a ~300 KB
+  runtime compiler that blocks rendering and makes a 100/100 Lighthouse score
+  unreachable. Everything here is inline, so the page is a single request.
+-->
+<style>
+  :root {
+    --bg: #f8fafc; --surface: #ffffff; --surface-2: #f1f5f9;
+    --ink: #0f172a; --ink-2: #334155; --muted: #64748b;
+    --line: #e2e8f0; --line-2: #cbd5e1;
+    --fill: #334155; --track: #e2e8f0; --focus: #475569;
+    --notice-bg: #1e293b; --notice-ink: #f1f5f9;
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1120; --surface: #111827; --surface-2: #1f2937;
+      --ink: #f1f5f9; --ink-2: #cbd5e1; --muted: #94a3b8;
+      --line: #1f2937; --line-2: #334155;
+      --fill: #cbd5e1; --track: #334155; --focus: #94a3b8;
+      --notice-bg: #e2e8f0; --notice-ink: #0f172a;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: inherit; }
+  button, input { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* ---------- Mandatory disclosure: slim, sticky, never dismissible ---------- */
+  .notice {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--notice-bg); color: var(--notice-ink);
+    font-size: 13px; line-height: 1.4;
+  }
+  .notice details { max-width: 1200px; margin: 0 auto; padding: 8px 16px; }
+  .notice summary { cursor: pointer; list-style: none; display: flex; gap: 8px; align-items: flex-start; }
+  .notice summary::-webkit-details-marker { display: none; }
+  .notice .more { margin-left: auto; text-decoration: underline; white-space: nowrap; opacity: .85; }
+  .notice details[open] .more::after { content: " less"; }
+  .notice details:not([open]) .more::after { content: " more"; }
+  .notice p { margin: 6px 0 2px 24px; opacity: .9; }
+  @media (max-width: 599px) { .notice .wide-only { display: none; } .notice details { padding: 6px 16px; } }
+
+  /* ---------- Header + inputs ---------- */
+  header { padding: 24px 0 8px; }
+  h1 { font-size: clamp(22px, 4vw, 30px); line-height: 1.2; margin: 0 0 4px; letter-spacing: -.01em; }
+  .sub { color: var(--muted); margin: 0; }
+  .demo-tag {
+    display: inline-block; margin-top: 8px; padding: 2px 8px; border: 1px dashed var(--line-2);
+    border-radius: 999px; font-size: 12px; color: var(--muted);
+  }
+  .inputs { display: grid; gap: 12px; grid-template-columns: 1fr; margin: 16px 0; }
+  @media (min-width: 800px) { .inputs { grid-template-columns: 3fr 2fr; } }
+  .field {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px;
+  }
+  .field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+  .field .hint { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
+  .row { display: flex; gap: 8px; }
+  .text {
+    width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid var(--line-2); border-radius: 8px;
+    background: var(--bg); font-size: 16px; /* 16px stops iOS zoom-on-focus */
+  }
+  .btn {
+    padding: 10px 14px; border-radius: 8px; border: 1px solid var(--ink-2); background: var(--ink-2);
+    color: var(--surface); font-weight: 600; cursor: pointer; white-space: nowrap;
+  }
+  .btn.ghost { background: transparent; color: var(--ink-2); }
+
+  /* ---------- Autocomplete ---------- */
+  .combo { position: relative; }
+  .suggest {
+    position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 40;
+    margin: 0; padding: 4px; list-style: none; max-height: 320px; overflow: auto;
+    background: var(--surface); border: 1px solid var(--line-2); border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, .12);
+  }
+  .suggest[hidden] { display: none; }
+  .suggest .grp { padding: 6px 10px 2px; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .suggest [role="option"] { padding: 8px 10px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; gap: 12px; }
+  .suggest [role="option"] small { color: var(--muted); text-align: right; }
+  .suggest [aria-selected="true"], .suggest [role="option"]:hover { background: var(--surface-2); }
+
+  /* ---------- Status + legend ---------- */
+  .status { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 16px; color: var(--muted); font-size: 14px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px;
+    border: 1px solid var(--line-2); background: var(--surface); font-size: 13px; color: var(--ink-2); cursor: pointer;
+  }
+  .chip[aria-pressed="true"] { background: var(--ink-2); color: var(--surface); border-color: var(--ink-2); }
+  .legend { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 20px; }
+  .legend summary { padding: 12px 16px; cursor: pointer; font-weight: 600; }
+  .legend .buckets { display: grid; gap: 12px; padding: 0 16px 16px; grid-template-columns: 1fr; }
+  @media (min-width: 800px) { .legend .buckets { grid-template-columns: repeat(3, 1fr); } }
+  .legend h3 { margin: 0 0 4px; font-size: 14px; }
+  .legend p { margin: 0; font-size: 13px; color: var(--ink-2); }
+
+  /* ---------- Race block ---------- */
+  .race { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 24px; overflow: hidden; }
+  .race-head { padding: 16px; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+  .eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .race-head h2 { margin: 2px 0 10px; font-size: 20px; }
+  .roster { display: flex; flex-wrap: wrap; gap: 8px; }
+  .person {
+    padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--surface); font-size: 13px;
+  }
+  .person strong { display: block; font-size: 14px; }
+  .person span { color: var(--muted); }
+  .person.hit { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+  .vs { align-self: center; font-size: 12px; color: var(--muted); }
+  .issue-filter { padding: 12px 16px; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+  .issue-filter .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .issue { padding: 16px; border-bottom: 1px solid var(--line); }
+  .issue:last-child { border-bottom: 0; }
+  .issue h3 { margin: 0 0 2px; font-size: 16px; }
+  .issue .desc { margin: 0 0 4px; color: var(--ink-2); font-size: 14px; }
+  .issue .ends { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .grid { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); } }
+
+  .cell { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--bg); display: flex; flex-direction: column; gap: 8px; }
+  .cell.hit { border-color: var(--ink-2); }
+  .cell-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .cell-top strong { font-size: 14px; }
+  .bucket { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line-2); white-space: nowrap; }
+  .bucket.b0 { background: var(--surface); }
+  .bucket.b1 { background: var(--surface-2); }
+  .bucket.b2 { background: var(--ink-2); color: var(--surface); border-color: var(--ink-2); }
+
+  /* Immutable meter: a disabled range input, styled grayscale */
+  .meter-wrap { position: relative; padding: 4px 0 2px; }
+  .meter-wrap::before, .meter-wrap::after { /* bucket boundaries at 25 / 75 */
+    content: ""; position: absolute; top: 2px; width: 1px; height: 12px; background: var(--muted); opacity: .5;
+  }
+  .meter-wrap::before { left: 25%; }
+  .meter-wrap::after { left: 75%; }
+  input[type="range"].meter {
+    -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 8px; margin: 0;
+    border-radius: 999px; opacity: 1; cursor: default; pointer-events: none;
+    background: linear-gradient(to right, var(--fill) 0 var(--v), var(--track) var(--v) 100%);
+  }
+  input[type="range"].meter::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--ink); border: 3px solid var(--bg); box-shadow: 0 0 0 1px var(--ink);
+  }
+  input[type="range"].meter::-moz-range-thumb {
+    width: 12px; height: 12px; border-radius: 50%; background: var(--ink); border: 3px solid var(--bg); box-shadow: 0 0 0 1px var(--ink);
+  }
+  input[type="range"].meter::-moz-range-track { background: transparent; }
+  .score { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+
+  blockquote { margin: 0; padding: 0 0 0 10px; border-left: 3px solid var(--line-2); font-style: italic; color: var(--ink-2); font-size: 14px; }
+  .src { font-size: 12px; color: var(--muted); }
+  .src a { color: var(--ink-2); }
+  .impact { font-size: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+  .impact b { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 2px; }
+  .missing { color: var(--muted); font-size: 13px; font-style: italic; }
+
+  .empty { text-align: center; padding: 40px 16px; color: var(--muted); background: var(--surface); border: 1px dashed var(--line-2); border-radius: var(--radius); }
+
+  /* ---------- Ad slots: fixed min-height reserves space so ads cause no layout shift (CLS) ---------- */
+  .ad {
+    margin: 20px 0; min-height: 100px; display: grid; place-items: center;
+    border: 1px dashed var(--line-2); border-radius: 8px; color: var(--muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  }
+  footer { padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- ================= MANDATORY DISCLOSURE (permanent, sticky, cannot be dismissed) ================= -->
+<div class="notice" role="note" aria-label="Data disclosure">
+  <details>
+    <summary>
+      <span aria-hidden="true">⚠</span>
+      <span><strong>Verify before you vote.</strong> Data is aggregated from public records<span class="wide-only"> and may be incomplete or outdated</span>.</span>
+      <span class="more" aria-hidden="true"></span>
+    </summary>
+    <p>This guide is non-partisan and compiled from debate transcripts, campaign platforms, and voting records. Every stance links to its primary source. Positions change over time. Confirm all information with official campaign materials and your local election office before casting your ballot.</p>
+  </details>
+</div>
+
+<header>
+  <div class="wrap">
+    <h1>Local Voter Guide</h1>
+    <p class="sub" id="metaLine"></p>
+    <span class="demo-tag" id="demoTag" hidden>Prototype: all candidates, quotes and sources below are fictional sample data</span>
+
+    <div class="inputs">
+      <!-- Universal search: candidates (comma-separate several), offices, or issues -->
+      <div class="field">
+        <label for="q">Search candidates, offices, or issues</label>
+        <div class="combo">
+          <div class="row">
+            <input id="q" class="text" type="search" autocomplete="off" spellcheck="false"
+                   placeholder="e.g. Dana Whitfield, Mayor, housing"
+                   role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggest">
+            <button class="btn ghost" type="button" id="clearBtn">Clear</button>
+          </div>
+          <ul id="suggest" class="suggest" role="listbox" aria-label="Suggestions" hidden></ul>
+        </div>
+        <p class="hint">Separate several names with commas to compare across races.</p>
+      </div>
+
+      <!-- Address lookup: resolves to the races on your ballot -->
+      <form class="field" id="addrForm">
+        <label for="addr">Your address (for your full ballot)</label>
+        <div class="row">
+          <input id="addr" class="text" type="text" autocomplete="street-address" placeholder="Street, city, ZIP">
+          <button class="btn" type="submit">My ballot</button>
+        </div>
+        <p class="hint" id="addrHint">Demo: try ZIP <code>00101</code> or <code>00102</code>. Your address never leaves this page.</p>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- ================= ADSENSE SLOT: top-leaderboard (START) =================
+       Paste the AdSense <ins class="adsbygoogle"> unit here. Keep the .ad wrapper:
+       its min-height reserves space so the ad loading does not shift content. -->
+  <div class="ad" aria-hidden="true">Advertisement</div>
+  <!-- ================= ADSENSE SLOT: top-leaderboard (END) ================= -->
+
+  <div class="status" id="status" aria-live="polite"></div>
+
+  <details class="legend">
+    <summary>How to read the scale (0–100)</summary>
+    <div class="buckets" id="legend"></div>
+  </details>
+
+  <div id="results"></div>
+
+  <!-- ================= ADSENSE SLOT: footer-banner (START) ================= -->
+  <div class="ad" aria-hidden="true">Advertisement</div>
+  <!-- ================= ADSENSE SLOT: footer-banner (END) ================= -->
+</main>
+
+<footer>
+  <div class="wrap">
+    Non-partisan. Candidates are listed in alphabetical order by last name. No candidate, party or campaign funds this guide.
+  </div>
+</footer>
+
+<noscript><div class="wrap"><p class="empty">This guide needs JavaScript to filter and compare races.</p></div></noscript>
+
+<script>
+/* =====================================================================
+   1. DATA
+   Every stance MUST carry: value, quote, source, sourceUrl, realWorldImpact.
+   Stances missing any of them are not rendered (see isGrounded()).
+   Later: move this object to /data/election.json, generated from a Google Sheet.
+   ===================================================================== */
+const electionDatabase = {
+  meta: {
+    jurisdiction: "Sampleville",
+    electionDate: "2026-11-03",
+    lastUpdated: "2026-10-31",
+    isSampleData: true
+  },
+
+  // ZIP -> districts on that ballot. A real build would use a geocoder / precinct file.
+  zipIndex: {
+    "00101": ["citywide", "council-1", "school-north"],
+    "00102": ["citywide", "council-2", "school-north"]
+  },
+
+  races: [
+    {
+      id: "mayor",
+      office: "Mayor",
+      category: "City Executive",
+      district: "Citywide",
+      districtId: "citywide",
+      candidates: [
+        { id: "c1", name: "Dana Whitfield", party: "Nonpartisan", occupation: "City Council Member" },
+        { id: "c2", name: "Marcus Ohlin", party: "Nonpartisan", occupation: "Small Business Owner" }
+      ],
+      issues: [
+        {
+          id: "transit",
+          name: "Public Transit Funding",
+          tags: ["transit", "transportation", "infrastructure", "taxes"],
+          description: "How much city money should go to buses, light rail and road repair.",
+          scale: { low: "Private / fare-funded", high: "City-funded expansion" },
+          stances: {
+            c1: {
+              value: 82,
+              quote: "We will double bus frequency on every major corridor, and the city will pay for it.",
+              source: "Mayoral Debate, League of Voters Forum",
+              sourceUrl: "https://example.org/sampleville/debate-2026-09-14",
+              realWorldImpact: "Expect more frequent buses and new routes, funded partly by a proposed 0.25% sales tax increase. Commuters without cars gain the most, while everyone pays slightly more at the register."
+            },
+            c2: {
+              value: 22,
+              quote: "Riders and private partners should carry transit costs, not every taxpayer in the city.",
+              source: "Ohlin for Mayor: Platform, Section 3",
+              sourceUrl: "https://example.org/sampleville/ohlin-platform#transit",
+              realWorldImpact: "Local taxes would likely stay flat, but bus fares could rise and low-ridership routes may be cut. Service would depend more on private contractors and ridership revenue."
+            }
+          }
+        },
+        {
+          id: "housing",
+          name: "Affordable Housing",
+          tags: ["housing", "rent", "zoning", "development"],
+          description: "Whether the city should build or subsidize housing, or loosen zoning so private builders add supply.",
+          scale: { low: "Deregulate for private builders", high: "City-built / subsidized" },
+          stances: {
+            c1: {
+              value: 70,
+              quote: "I support a housing bond, paired with zoning reform near transit stations.",
+              source: "Sampleville Herald Candidate Questionnaire",
+              sourceUrl: "https://example.org/sampleville/herald-questionnaire-whitfield",
+              realWorldImpact: "A voter-approved bond would add a small amount to property tax bills to fund income-restricted units. Some neighborhoods near transit would see taller buildings permitted."
+            },
+            c2: {
+              value: 18,
+              quote: "Cut the permit backlog and let builders build. Supply is the answer, not subsidies.",
+              source: "Chamber of Commerce Candidate Forum",
+              sourceUrl: "https://example.org/sampleville/chamber-forum-2026",
+              realWorldImpact: "Permits would move faster and fees could drop, which may increase new market-rate housing. There would be little direct city spending on income-restricted units."
+            }
+          }
+        },
+        {
+          id: "immigration",
+          name: "Immigrant Services & Federal Cooperation",
+          tags: ["immigration", "federal policy", "public safety", "legal aid"],
+          description: "City funding for immigrant legal aid and how local police coordinate with federal immigration enforcement.",
+          scale: { low: "Minimal city role / full cooperation", high: "City-funded services / limited cooperation" },
+          stances: {
+            c1: {
+              value: 76,
+              quote: "Our police should focus on local safety. I'd fund a legal-aid office for immigrant families.",
+              source: "Community Town Hall, Eastside Library",
+              sourceUrl: "https://example.org/sampleville/townhall-eastside",
+              realWorldImpact: "The city budget would include roughly $1.2M a year for legal aid and outreach. Local police would limit honoring federal detainer requests without a judicial warrant."
+            },
+            c2: {
+              value: 30,
+              quote: "The city should follow federal law and not spend local dollars on federal responsibilities.",
+              source: "Mayoral Debate, League of Voters Forum",
+              sourceUrl: "https://example.org/sampleville/debate-2026-09-14",
+              realWorldImpact: "No new city spending on immigrant legal services would be added to the budget. Local police would continue to honor federal detainer requests under existing practice."
+            }
+          }
+        }
+      ]
+    },
+    {
+      id: "council-1",
+      office: "City Council",
+      category: "Legislative",
+      district: "District 1",
+      districtId: "council-1",
+      candidates: [
+        { id: "c3", name: "Priya Anand", party: "Nonpartisan", occupation: "Public School Teacher" },
+        { id: "c4", name: "Tom Brecker", party: "Nonpartisan", occupation: "Retired Firefighter" },
+        { id: "c5", name: "Luis Cardenas", party: "Nonpartisan", occupation: "Civil Engineer" }
+      ],
+      issues: [
+        {
+          id: "safety",
+          name: "Public Safety Budget",
+          tags: ["public safety", "police", "fire", "budget"],
+          description: "How the district's share of public safety dollars should be split between police, fire and community programs.",
+          scale: { low: "Hold budget flat / outsource", high: "Expand public programs" },
+          stances: {
+            c3: {
+              value: 68,
+              quote: "Keep patrol staffing level and add mental-health responders for non-violent calls.",
+              source: "District 1 Candidate Forum",
+              sourceUrl: "https://example.org/sampleville/d1-forum",
+              realWorldImpact: "A new crisis-response team would take some 911 calls currently handled by officers. This adds about $800K to the city budget without cutting patrol positions."
+            },
+            c4: {
+              value: 55,
+              quote: "Response times come first. Fund two more fire crews before any new programs.",
+              source: "Brecker Campaign Website: Priorities",
+              sourceUrl: "https://example.org/sampleville/brecker-priorities",
+              realWorldImpact: "Fire and EMS response times in District 1 would likely improve. Funding would be shifted from other discretionary programs instead of raising taxes."
+            },
+            c5: {
+              value: 35,
+              quote: "We can get more from the budget we have through better dispatch technology.",
+              source: "Sampleville Herald Candidate Questionnaire",
+              sourceUrl: "https://example.org/sampleville/herald-questionnaire-cardenas",
+              realWorldImpact: "Overall public safety spending would stay roughly flat. Improvements would come from software and process changes rather than new staff."
+            }
+          }
+        },
+        {
+          id: "stormwater",
+          name: "Flood & Stormwater Infrastructure",
+          tags: ["infrastructure", "environment", "flooding", "utilities", "taxes"],
+          description: "Upgrading drainage in flood-prone blocks, and who pays for it.",
+          scale: { low: "Property-owner responsibility", high: "Municipal utility fee" },
+          stances: {
+            c3: {
+              value: 74,
+              quote: "Flooding is a citywide problem and should be paid for citywide.",
+              source: "District 1 Candidate Forum",
+              sourceUrl: "https://example.org/sampleville/d1-forum",
+              realWorldImpact: "A new stormwater fee of about $6 a month would appear on utility bills. Flood-prone streets would be prioritized for drainage upgrades within five years."
+            },
+            c4: {
+              value: 50,
+              quote: "Fix the worst ten blocks now with existing capital funds, then reassess.",
+              source: "Neighborhood Association Meeting Minutes, Aug 2026",
+              sourceUrl: "https://example.org/sampleville/na-minutes-2026-08",
+              realWorldImpact: "No new fee in the short term, with targeted repairs funded from the current capital budget. Other planned capital projects could be delayed to cover it."
+            },
+            c5: {
+              value: 88,
+              quote: "I've designed these systems. We need a full stormwater utility, bonded and built in one go.",
+              source: "Cardenas for Council: Infrastructure Plan (PDF)",
+              sourceUrl: "https://example.org/sampleville/cardenas-infrastructure.pdf",
+              realWorldImpact: "A dedicated stormwater utility would be created with a monthly fee and a bond issue. Construction would be faster and broader, with higher upfront cost to households and businesses."
+            }
+          }
+        }
+      ]
+    },
+    {
+      id: "council-2",
+      office: "City Council",
+      category: "Legislative",
+      district: "District 2",
+      districtId: "council-2",
+      candidates: [
+        { id: "c6", name: "Grace Lindqvist", party: "Nonpartisan", occupation: "Nurse Practitioner" },
+        { id: "c7", name: "Andre Moss", party: "Nonpartisan", occupation: "Restaurant Owner" }
+      ],
+      issues: [
+        {
+          id: "smallbiz",
+          name: "Small Business Taxes & Incentives",
+          tags: ["taxes", "business", "economy", "jobs"],
+          description: "Business license fees and incentives to fill vacant storefronts.",
+          scale: { low: "Cut fees / market-led", high: "City grants & programs" },
+          stances: {
+            c6: {
+              value: 60,
+              quote: "Targeted grants for storefronts that hire locally, funded by the existing economic development fund.",
+              source: "District 2 Candidate Forum",
+              sourceUrl: "https://example.org/sampleville/d2-forum",
+              realWorldImpact: "Some vacant storefronts would receive startup grants tied to local hiring. Business taxes would stay at current levels."
+            },
+            c7: {
+              value: 15,
+              quote: "Eliminate the business license fee for anyone under ten employees. That's the incentive.",
+              source: "Moss Campaign Mailer, Oct 2026",
+              sourceUrl: "https://example.org/sampleville/moss-mailer-oct",
+              realWorldImpact: "Small businesses would save a few hundred dollars a year in fees. The city would lose that revenue, which may require trims elsewhere in the general fund."
+            }
+          }
+        }
+      ]
+    },
+    {
+      id: "school-north",
+      office: "School Board",
+      category: "Education",
+      district: "North Unified, Seat 3",
+      districtId: "school-north",
+      candidates: [
+        { id: "c8", name: "Helen Okafor", party: "Nonpartisan", occupation: "Parent & PTA President" },
+        { id: "c9", name: "Ryan Teague", party: "Nonpartisan", occupation: "Accountant" }
+      ],
+      issues: [
+        {
+          id: "schoolbudget",
+          name: "K-12 Budget & Teacher Pay",
+          tags: ["education", "schools", "teachers", "taxes", "budget"],
+          description: "Whether to seek a local school levy to raise teacher pay and reduce class sizes.",
+          scale: { low: "Hold levy flat / efficiencies", high: "New levy / expand spending" },
+          stances: {
+            c8: {
+              value: 85,
+              quote: "We are losing teachers to neighboring districts. I'll put a levy on the ballot.",
+              source: "North Unified Board Candidate Forum (video, 41:10)",
+              sourceUrl: "https://example.org/sampleville/school-forum#t=2470",
+              realWorldImpact: "Homeowners could see about $120 a year added to property taxes if voters approve the levy. Teacher salaries would rise and average class sizes would drop by an estimated two students."
+            },
+            c9: {
+              value: 25,
+              quote: "Before asking taxpayers for more, we need an independent audit of central-office spending.",
+              source: "Teague Campaign Website: Fiscal Plan",
+              sourceUrl: "https://example.org/sampleville/teague-fiscal",
+              realWorldImpact: "No new school tax would be proposed in the near term. Any raises for teachers would depend on savings found through the audit."
+            }
+          }
+        }
+      ]
+    }
+  ]
+};
+
+/* Required by CLAUDE.md section 3: three fixed buckets with real-world framing. */
+const BUCKETS = [
+  { max: 25, label: "Market-Driven",
+    text: "Leans on the private sector and keeps the public tax footprint low. Typically means lower or flat local taxes and fees, with services shaped by private providers, user fees and market demand." },
+  { max: 74, label: "Balanced Growth",
+    text: "Mixes public and private roles. Typically means selective, targeted incentives and steady funding to stabilize existing infrastructure, with modest changes to taxes." },
+  { max: 100, label: "Public Investment Heavy",
+    text: "Expands public utilities and services. Typically means new bonds, levies or fees, and a shift of costs toward municipal budgets and larger businesses in exchange for broader public programs." }
+];
+
+/* =====================================================================
+   2. HELPERS
+   ===================================================================== */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const norm = (s) => String(s).toLowerCase().trim();
+const lastName = (n) => n.split(" ").slice(-1)[0];
+const bucketIndex = (v) => BUCKETS.findIndex((b) => v <= b.max);
+const safeUrl = (u) => (/^https?:\/\//i.test(u) ? u : null);
+
+/* A stance is only shown when it is fully tied to evidence. */
+function isGrounded(s) {
+  return s && Number.isFinite(s.value) && s.value >= 0 && s.value <= 100 &&
+    s.quote && s.source && safeUrl(s.sourceUrl) && s.realWorldImpact;
+}
+
+// Neutral ordering: alphabetical by last name, never by party or data order.
+electionDatabase.races.forEach((r) => r.candidates.sort((a, b) => lastName(a.name).localeCompare(lastName(b.name))));
+
+/* =====================================================================
+   3. STATE (mirrored in the URL hash so results are shareable)
+   ===================================================================== */
+const state = { query: "", zip: "", issueFilters: {} };
+
+function readHash() {
+  const p = new URLSearchParams(location.hash.slice(1));
+  state.query = p.get("q") || "";
+  state.zip = p.get("zip") || "";
+}
+function writeHash() {
+  const p = new URLSearchParams();
+  if (state.query) p.set("q", state.query);
+  if (state.zip) p.set("zip", state.zip);
+  const h = p.toString();
+  history.replaceState(null, "", h ? "#" + h : location.pathname + location.search);
+}
+
+/* =====================================================================
+   4. MATCHING
+   Query is comma-separated terms. Each term can hit a candidate, an office,
+   or an issue. Candidate/office hits show the WHOLE race (rivals side-by-side);
+   issue-only hits show just the matching issues inside that race.
+   ===================================================================== */
+function terms() {
+  return state.query.split(",").map(norm).filter(Boolean);
+}
+function issueHit(issue, t) {
+  return norm(issue.name).includes(t) || issue.tags.some((tag) => tag.includes(t) || t.includes(tag));
+}
+function computeView() {
+  const ts = terms();
+  const ballot = state.zip ? electionDatabase.zipIndex[state.zip] : null;
+  const view = [];
+
+  for (const race of electionDatabase.races) {
+    if (ballot && !ballot.includes(race.districtId)) continue;
+
+    const hitCands = new Set();
+    let wholeRace = ts.length === 0;
+    let issueTerms = [];
+
+    for (const t of ts) {
+      const raceText = norm(`${race.office} ${race.category} ${race.district}`);
+      const cands = race.candidates.filter((c) => norm(c.name).includes(t));
+      if (cands.length) { cands.forEach((c) => hitCands.add(c.id)); wholeRace = true; }
+      else if (raceText.includes(t)) wholeRace = true;
+      else if (race.issues.some((i) => issueHit(i, t))) issueTerms.push(t);
+    }
+
+    if (!wholeRace && !issueTerms.length) continue;
+    // A candidate/office hit shows every issue in the race for full contrast.
+    const issues = wholeRace ? race.issues : race.issues.filter((i) => issueTerms.some((t) => issueHit(i, t)));
+    view.push({ race, issues, hitCands });
+  }
+  return view;
+}
+
+/* =====================================================================
+   5. RENDERING
+   ===================================================================== */
+function renderLegend() {
+  $("#legend").innerHTML = BUCKETS.map((b, i) => {
+    const min = i === 0 ? 0 : BUCKETS[i - 1].max + 1;
+    return `<div><h3>${min}–${b.max} · ${esc(b.label)}</h3><p>${esc(b.text)}</p></div>`;
+  }).join("");
+}
+
+function renderCell(race, issue, cand, hit) {
+  const s = issue.stances[cand.id];
+  if (!isGrounded(s)) {
+    // Never show a number without its evidence.
+    return `<div class="cell"><div class="cell-top"><strong>${esc(cand.name)}</strong></div>
+      <p class="missing">No verified, sourced position on record.</p></div>`;
+  }
+  const bi = bucketIndex(s.value);
+  const b = BUCKETS[bi];
+  const label = `${cand.name}: ${s.value} out of 100, ${b.label}`;
+  return `<div class="cell${hit ? " hit" : ""}">
+    <div class="cell-top"><strong>${esc(cand.name)}</strong>
+      <span class="bucket b${bi}" title="${esc(b.text)}">${esc(b.label)}</span></div>
+    <div class="meter-wrap">
+      <input class="meter" type="range" min="0" max="100" value="${s.value}" disabled
+             style="--v:${s.value}%" aria-label="${esc(label)}" aria-valuetext="${esc(label)}">
+    </div>
+    <div class="score"><span>Score ${s.value}/100</span></div>
+    <blockquote>“${esc(s.quote)}”</blockquote>
+    <div class="src">Source: <a href="${esc(s.sourceUrl)}" target="_blank" rel="noopener nofollow">${esc(s.source)}</a></div>
+    <div class="impact"><b>What this means for you</b>${esc(s.realWorldImpact)}</div>
+  </div>`;
+}
+
+function renderRace({ race, issues, hitCands }) {
+  const filter = norm(state.issueFilters[race.id] || "");
+  const shown = filter ? issues.filter((i) => issueHit(i, filter)) : issues;
+  const tags = [...new Set(race.issues.flatMap((i) => i.tags))].sort();
+
+  const roster = race.candidates.map((c) =>
+    `<div class="person${hitCands.has(c.id) ? " hit" : ""}"><strong>${esc(c.name)}</strong><span>${esc(c.party)} · ${esc(c.occupation)}</span></div>`
+  ).join('<span class="vs">vs</span>');
+
+  const issueHtml = shown.length ? shown.map((issue) => `
+    <section class="issue" aria-labelledby="h-${race.id}-${issue.id}">
+      <h3 id="h-${race.id}-${issue.id}">${esc(issue.name)}</h3>
+      <p class="desc">${esc(issue.description)}</p>
+      <div class="ends"><span>0 · ${esc(issue.scale.low)}</span><span>${esc(issue.scale.high)} · 100</span></div>
+      <div class="grid" style="--n:${race.candidates.length}">
+        ${race.candidates.map((c) => renderCell(race, issue, c, hitCands.has(c.id))).join("")}
+      </div>
+    </section>`).join("")
+    : `<div class="issue"><p class="missing">No issues in this race match “${esc(filter)}”.</p></div>`;
+
+  return `<article class="race" id="race-${race.id}">
+    <div class="race-head">
+      <div class="eyebrow">${esc(race.category)} · ${race.candidates.length} candidates</div>
+      <h2>${esc(race.office)}: ${esc(race.district)}</h2>
+      <div class="roster">${roster}</div>
+    </div>
+    <div class="issue-filter">
+      <label class="sr-only" for="f-${race.id}">Filter issues in ${esc(race.office)}, ${esc(race.district)}</label>
+      <input class="text" id="f-${race.id}" data-race="${race.id}" type="search" autocomplete="off"
+             placeholder="Narrow this race by issue (e.g. taxes, immigration)" value="${esc(state.issueFilters[race.id] || "")}">
+      <div class="chips">${tags.map((t) =>
+        `<button type="button" class="chip" data-race="${race.id}" data-tag="${esc(t)}" aria-pressed="${filter === t}">${esc(t)}</button>`
+      ).join("")}</div>
+    </div>
+    ${issueHtml}
+  </article>`;
+}
+
+function render() {
+  const view = computeView();
+  const ts = terms();
+  const parts = [];
+
+  if (state.zip) parts.push(`<span class="chip" aria-pressed="true">Ballot for ZIP ${esc(state.zip)}</span>`);
+  if (ts.length) parts.push(`<span>Showing results for <strong>${ts.map(esc).join(", ")}</strong></span>`);
+  parts.push(`<span>${view.length} race${view.length === 1 ? "" : "s"}</span>`);
+  if (state.zip || ts.length) parts.push(`<button class="chip" type="button" id="resetAll">Show all races</button>`);
+  $("#status").innerHTML = parts.join("");
+
+  if (!view.length) {
+    $("#results").innerHTML = `<div class="empty">No races match. Try a candidate name, an office like “Mayor”, or an issue like “housing”.</div>`;
+    return;
+  }
+
+  // In-feed ad after the 2nd race block.
+  $("#results").innerHTML = view.map((v, i) => renderRace(v) + (i === 1 && view.length > 2
+    ? `<!-- ================= ADSENSE SLOT: in-feed (START) ================= -->
+       <div class="ad" aria-hidden="true">Advertisement</div>
+       <!-- ================= ADSENSE SLOT: in-feed (END) ================= -->` : "")).join("");
+}
+
+/* =====================================================================
+   6. AUTOCOMPLETE (suggests on the term after the last comma)
+   ===================================================================== */
+const index = (() => {
+  const items = [];
+  const seen = new Set();
+  const add = (label, type, meta) => { const k = type + label; if (!seen.has(k)) { seen.add(k); items.push({ label, type, meta }); } };
+  for (const r of electionDatabase.races) {
+    add(r.office, "Offices", r.category);
+    r.candidates.forEach((c) => add(c.name, "Candidates", `${r.office}, ${r.district}`));
+    r.issues.forEach((i) => { add(i.name, "Issues", r.office); i.tags.forEach((t) => add(t, "Issues", "topic")); });
+  }
+  return items;
+})();
+
+const qEl = $("#q"), listEl = $("#suggest");
+let active = -1, current = [];
+
+function currentTerm() { return norm(qEl.value.split(",").pop()); }
+
+function openSuggest() {
+  const t = currentTerm();
+  if (!t) return closeSuggest();
+  current = index.filter((it) => norm(it.label).includes(t))
+    .sort((a, b) => norm(a.label).indexOf(t) - norm(b.label).indexOf(t))
+    .slice(0, 10);
+  if (!current.length) return closeSuggest();
+  let html = "", grp = "";
+  current.forEach((it, i) => {
+    if (it.type !== grp) { grp = it.type; html += `<li class="grp" role="presentation">${grp}</li>`; }
+    html += `<li role="option" id="opt-${i}" data-i="${i}" aria-selected="${i === active}">${esc(it.label)}<small>${esc(it.meta)}</small></li>`;
+  });
+  listEl.innerHTML = html;
+  listEl.hidden = false;
+  qEl.setAttribute("aria-expanded", "true");
+}
+function closeSuggest() {
+  listEl.hidden = true; active = -1;
+  qEl.setAttribute("aria-expanded", "false");
+  qEl.removeAttribute("aria-activedescendant");
+}
+function choose(i) {
+  const parts = qEl.value.split(",");
+  parts[parts.length - 1] = " " + current[i].label;
+  qEl.value = parts.map((p) => p.trim()).filter(Boolean).join(", ");
+  closeSuggest();
+  applyQuery();
+}
+function highlight(i) {
+  active = i;
+  listEl.querySelectorAll('[role="option"]').forEach((el) => el.setAttribute("aria-selected", String(+el.dataset.i === i)));
+  qEl.setAttribute("aria-activedescendant", "opt-" + i);
+  document.getElementById("opt-" + i)?.scrollIntoView({ block: "nearest" });
+}
+
+let debounce;
+function applyQuery() {
+  state.query = qEl.value;
+  writeHash();
+  render();
+}
+
+qEl.addEventListener("input", () => {
+  active = -1; openSuggest();
+  clearTimeout(debounce); debounce = setTimeout(applyQuery, 150);
+});
+qEl.addEventListener("keydown", (e) => {
+  if (listEl.hidden) return;
+  if (e.key === "ArrowDown") { e.preventDefault(); highlight((active + 1) % current.length); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); highlight((active - 1 + current.length) % current.length); }
+  else if (e.key === "Enter" && active >= 0) { e.preventDefault(); choose(active); }
+  else if (e.key === "Escape") closeSuggest();
+});
+listEl.addEventListener("mousedown", (e) => {
+  const li = e.target.closest('[role="option"]');
+  if (li) { e.preventDefault(); choose(+li.dataset.i); }
+});
+qEl.addEventListener("blur", () => setTimeout(closeSuggest, 100));
+$("#clearBtn").addEventListener("click", () => { qEl.value = ""; applyQuery(); qEl.focus(); });
+
+/* =====================================================================
+   7. ADDRESS -> BALLOT
+   Prototype: pulls a 5-digit ZIP out of the address and looks it up locally.
+   Production: swap for a geocoder + precinct lookup (address stays client-side
+   or goes only to that one trusted API, never into URLs or analytics).
+   ===================================================================== */
+$("#addrForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const zip = ($("#addr").value.match(/\b\d{5}\b/) || [])[0];
+  const hint = $("#addrHint");
+  if (!zip) { hint.textContent = "Please include a 5-digit ZIP code."; return; }
+  if (!electionDatabase.zipIndex[zip]) { hint.textContent = `No ballot data for ZIP ${zip} yet. Demo ZIPs: 00101, 00102.`; return; }
+  hint.textContent = "Showing every race on your ballot. Your address never leaves this page.";
+  state.zip = zip;
+  writeHash();
+  render();
+});
+
+/* =====================================================================
+   8. DELEGATED EVENTS (per-race issue filter, chips, reset)
+   ===================================================================== */
+const results = $("#results");
+results.addEventListener("input", (e) => {
+  const el = e.target.closest("input[data-race]");
+  if (!el) return;
+  state.issueFilters[el.dataset.race] = el.value;
+  const pos = el.selectionStart;
+  render();
+  const again = document.getElementById(el.id);
+  again.focus(); again.setSelectionRange(pos, pos);
+});
+results.addEventListener("click", (e) => {
+  const chip = e.target.closest("button[data-tag]");
+  if (!chip) return;
+  const id = chip.dataset.race;
+  state.issueFilters[id] = norm(state.issueFilters[id] || "") === chip.dataset.tag ? "" : chip.dataset.tag;
+  render();
+  document.querySelector(`button[data-race="${id}"][data-tag="${CSS.escape(chip.dataset.tag)}"]`)?.focus();
+});
+$("#status").addEventListener("click", (e) => {
+  if (e.target.id !== "resetAll") return;
+  state.query = ""; state.zip = ""; state.issueFilters = {};
+  qEl.value = ""; $("#addr").value = "";
+  writeHash(); render();
+});
+
+/* =====================================================================
+   9. INIT
+   ===================================================================== */
+(function init() {
+  const m = electionDatabase.meta;
+  const date = new Date(m.electionDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  $("#metaLine").textContent = `${m.jurisdiction} · Election day ${date} · Data last updated ${m.lastUpdated}`;
+  $("#demoTag").hidden = !m.isSampleData;
+  readHash();
+  qEl.value = state.query;
+  renderLegend();
+  render();
+  window.addEventListener("hashchange", () => { readHash(); qEl.value = state.query; render(); });
+})();
+</script>
+</body>
+</html>
