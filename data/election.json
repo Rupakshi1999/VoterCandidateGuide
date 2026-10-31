@@ -26,13 +26,18 @@
           "id": "letitia-a-james",
           "name": "Letitia A. James",
           "party": "Democratic, Working Families",
-          "occupation": ""
+          "occupation": "Attorney General of New York",
+          "record": {
+            "office": "New York State Attorney General",
+            "years": "2019–present",
+            "actions": []
+          }
         },
         {
           "id": "saritha-komatireddy",
           "name": "Saritha Komatireddy",
           "party": "Republican, Conservative",
-          "occupation": ""
+          "occupation": "Attorney and former federal prosecutor"
         }
       ],
       "issues": [
@@ -48,7 +53,24 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "letitia-a-james": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Keeping costs down for New Yorkers"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Action against online platforms that raise costs on customers"
+                }
+              ],
+              "quote": "She is laser-focused on keeping costs down for New Yorkers, including from online platforms that would try to raise costs on their customers.",
+              "source": "Priorities | Letitia James for New York (campaign site)",
+              "sourceUrl": "https://jamesforny.com/priorities/",
+              "realWorldImpact": "Expect continued consumer-protection cases against companies accused of unfair pricing. The Attorney General enforces these laws but doesn't set taxes or prices."
+            }
+          },
           "shared": true
         },
         {
@@ -63,7 +85,20 @@
             "hospitals"
           ],
           "description": "Health insurance, costs and access to care.",
-          "stances": {},
+          "stances": {
+            "letitia-a-james": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Recovering money from companies that harmed New Yorkers' access to health care, such as opioid makers and nursing homes"
+                }
+              ],
+              "quote": "Letitia has secured billions of dollars from individuals and corporations who have taken advantage of New Yorkers and tried to deprive them of their health care access, including more than $3 billion from opioid manufacturers and distributors for their roles in the deadly opioid epidemic and more than $70 million in settlements from neglectful nursing homes.",
+              "source": "Priorities | Letitia James for New York (campaign site)",
+              "sourceUrl": "https://jamesforny.com/priorities/",
+              "realWorldImpact": "Expect more lawsuits and settlements against health care companies and providers accused of wrongdoing. Settlement money is often directed to programs such as opioid treatment."
+            }
+          },
           "shared": true
         },
         {
@@ -90,7 +125,36 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "letitia-a-james": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Fair wages and access to good-paying jobs"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Protecting the rights of union workers"
+                }
+              ],
+              "quote": "Letitia is fighting for New Yorkers to have fair wages and access to good-paying jobs, while protecting the men and women of organized labor.",
+              "source": "Priorities | Letitia James for New York (campaign site)",
+              "sourceUrl": "https://jamesforny.com/priorities/",
+              "realWorldImpact": "Expect continued wage-theft and labor-law cases against employers. The Attorney General enforces wage laws but doesn't set the minimum wage."
+            },
+            "saritha-komatireddy": {
+              "positions": [
+                {
+                  "stance": "opposes",
+                  "text": "A tax increase on homeowners"
+                }
+              ],
+              "quote": "We don’t need a tax hike.",
+              "source": "Remarks on Homeowners’ Tax, March 30, 2026 (campaign site)",
+              "sourceUrl": "https://sarithafornewyork.com/remarks/",
+              "realWorldImpact": "She would publicly oppose new taxes on homeowners. The Attorney General doesn't set taxes, so this is an advocacy position rather than something the office decides."
+            }
+          },
           "shared": true
         },
         {
@@ -119,7 +183,20 @@
             "legal aid"
           ],
           "description": "Immigration levels, enforcement, and local cooperation with federal immigration authorities.",
-          "stances": {},
+          "stances": {
+            "letitia-a-james": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Legal action to protect immigrants against federal immigration enforcement she calls illegal"
+                }
+              ],
+              "quote": "Letitia has led the fight to protect immigrants in New York and across the country against the Trump administration’s chaotic and illegal immigration activities.",
+              "source": "Priorities | Letitia James for New York (campaign site)",
+              "sourceUrl": "https://jamesforny.com/priorities/",
+              "realWorldImpact": "The state would likely keep suing the federal government over immigration enforcement actions. Outcomes would depend on the courts."
+            }
+          },
           "shared": true
         },
         {
@@ -142,7 +219,36 @@
             "public safety"
           ],
           "description": "Crime, policing and public safety.",
-          "stances": {},
+          "stances": {
+            "letitia-a-james": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Action against gun violence, illegal firearms and ghost guns"
+                }
+              ],
+              "quote": "Letitia is working tirelessly to protect New Yorkers from gun violence, illegal firearms and ghost guns.",
+              "source": "Priorities | Letitia James for New York (campaign site)",
+              "sourceUrl": "https://jamesforny.com/priorities/",
+              "realWorldImpact": "Expect continued enforcement and lawsuits targeting illegal gun sales and untraceable ghost guns. Day-to-day policing stays with local police and district attorneys."
+            },
+            "saritha-komatireddy": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Safe buffer zones around every Jewish school and synagogue"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Enforcing existing buffer zone laws"
+                }
+              ],
+              "quote": "I would establish safe buffer zones around every Jewish school and synagogue now.",
+              "source": "Saritha Komatireddy’s Statement on Endorsing Safe Buffer Zones (campaign site)",
+              "sourceUrl": "https://sarithafornewyork.com/statement-on-endorsing-safe-buffer-zones/",
+              "realWorldImpact": "Protests near Jewish schools and synagogues could face stricter distance limits, enforced by the Attorney General's office. She cites a buffer zone law already on New York's books."
+            }
+          },
           "shared": true
         },
         {
@@ -202,7 +308,7 @@
           "id": "joseph-hernandez",
           "name": "Joseph Hernandez",
           "party": "Republican, Conservative",
-          "occupation": ""
+          "occupation": "Venture capital investor (Blue Water Venture Partners)"
         },
         {
           "id": "thomas-p-dinapoli",
@@ -224,7 +330,28 @@
             "wages"
           ],
           "description": "Jobs, prices and the cost of living.",
-          "stances": {},
+          "stances": {
+            "joseph-hernandez": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Stronger state pension fund performance"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Cutting Wall Street fees paid by the pension fund"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Market-driven investments that create jobs in New York"
+                }
+              ],
+              "quote": "Invest in New York by strengthening pension performance, cutting excessive Wall Street fees, and pursuing disciplined, market-driven investments that can create jobs and economic growth across the state.",
+              "source": "Joseph Hernandez for Comptroller (campaign site)",
+              "sourceUrl": "https://hernandezforny.com/",
+              "realWorldImpact": "The state pension fund, which the Comptroller manages, would likely shift some money toward investments in New York companies and lower-fee managers. Pension benefits themselves are set by law and wouldn't change."
+            }
+          },
           "shared": true
         },
         {
@@ -266,7 +393,20 @@
             "minimum wage"
           ],
           "description": "How income and wealth are distributed, including taxes and wages.",
-          "stances": {},
+          "stances": {
+            "joseph-hernandez": {
+              "positions": [
+                {
+                  "stance": "opposes",
+                  "text": "Continued growth in state taxes and spending"
+                }
+              ],
+              "quote": "New Yorkers pay some of the highest taxes in the country, while Albany continues to spend more every year.",
+              "source": "Issues – Joseph Hernandez for Comptroller (campaign site)",
+              "sourceUrl": "https://hernandezforny.com/issues/",
+              "realWorldImpact": "Expect audits aimed at cutting state spending. The Comptroller audits and reports on spending but doesn't set taxes or pass the budget."
+            }
+          },
           "shared": true
         },
         {

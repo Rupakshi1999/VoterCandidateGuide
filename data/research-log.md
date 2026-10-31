@@ -2,6 +2,15 @@
 
 One entry per research run, newest first. See section 4 of claude.md for the steps.
 
+## 2026-10-31: Attorney General and Comptroller researched
+
+- **Attorney General.** Letitia James: 5 positions (economy, health care, immigration, crime, income gap) from jamesforny.com/priorities (tishjames.com redirects there; "Paid for by James for NY 2026"). Saritha Komatireddy: 2 positions (crime: safe buffer zones around Jewish schools and synagogues; income gap: opposes a homeowner tax hike) from sarithafornewyork.com.
+- **Comptroller.** Joseph Hernandez: 2 positions (economy: pension investing; income gap: state taxes and spending) from hernandezforny.com. Thomas DiNapoli: none. tomdinapoli.com redirects to a dead 2018 site and no 2026 campaign site was found. Next run: try statements he made as Comptroller on osc.ny.gov (official primary source) or a 2026 debate transcript.
+- All 17 researched quotes (governor, AG, comptroller) verify word for word. One reader-reported quote for James was wrong ("Letitia is" vs. the page's "She is"); the checker caught it and it was corrected.
+- Neither AG candidate's site addresses abortion, gas prices, climate, AI data centers, Iran or Israel-Palestine.
+
+**Next run:** DiNapoli; then congressional races (CD 2–16); then State Senate and Assembly; then judicial ratings.
+
 ## 2026-10-31: Nassau ballot loaded
 
 **Source:** Nassau County Board of Elections "Candidate List - 2026", marked subject to change (`data/sources/nassau-2026-candidates-list.pdf`, not committed).

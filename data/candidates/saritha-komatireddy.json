@@ -1,15 +1,43 @@
 {
   "name": "Saritha Komatireddy",
-  "occupation": "",
+  "occupation": "Attorney and former federal prosecutor",
   "race": "attorney-general",
   "ballotLines": [
     "Republican",
     "Conservative"
   ],
   "priorOffice": null,
-  "positions": [],
+  "positions": [
+    {
+      "issue": "crime",
+      "supports": [
+        "Safe buffer zones around every Jewish school and synagogue",
+        "Enforcing existing buffer zone laws"
+      ],
+      "opposes": [],
+      "quote": "I would establish safe buffer zones around every Jewish school and synagogue now.",
+      "source": {
+        "title": "Saritha Komatireddy’s Statement on Endorsing Safe Buffer Zones (campaign site)",
+        "url": "https://sarithafornewyork.com/statement-on-endorsing-safe-buffer-zones/"
+      },
+      "impact": "Protests near Jewish schools and synagogues could face stricter distance limits, enforced by the Attorney General's office. She cites a buffer zone law already on New York's books."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [],
+      "opposes": [
+        "A tax increase on homeowners"
+      ],
+      "quote": "We don’t need a tax hike.",
+      "source": {
+        "title": "Remarks on Homeowners’ Tax, March 30, 2026 (campaign site)",
+        "url": "https://sarithafornewyork.com/remarks/"
+      },
+      "impact": "She would publicly oppose new taxes on homeowners. The Attorney General doesn't set taxes, so this is an advocacy position rather than something the office decides."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

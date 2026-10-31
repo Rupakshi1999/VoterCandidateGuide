@@ -1,15 +1,44 @@
 {
   "name": "Joseph Hernandez",
-  "occupation": "",
+  "occupation": "Venture capital investor (Blue Water Venture Partners)",
   "race": "comptroller",
   "ballotLines": [
     "Republican",
     "Conservative"
   ],
   "priorOffice": null,
-  "positions": [],
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Stronger state pension fund performance",
+        "Cutting Wall Street fees paid by the pension fund",
+        "Market-driven investments that create jobs in New York"
+      ],
+      "opposes": [],
+      "quote": "Invest in New York by strengthening pension performance, cutting excessive Wall Street fees, and pursuing disciplined, market-driven investments that can create jobs and economic growth across the state.",
+      "source": {
+        "title": "Joseph Hernandez for Comptroller (campaign site)",
+        "url": "https://hernandezforny.com/"
+      },
+      "impact": "The state pension fund, which the Comptroller manages, would likely shift some money toward investments in New York companies and lower-fee managers. Pension benefits themselves are set by law and wouldn't change."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [],
+      "opposes": [
+        "Continued growth in state taxes and spending"
+      ],
+      "quote": "New Yorkers pay some of the highest taxes in the country, while Albany continues to spend more every year.",
+      "source": {
+        "title": "Issues – Joseph Hernandez for Comptroller (campaign site)",
+        "url": "https://hernandezforny.com/issues/"
+      },
+      "impact": "Expect audits aimed at cutting state spending. The Comptroller audits and reports on spending but doesn't set taxes or pass the budget."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

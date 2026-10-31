@@ -1,15 +1,86 @@
 {
   "name": "Letitia A. James",
-  "occupation": "",
+  "occupation": "Attorney General of New York",
   "race": "attorney-general",
   "ballotLines": [
     "Democratic",
     "Working Families"
   ],
-  "priorOffice": null,
-  "positions": [],
+  "priorOffice": {
+    "office": "New York State Attorney General",
+    "years": "2019–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Keeping costs down for New Yorkers",
+        "Action against online platforms that raise costs on customers"
+      ],
+      "opposes": [],
+      "quote": "She is laser-focused on keeping costs down for New Yorkers, including from online platforms that would try to raise costs on their customers.",
+      "source": {
+        "title": "Priorities | Letitia James for New York (campaign site)",
+        "url": "https://jamesforny.com/priorities/"
+      },
+      "impact": "Expect continued consumer-protection cases against companies accused of unfair pricing. The Attorney General enforces these laws but doesn't set taxes or prices."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Recovering money from companies that harmed New Yorkers' access to health care, such as opioid makers and nursing homes"
+      ],
+      "opposes": [],
+      "quote": "Letitia has secured billions of dollars from individuals and corporations who have taken advantage of New Yorkers and tried to deprive them of their health care access, including more than $3 billion from opioid manufacturers and distributors for their roles in the deadly opioid epidemic and more than $70 million in settlements from neglectful nursing homes.",
+      "source": {
+        "title": "Priorities | Letitia James for New York (campaign site)",
+        "url": "https://jamesforny.com/priorities/"
+      },
+      "impact": "Expect more lawsuits and settlements against health care companies and providers accused of wrongdoing. Settlement money is often directed to programs such as opioid treatment."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Legal action to protect immigrants against federal immigration enforcement she calls illegal"
+      ],
+      "opposes": [],
+      "quote": "Letitia has led the fight to protect immigrants in New York and across the country against the Trump administration’s chaotic and illegal immigration activities.",
+      "source": {
+        "title": "Priorities | Letitia James for New York (campaign site)",
+        "url": "https://jamesforny.com/priorities/"
+      },
+      "impact": "The state would likely keep suing the federal government over immigration enforcement actions. Outcomes would depend on the courts."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "Action against gun violence, illegal firearms and ghost guns"
+      ],
+      "opposes": [],
+      "quote": "Letitia is working tirelessly to protect New Yorkers from gun violence, illegal firearms and ghost guns.",
+      "source": {
+        "title": "Priorities | Letitia James for New York (campaign site)",
+        "url": "https://jamesforny.com/priorities/"
+      },
+      "impact": "Expect continued enforcement and lawsuits targeting illegal gun sales and untraceable ghost guns. Day-to-day policing stays with local police and district attorneys."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Fair wages and access to good-paying jobs",
+        "Protecting the rights of union workers"
+      ],
+      "opposes": [],
+      "quote": "Letitia is fighting for New Yorkers to have fair wages and access to good-paying jobs, while protecting the men and women of organized labor.",
+      "source": {
+        "title": "Priorities | Letitia James for New York (campaign site)",
+        "url": "https://jamesforny.com/priorities/"
+      },
+      "impact": "Expect continued wage-theft and labor-law cases against employers. The Attorney General enforces wage laws but doesn't set the minimum wage."
+    }
+  ],
   "record": [],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }
