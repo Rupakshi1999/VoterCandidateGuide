@@ -1,0 +1,8 @@
+issue_id,race_id,name,description,tags
+transit,mayor,Public Transit Funding,"How much city money should go to buses, light rail and road repair.","transit, transportation, infrastructure, taxes"
+housing,mayor,Affordable Housing,"Whether the city should build or subsidize housing, or loosen zoning so private builders add supply.","housing, rent, zoning, development"
+immigration,mayor,Immigration,City funding for immigrant legal aid and how local police coordinate with federal immigration enforcement.,"immigration, federal policy, public safety, legal aid"
+safety,council-1,Public Safety Budget,"How the district's share of public safety dollars should be split between police, fire and community programs.","public safety, police, fire, budget"
+stormwater,council-1,Flood & Stormwater Infrastructure,"Upgrading drainage in flood-prone blocks, and who pays for it.","infrastructure, environment, flooding, utilities, taxes"
+smallbiz,council-2,Small Business Taxes & Incentives,Business license fees and incentives to fill vacant storefronts.,"taxes, business, economy, jobs"
+schoolbudget,school-north,Education Budget,Whether to seek a local school levy to raise teacher pay and reduce class sizes.,"education, schools, teachers, taxes, budget"

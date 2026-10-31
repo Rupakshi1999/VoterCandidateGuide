@@ -1,0 +1,509 @@
+{
+  "meta": {
+    "jurisdiction": "Sampleville",
+    "electionDate": "2026-11-03",
+    "lastUpdated": "2026-10-31",
+    "isSampleData": true
+  },
+  "zipIndex": {
+    "00101": [
+      "citywide",
+      "council-1",
+      "school-north"
+    ],
+    "00102": [
+      "citywide",
+      "council-2",
+      "school-north"
+    ]
+  },
+  "races": [
+    {
+      "id": "mayor",
+      "office": "Mayor",
+      "category": "City Executive",
+      "district": "Citywide",
+      "districtId": "citywide",
+      "candidates": [
+        {
+          "id": "c1",
+          "name": "Dana Whitfield",
+          "party": "Nonpartisan",
+          "occupation": "City Council Member",
+          "record": {
+            "office": "Sampleville City Council, District 1",
+            "years": "2021–present",
+            "actions": [
+              {
+                "date": "2025-06-10",
+                "action": "Voted for",
+                "outcome": "Passed 6–3",
+                "text": "The 2025–26 city budget, including $4M more for after-school and summer learning programs",
+                "source": "City Council Minutes, June 10, 2025",
+                "sourceUrl": "https://example.org/sampleville/council-minutes-2025-06-10"
+              },
+              {
+                "date": "2024-03-19",
+                "action": "Voted against",
+                "outcome": "Failed 4–5",
+                "text": "Renewing the agreement for city jails to hold people for ICE without a judge's warrant",
+                "source": "City Council Roll Call, Resolution 24-031",
+                "sourceUrl": "https://example.org/sampleville/res-24-031"
+              },
+              {
+                "date": "2023-09-05",
+                "action": "Voted for",
+                "outcome": "Passed 7–2",
+                "text": "A two-year bus rapid transit pilot on Main Street",
+                "source": "City Council Minutes, Sept 5, 2023",
+                "sourceUrl": "https://example.org/sampleville/council-minutes-2023-09-05"
+              }
+            ]
+          }
+        },
+        {
+          "id": "c2",
+          "name": "Marcus Ohlin",
+          "party": "Nonpartisan",
+          "occupation": "Small Business Owner"
+        }
+      ],
+      "issues": [
+        {
+          "id": "transit",
+          "name": "Public Transit Funding",
+          "tags": [
+            "transit",
+            "transportation",
+            "infrastructure",
+            "taxes"
+          ],
+          "description": "How much city money should go to buses, light rail and road repair.",
+          "stances": {
+            "c1": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Doubling bus frequency on every major corridor"
+                },
+                {
+                  "stance": "supports",
+                  "text": "The city paying for transit expansion"
+                }
+              ],
+              "quote": "We will double bus frequency on every major corridor, and the city will pay for it.",
+              "source": "Mayoral Debate, League of Voters Forum",
+              "sourceUrl": "https://example.org/sampleville/debate-2026-09-14",
+              "realWorldImpact": "Expect more frequent buses and new routes, funded partly by a proposed 0.25% sales tax increase. Commuters without cars gain the most, while everyone pays slightly more at the register."
+            },
+            "c2": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Riders and private partners covering transit costs"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Citywide taxes to fund transit"
+                }
+              ],
+              "quote": "Riders and private partners should carry transit costs, not every taxpayer in the city.",
+              "source": "Ohlin for Mayor: Platform, Section 3",
+              "sourceUrl": "https://example.org/sampleville/ohlin-platform#transit",
+              "realWorldImpact": "Local taxes would likely stay flat, but bus fares could rise and low-ridership routes may be cut. Service would depend more on private contractors and ridership revenue."
+            }
+          }
+        },
+        {
+          "id": "housing",
+          "name": "Affordable Housing",
+          "tags": [
+            "housing",
+            "rent",
+            "zoning",
+            "development"
+          ],
+          "description": "Whether the city should build or subsidize housing, or loosen zoning so private builders add supply.",
+          "stances": {
+            "c1": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A housing bond for income-restricted homes"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Allowing taller buildings near transit stations"
+                }
+              ],
+              "quote": "I support a housing bond, paired with zoning reform near transit stations.",
+              "source": "Sampleville Herald Candidate Questionnaire",
+              "sourceUrl": "https://example.org/sampleville/herald-questionnaire-whitfield",
+              "realWorldImpact": "A voter-approved bond would add a small amount to property tax bills to fund income-restricted units. Some neighborhoods near transit would see taller buildings permitted."
+            },
+            "c2": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Faster permits so private builders add housing"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "City subsidies for housing"
+                }
+              ],
+              "quote": "Cut the permit backlog and let builders build. Supply is the answer, not subsidies.",
+              "source": "Chamber of Commerce Candidate Forum",
+              "sourceUrl": "https://example.org/sampleville/chamber-forum-2026",
+              "realWorldImpact": "Permits would move faster and fees could drop, which may increase new market-rate housing. There would be little direct city spending on income-restricted units."
+            }
+          }
+        },
+        {
+          "id": "immigration",
+          "name": "Immigration",
+          "tags": [
+            "immigration",
+            "federal policy",
+            "public safety",
+            "legal aid"
+          ],
+          "description": "City funding for immigrant legal aid and how local police coordinate with federal immigration enforcement.",
+          "stances": {
+            "c1": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "City-funded legal aid to help immigrant families stay together"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Local police holding people for ICE without a judge's warrant"
+                }
+              ],
+              "quote": "Our police should focus on local safety. I'd fund a legal-aid office for immigrant families.",
+              "source": "Community Town Hall, Eastside Library",
+              "sourceUrl": "https://example.org/sampleville/townhall-eastside",
+              "realWorldImpact": "The city budget would include roughly $1.2M a year for legal aid and outreach. Local police would limit honoring federal detainer requests without a judicial warrant."
+            },
+            "c2": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Local police cooperating with ICE detainer requests under federal law"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Spending city money on immigrant legal services"
+                }
+              ],
+              "quote": "The city should follow federal law and not spend local dollars on federal responsibilities.",
+              "source": "Mayoral Debate, League of Voters Forum",
+              "sourceUrl": "https://example.org/sampleville/debate-2026-09-14",
+              "realWorldImpact": "No new city spending on immigrant legal services would be added to the budget. Local police would continue to honor federal detainer requests under existing practice."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "council-1",
+      "office": "City Council",
+      "category": "Legislative",
+      "district": "District 1",
+      "districtId": "council-1",
+      "candidates": [
+        {
+          "id": "c3",
+          "name": "Priya Anand",
+          "party": "Nonpartisan",
+          "occupation": "Public School Teacher",
+          "record": {
+            "office": "North Unified School Board, Seat 1",
+            "years": "2019–2023",
+            "actions": [
+              {
+                "date": "2022-05-24",
+                "action": "Voted for",
+                "outcome": "Passed 4–1",
+                "text": "The 2022–23 district budget, raising starting teacher pay by 6%",
+                "source": "North Unified Board Minutes, May 24, 2022",
+                "sourceUrl": "https://example.org/sampleville/nu-board-2022-05-24"
+              },
+              {
+                "date": "2021-11-09",
+                "action": "Voted against",
+                "outcome": "Failed 2–3",
+                "text": "Closing Lincoln Elementary to cut maintenance costs",
+                "source": "North Unified Board Minutes, Nov 9, 2021",
+                "sourceUrl": "https://example.org/sampleville/nu-board-2021-11-09"
+              }
+            ]
+          }
+        },
+        {
+          "id": "c4",
+          "name": "Tom Brecker",
+          "party": "Nonpartisan",
+          "occupation": "Retired Firefighter"
+        },
+        {
+          "id": "c5",
+          "name": "Luis Cardenas",
+          "party": "Nonpartisan",
+          "occupation": "Civil Engineer"
+        }
+      ],
+      "issues": [
+        {
+          "id": "safety",
+          "name": "Public Safety Budget",
+          "tags": [
+            "public safety",
+            "police",
+            "fire",
+            "budget"
+          ],
+          "description": "How the district's share of public safety dollars should be split between police, fire and community programs.",
+          "stances": {
+            "c3": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Keeping police patrol staffing at current levels"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Mental-health responders for non-violent 911 calls"
+                }
+              ],
+              "quote": "Keep patrol staffing level and add mental-health responders for non-violent calls.",
+              "source": "District 1 Candidate Forum",
+              "sourceUrl": "https://example.org/sampleville/d1-forum",
+              "realWorldImpact": "A new crisis-response team would take some 911 calls currently handled by officers. This adds about $800K to the city budget without cutting patrol positions."
+            },
+            "c4": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Funding two more fire crews"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "New programs before response times improve"
+                }
+              ],
+              "quote": "Response times come first. Fund two more fire crews before any new programs.",
+              "source": "Brecker Campaign Website: Priorities",
+              "sourceUrl": "https://example.org/sampleville/brecker-priorities",
+              "realWorldImpact": "Fire and EMS response times in District 1 would likely improve. Funding would be shifted from other discretionary programs instead of raising taxes."
+            },
+            "c5": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Better dispatch technology to stretch the current budget"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "Growing the public safety budget"
+                }
+              ],
+              "quote": "We can get more from the budget we have through better dispatch technology.",
+              "source": "Sampleville Herald Candidate Questionnaire",
+              "sourceUrl": "https://example.org/sampleville/herald-questionnaire-cardenas",
+              "realWorldImpact": "Overall public safety spending would stay roughly flat. Improvements would come from software and process changes rather than new staff."
+            }
+          }
+        },
+        {
+          "id": "stormwater",
+          "name": "Flood & Stormwater Infrastructure",
+          "tags": [
+            "infrastructure",
+            "environment",
+            "flooding",
+            "utilities",
+            "taxes"
+          ],
+          "description": "Upgrading drainage in flood-prone blocks, and who pays for it.",
+          "stances": {
+            "c3": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A citywide stormwater fee on utility bills"
+                }
+              ],
+              "quote": "Flooding is a citywide problem and should be paid for citywide.",
+              "source": "District 1 Candidate Forum",
+              "sourceUrl": "https://example.org/sampleville/d1-forum",
+              "realWorldImpact": "A new stormwater fee of about $6 a month would appear on utility bills. Flood-prone streets would be prioritized for drainage upgrades within five years."
+            },
+            "c4": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Fixing the ten worst-flooding blocks with existing funds"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "A new stormwater fee for now"
+                }
+              ],
+              "quote": "Fix the worst ten blocks now with existing capital funds, then reassess.",
+              "source": "Neighborhood Association Meeting Minutes, Aug 2026",
+              "sourceUrl": "https://example.org/sampleville/na-minutes-2026-08",
+              "realWorldImpact": "No new fee in the short term, with targeted repairs funded from the current capital budget. Other planned capital projects could be delayed to cover it."
+            },
+            "c5": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "A dedicated stormwater utility, funded by a fee and a bond"
+                }
+              ],
+              "quote": "I've designed these systems. We need a full stormwater utility, bonded and built in one go.",
+              "source": "Cardenas for Council: Infrastructure Plan (PDF)",
+              "sourceUrl": "https://example.org/sampleville/cardenas-infrastructure.pdf",
+              "realWorldImpact": "A dedicated stormwater utility would be created with a monthly fee and a bond issue. Construction would be faster and broader, with higher upfront cost to households and businesses."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "council-2",
+      "office": "City Council",
+      "category": "Legislative",
+      "district": "District 2",
+      "districtId": "council-2",
+      "candidates": [
+        {
+          "id": "c6",
+          "name": "Grace Lindqvist",
+          "party": "Nonpartisan",
+          "occupation": "Nurse Practitioner"
+        },
+        {
+          "id": "c7",
+          "name": "Andre Moss",
+          "party": "Nonpartisan",
+          "occupation": "Restaurant Owner"
+        }
+      ],
+      "issues": [
+        {
+          "id": "smallbiz",
+          "name": "Small Business Taxes & Incentives",
+          "tags": [
+            "taxes",
+            "business",
+            "economy",
+            "jobs"
+          ],
+          "description": "Business license fees and incentives to fill vacant storefronts.",
+          "stances": {
+            "c6": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Grants for vacant storefronts that hire locally"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Paying for them from the existing economic development fund"
+                }
+              ],
+              "quote": "Targeted grants for storefronts that hire locally, funded by the existing economic development fund.",
+              "source": "District 2 Candidate Forum",
+              "sourceUrl": "https://example.org/sampleville/d2-forum",
+              "realWorldImpact": "Some vacant storefronts would receive startup grants tied to local hiring. Business taxes would stay at current levels."
+            },
+            "c7": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Dropping the business license fee for businesses under ten employees"
+                }
+              ],
+              "quote": "Eliminate the business license fee for anyone under ten employees. That's the incentive.",
+              "source": "Moss Campaign Mailer, Oct 2026",
+              "sourceUrl": "https://example.org/sampleville/moss-mailer-oct",
+              "realWorldImpact": "Small businesses would save a few hundred dollars a year in fees. The city would lose that revenue, which may require trims elsewhere in the general fund."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "school-north",
+      "office": "School Board",
+      "category": "Education",
+      "district": "North Unified, Seat 3",
+      "districtId": "school-north",
+      "candidates": [
+        {
+          "id": "c8",
+          "name": "Helen Okafor",
+          "party": "Nonpartisan",
+          "occupation": "Parent & PTA President"
+        },
+        {
+          "id": "c9",
+          "name": "Ryan Teague",
+          "party": "Nonpartisan",
+          "occupation": "Accountant"
+        }
+      ],
+      "issues": [
+        {
+          "id": "schoolbudget",
+          "name": "Education Budget",
+          "tags": [
+            "education",
+            "schools",
+            "teachers",
+            "taxes",
+            "budget"
+          ],
+          "description": "Whether to seek a local school levy to raise teacher pay and reduce class sizes.",
+          "stances": {
+            "c8": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Putting a school levy on the ballot"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Raising teacher pay to keep teachers from leaving"
+                }
+              ],
+              "quote": "We are losing teachers to neighboring districts. I'll put a levy on the ballot.",
+              "source": "North Unified Board Candidate Forum (video, 41:10)",
+              "sourceUrl": "https://example.org/sampleville/school-forum#t=2470",
+              "realWorldImpact": "Homeowners could see about $120 a year added to property taxes if voters approve the levy. Teacher salaries would rise and average class sizes would drop by an estimated two students."
+            },
+            "c9": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "An independent audit of district central-office spending"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "A new school tax before that audit"
+                }
+              ],
+              "quote": "Before asking taxpayers for more, we need an independent audit of central-office spending.",
+              "source": "Teague Campaign Website: Fiscal Plan",
+              "sourceUrl": "https://example.org/sampleville/teague-fiscal",
+              "realWorldImpact": "No new school tax would be proposed in the near term. Any raises for teachers would depend on savings found through the audit."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

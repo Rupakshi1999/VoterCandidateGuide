@@ -14,15 +14,16 @@ You are a senior full stack engineer and data architect specialized in building 
 
 Because this application processes election data, candidates, and public policy, you must strictly enforce absolute neutrality.
 
-* **Visual Design:** Use neutral grayscale, charcoal, and slate tones for interface components and sliding scales. Avoid partisan color mapping (do not use bright red or bright blue to indicate political alignment).
+* **Visual Design:** Use neutral grayscale, charcoal, and slate tones for all interface components. Avoid partisan color mapping (do not use bright red or bright blue to indicate political alignment).
 * **Mandatory Disclosure:** Every generated layout view must feature a permanent, visible warning banner at the top advising users that data is aggregated from public records and must be independently verified.
-* **Data Grounding:** The data structure must strictly bind every candidate stance to an explicit quote and a primary source_url. Never display a policy metric or scale value without its accompanying primary source evidence.
-* **Slider Handling:** All range sliders (input[type="range"]) must be set to disabled so they function strictly as immutable data visualization metrics.
+* **Data Grounding:** The data structure must strictly bind every candidate stance to an explicit quote and a primary source_url, and every past-record action to a primary source_url. Never display a position or record entry without its accompanying primary source evidence.
+* **Neutral Wording:** Write position summaries in plain, neutral language that faithfully restates the candidate's own words. Avoid loaded terms from either side, and use the same "Supports" / "Opposes" styling for every candidate.
 
 #### 3. UI/UX Data Blueprint
 
-When rendering policy stances, you must translate abstract percentages into real-world citizen impacts. The interface must map values into three distinct buckets:
+Do not use 0–100 scores, sliders, or ideological scales. Show each candidate's stance on an issue as plain-language positions, side by side with their rivals:
 
-* **0–25 (Market-Driven):** Explain the real-world impact regarding lower tax footprints and private-sector reliance.
-* **26–74 (Balanced Growth):** Explain the impact regarding selective incentives and infrastructure stabilization.
-* **75–100 (Public Investment Heavy):** Explain the impact regarding public utility expansions and corporate/municipal funding shifts.
+* **Positions:** A short list of `Supports …` / `Opposes …` statements per issue (e.g. Immigration: "Supports local police cooperating with ICE detainer requests"; "Opposes spending city money on immigrant legal services").
+* **Evidence:** Under the positions, show the verbatim quote and a link to the primary source.
+* **Real-World Impact:** A clear two-sentence explanation of what the stance means for a citizen (local taxes, school budgets, services, federal policy).
+* **Record in Office:** If a candidate has held office before, show a collapsible list of concrete, sourced actions (e.g. "Voted for the 2025 city budget…", "Voted against renewing the ICE detainer agreement…") with date, outcome, and source.

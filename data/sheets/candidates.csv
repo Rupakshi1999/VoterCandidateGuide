@@ -1,0 +1,10 @@
+candidate_id,race_id,name,party,occupation,record_office,record_years
+c1,mayor,Dana Whitfield,Nonpartisan,City Council Member,"Sampleville City Council, District 1",2021–present
+c2,mayor,Marcus Ohlin,Nonpartisan,Small Business Owner,,
+c3,council-1,Priya Anand,Nonpartisan,Public School Teacher,"North Unified School Board, Seat 1",2019–2023
+c4,council-1,Tom Brecker,Nonpartisan,Retired Firefighter,,
+c5,council-1,Luis Cardenas,Nonpartisan,Civil Engineer,,
+c6,council-2,Grace Lindqvist,Nonpartisan,Nurse Practitioner,,
+c7,council-2,Andre Moss,Nonpartisan,Restaurant Owner,,
+c8,school-north,Helen Okafor,Nonpartisan,Parent & PTA President,,
+c9,school-north,Ryan Teague,Nonpartisan,Accountant,,
