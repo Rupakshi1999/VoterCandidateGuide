@@ -45,23 +45,24 @@ Research is done in Claude Code sessions, not through the paid API. Run once for
 * Leave an issue out when there is no sourced position. The page already lists those as "Not yet on record." Never guess or fill gaps.
 
 **For every judicial candidate**, research:
-* Qualification ratings from bar association panels (e.g. the New York City Bar Association, county bar associations, the independent judicial qualification commissions) into `ratings.csv`.
-* Their record on the bench: notable opinions written or joined, how they ruled, with the official opinion as the source, into `record.csv`.
-* Public discipline from the NYS Commission on Judicial Conduct, if any, into `record.csv`.
-* Prior legal experience into `candidates.csv` (`occupation`, `record_office`, `record_years`).
+* Qualification ratings from bar association panels (e.g. the New York City Bar Association, county bar associations, the independent judicial qualification commissions) into the candidate's `ratings`.
+* Their record on the bench: notable opinions written or joined, how they ruled, with the official opinion as the source, into the candidate's `record`.
+* Public discipline from the NYS Commission on Judicial Conduct, if any, into the candidate's `record`.
+* Prior legal experience into `occupation` and `priorOffice`.
 * Stances only on how they say they decide cases. Judges may not promise rulings, so don't look for supports/opposes on policy.
 
 **For every candidate:**
-* `party` holds their ballot lines exactly as printed on the ballot (New York allows several, e.g. "Democratic, Working Families"). Copy them from the Board of Elections, not from news coverage.
-* Endorsements go in `endorsements.csv`, sourced to the endorser's own announcement. Record notable organizations, unions, newspapers and elected officials the same way for every candidate. Never single out one endorser, including the President or a party leader, in the data or the interface.
-* New votes, sponsored bills or rulings since the last run go in `record.csv`.
+* `ballotLines` holds their party lines exactly as printed on the ballot (New York allows several, e.g. "Democratic, Working Families"). Copy them from the Board of Elections, not from news coverage.
+* Endorsements go in the candidate's `endorsements`, sourced to the endorser's own announcement. Record notable organizations, unions, newspapers and elected officials the same way for every candidate. Never single out one endorser, including the President or a party leader, in the data or the interface.
+* New votes, sponsored bills or rulings since the last run go in the candidate's `record`.
+* All of a candidate's information lives in one file, `data/candidates/<first-last>.json` (format in the README). Never repeat race or issue details there; refer to them by id. Set `lastResearched` to the run date.
 
 **Sources:** primary sources only: campaign websites, official minutes and roll-call votes, court opinions, Board of Elections filings, debate transcripts, and news articles that quote the candidate directly. Never copy from other voter guides (Ballotpedia, Vote411, City & State guides). Quotes must be copied word for word from the page at `source_url`.
 
 **Steps each run:**
 1. Read `data/research-log.md` to see what the last run covered and what it left unfinished.
 2. Update races and candidates from the Board of Elections (new filings, withdrawals, ballot lines).
-3. Research, writing rows into `data/sheets/*.csv`.
+3. Research, creating or updating one file per candidate in `data/candidates/`. New races and issues go in `data/sheets/races.csv` and `issues.csv`.
 4. Run `node scripts/check-sources.mjs`. Fix or remove every failed row, and list every "check by hand" item for the user.
 5. Run `node scripts/build-data.mjs`.
 6. Add an entry to `data/research-log.md`: date, races covered, rows added or changed, items needing a human check, and what to do next run.
@@ -72,4 +73,4 @@ Research is done in Claude Code sessions, not through the paid API. Run once for
 * `cd:N` congressional, `sd:N` state senate, `ad:N` state assembly, `council:N` NYC Council, `nassau-leg:N` Nassau County Legislature, `school:<name>` school district, `jd:N` NY Supreme Court judicial district (Manhattan 1, Brooklyn 2, Nassau 10, Queens 11, Bronx 12, Staten Island 13)
 * Names are lowercase with hyphens, matching the U.S. Census Bureau's names (e.g. "Garden City Union Free School District" -> `school:garden-city-union-free-school-district`).
 
-**Known gap:** Nassau County Legislature districts have no public lookup service, so the page tells Nassau voters to check that district on the state voter lookup. If Nassau County publishes a boundary map service later, add it to the address lookup in `index.html` (section 8).
+**Known gaps:** Civil Court Municipal Court Districts (`civil:<county>-N`) have no public lookup either; those races are reachable by candidate search only. Nassau County Legislature districts have no public lookup service, so the page tells Nassau voters to check that district on the state voter lookup. If Nassau County publishes a boundary map service later, add it to the address lookup in `index.html` (section 8).

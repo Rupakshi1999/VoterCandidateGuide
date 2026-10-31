@@ -1,0 +1,62 @@
+{
+  "name": "Bruce A. Blakeman",
+  "runningMate": "Todd Hood",
+  "occupation": "Nassau County Executive",
+  "race": "governor",
+  "ballotLines": [
+    "Republican",
+    "Conservative",
+    "Vote Affordable"
+  ],
+  "priorOffice": {
+    "office": "Nassau County Executive",
+    "years": "2022–present"
+  },
+  "positions": [
+    {
+      "issue": "immigration",
+      "supports": [
+        "Local law enforcement working with ICE"
+      ],
+      "opposes": [
+        "Sanctuary policies"
+      ],
+      "quote": "Blakeman said NO to Kathy Hochul’s sanctuary policies, and worked with ICE to take criminals off our streets.",
+      "source": {
+        "title": "Bruce Blakeman for Governor (campaign site)",
+        "url": "https://www.blakemanfornewyork.com/"
+      },
+      "impact": "State and local police would likely cooperate more closely with federal immigration enforcement. Limits on that cooperation under current state policy could be rolled back."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "A strict approach to enforcing laws against crime"
+      ],
+      "opposes": [],
+      "quote": "Blakeman has a no-nonsense approach to fighting crime.",
+      "source": {
+        "title": "Bruce Blakeman for Governor (campaign site)",
+        "url": "https://www.blakemanfornewyork.com/"
+      },
+      "impact": "Expect an emphasis on police staffing and enforcement. His campaign points to hiring more than 900 police and law enforcement officers as County Executive."
+    },
+    {
+      "issue": "economy",
+      "supports": [
+        "Tax relief for homeowners and renters"
+      ],
+      "opposes": [],
+      "quote": "As Governor, he will deliver real relief to homeowners and renters - just as he did as County Executive.",
+      "source": {
+        "title": "Bruce Blakeman for Governor (campaign site)",
+        "url": "https://www.blakemanfornewyork.com/"
+      },
+      "impact": "Expect proposals aimed at lowering property-related costs for homeowners and renters. As County Executive he held county property taxes flat, according to his campaign."
+    }
+  ],
+  "record": [],
+  "endorsements": [],
+  "ratings": [],
+  "lastResearched": "2026-10-31"
+}

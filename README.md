@@ -16,11 +16,14 @@ Then visit http://localhost:8000.
 
 ## Editing candidate data
 
-Data lives in a Google Sheet (or the CSV files in `data/sheets/`) and is turned into `data/election.json` by a build script that refuses to publish anything without a source.
+Data lives in two places and is turned into `data/election.json` by a build script that refuses to publish anything without a source:
+
+- **Shared tables** in `data/sheets/` (or a Google Sheet): `meta`, `races`, `issues`, and the optional demo `districts`.
+- **One file per candidate** in `data/candidates/<first-last>.json`: everything about that person (their race, ballot lines, positions, record, endorsements, ratings) in one place. Races and issues are referred to by id, never copied.
 
 ### One-time Google Sheet setup
 
-1. Create a Google Sheet with tabs named exactly: `meta`, `districts`, `races`, `candidates`, `issues`, `stances`, `record`, plus the optional `endorsements` and `ratings`.
+1. Create a Google Sheet with tabs named exactly: `meta`, `races`, `issues`, plus the optional `districts`. (Candidate data stays in `data/candidates/`, not the sheet.)
 2. Fill each tab by importing the matching file from `data/sheets/` (File → Import → Upload → "Replace current sheet").
 3. Select the `zip` column in `districts` and the `date` column in `record`, then Format → Number → **Plain text**, so Sheets keeps leading zeros and dates as typed.
 4. Share → General access → **Anyone with the link: Viewer**.
@@ -32,7 +35,7 @@ Data lives in a Google Sheet (or the CSV files in `data/sheets/`) and is turned 
 node scripts/build-data.mjs --sheet <SHEET_ID> --save-csv
 ```
 
-This downloads the sheet, checks it, refreshes `data/sheets/*.csv` (so changes show in git diffs) and writes `data/election.json`. Commit and push both. If any row is missing a source, quote or position, the script lists the row numbers and leaves `election.json` unchanged.
+This downloads the sheet, checks it, refreshes `data/sheets/*.csv` (so changes show in git diffs) and writes `data/election.json`. Commit and push both. If anything is missing a source, quote or position, the script names the file and field (or sheet row) and leaves `election.json` unchanged.
 
 Without a sheet, edit the CSV files directly and run `node scripts/build-data.mjs`.
 
@@ -51,7 +54,7 @@ When an address is outside Nassau County and NYC, or its races haven't been adde
 
 ## Researching candidates with Claude Code
 
-New stances and records are drafted in Claude Code (included with Claude Pro, no API costs): ask it to research a race, and it searches primary sources and writes rows into `data/sheets/*.csv`. Then:
+New stances and records are drafted in Claude Code (included with Claude Pro, no API costs): ask it to research a race, and it searches primary sources and writes or updates the candidates' files in `data/candidates/`. Then:
 
 1. **Check every quote against its source:**
 
@@ -60,7 +63,7 @@ New stances and records are drafted in Claude Code (included with Claude Pro, no
    ```
 
    It opens each `source_url` and confirms the quote appears word for word (and that record entries mention the candidate). Failed rows must be fixed or removed. PDFs and videos are listed as "check by hand": open them and confirm yourself.
-2. **Read the diff** (`git diff data/sheets`) and make sure each supports/opposes line fairly restates its quote.
+2. **Read the diff** (`git diff data`) and make sure each supports/opposes line fairly restates its quote.
 3. **Build** with `node scripts/build-data.mjs`, then commit.
 
 Primary sources only: campaign sites, official minutes and roll-call votes, court opinions, debate transcripts, and news articles that quote the candidate directly. Never copy from other voter guides.
@@ -69,14 +72,38 @@ Primary sources only: campaign sites, official minutes and roll-call votes, cour
 
 | Tab | Columns | Notes |
 | --- | --- | --- |
-| `meta` | key, value | `jurisdiction`, `electionDate`, `lastUpdated` (YYYY-MM-DD), `isSampleData` (true/false) |
-| `districts` | zip, district_id | One row per ZIP + district on that ballot |
-| `races` | race_id, office, category, district, district_id, kind | `kind` is `office` (default) or `judicial`. Judicial races lead with the candidate's record on the bench; stances are optional |
-| `candidates` | candidate_id, race_id, name, party, occupation, record_office, record_years | `party` = ballot lines exactly as printed (e.g. `Democratic, Working Families`). Fill `record_office` only for people who held office before |
-| `issues` | issue_id, race_id, name, description, tags | `issue_id` must be unique across all races; tags are comma-separated search words. `race_id` = `all` makes it a shared voter concern asked of every non-judicial candidate |
-| `stances` | issue_id, candidate_id, supports, opposes, quote, source, source_url, real_world_impact | Several supports/opposes go on separate lines in one cell (Ctrl/Cmd+Enter) |
-| `record` | candidate_id, date, action, text, outcome, source, source_url | e.g. action `Voted for`, outcome `Passed 6–3`. For judges: `Wrote the majority opinion in`, `Dissented in` |
-| `endorsements` (optional) | candidate_id, endorser, endorser_type, date, source, source_url | Source = the endorser's own announcement. Recorded the same way for every candidate |
-| `ratings` (optional) | candidate_id, rater, rating, date, source, source_url | Qualification ratings, mainly bar association ratings of judicial candidates |
+| `meta` | key, value | `jurisdiction`, `electionDate`, `lastUpdated` (YYYY-MM-DD), `isSampleData` (true/false), coverage form settings |
+| `districts` (optional) | zip, district_id | Demo ZIP lookup only; real addresses use the district keys in `claude.md` |
+| `races` | race_id, office, category, district, district_id, kind | `district_id` is a lookup key such as `cd:3` or `county:nassau`. `kind` is `office` (default) or `judicial` |
+| `issues` | issue_id, race_id, name, description, tags | `issue_id` must be unique; tags are comma-separated search words. `race_id` = `all` makes it a shared voter concern asked of every non-judicial candidate |
+
+### Candidate files
+
+`data/candidates/jane-doe.json` (the file name is the candidate's id):
+
+```json
+{
+  "name": "Jane Doe",
+  "occupation": "State Senator",
+  "race": "sd-6",
+  "ballotLines": ["Democratic", "Working Families"],
+  "priorOffice": { "office": "NYS Senate, District 6", "years": "2023–present" },
+  "positions": [
+    {
+      "issue": "immigration",
+      "supports": ["…"], "opposes": ["…"],
+      "quote": "Word for word from the source page.",
+      "source": { "title": "Campaign site: Issues", "url": "https://…" },
+      "impact": "Two sentences on what this means for a resident."
+    }
+  ],
+  "record": [{ "date": "2025-06-10", "action": "Voted for", "text": "…", "outcome": "Passed 40–22", "source": { "title": "…", "url": "https://…" } }],
+  "endorsements": [{ "endorser": "…", "type": "Union", "date": "2026-08-02", "source": { "title": "…", "url": "https://…" } }],
+  "ratings": [{ "rater": "…", "rating": "Qualified", "date": "2026-08-15", "source": { "title": "…", "url": "https://…" } }],
+  "lastResearched": "2026-10-31"
+}
+```
+
+`ballotLines` are copied exactly from the Board of Elections. `priorOffice` is `null` for people who haven't held office. Empty lists are fine. For judges, use record actions such as `Wrote the majority opinion in` or `Dissented in`.
 
 Write `supports` / `opposes` lines in plain, neutral words that restate the candidate's own quote.

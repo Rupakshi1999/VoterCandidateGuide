@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /*
-  Builds data/election.json from seven spreadsheet tabs:
-    meta, districts, races, candidates, issues, stances, record
+  Builds data/election.json from:
+    - shared tables: meta, districts (demo ZIPs, optional), races, issues
+    - one file per candidate: data/candidates/<person-id>.json (see README for the format)
   races.kind is "office" (default) or "judicial" (judges: record first, stances optional).
 
   Sources (pick one):
@@ -9,7 +10,7 @@
     node scripts/build-data.mjs --sheet <SHEET_ID>  reads a Google Sheet shared as
                                                     "Anyone with the link: Viewer"
     Add --save-csv with --sheet to also refresh data/sheets/*.csv, so every data
-    change shows up as a reviewable git diff.
+    change shows up as a reviewable git diff. Candidate files are always read from disk.
 
   The build fails (exit 1) on any rule violation, so ungrounded data never ships:
   every stance needs a position, quote, source, http(s) source_url and impact;
@@ -18,7 +19,7 @@
 */
 import fs from "node:fs";
 import path from "node:path";
-import { ROOT, CSV_DIR, TABS, OPTIONAL_TABS, parseCsv } from "./common/sheets.mjs";
+import { ROOT, CSV_DIR, TABS, OPTIONAL_TABS, parseCsv, readCandidates } from "./common/sheets.mjs";
 
 const OUT = path.join(ROOT, "data", "election.json");
 
@@ -42,7 +43,31 @@ async function loadTabs(sheetId, saveCsv) {
     }
     tabs[tab] = parseCsv(text);
   }
-  return tabs;
+  return { ...tabs, ...flattenCandidates() };
+}
+
+/* Turns each candidate file into the rows the checks below validate. Every row
+   remembers where it came from, so errors point at the file and field. */
+function flattenCandidates() {
+  const t = { candidates: [], stances: [], record: [], endorsements: [], ratings: [], fileErrors: [] };
+  const src = (s) => ({ source: s?.title?.trim() || "", source_url: s?.url?.trim() || "" });
+  const arr = (v) => (Array.isArray(v) ? v : []);
+  for (const { id, file, data: d, error } of readCandidates()) {
+    if (error) { t.fileErrors.push(`${file}: ${error}`); continue; }
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id)) t.fileErrors.push(`${file}: file name must be lowercase-with-hyphens (e.g. jane-doe.json)`);
+    t.candidates.push({ _where: file, candidate_id: id, race_id: d.race || "", name: d.name || "", running_mate: d.runningMate || "",
+      party: arr(d.ballotLines).join(", "), occupation: d.occupation || "",
+      record_office: d.priorOffice?.office || "", record_years: d.priorOffice?.years || "" });
+    arr(d.positions).forEach((p, i) => t.stances.push({ _where: `${file} positions[${i}]`, issue_id: p.issue || "", candidate_id: id,
+      supports: arr(p.supports).join("\n"), opposes: arr(p.opposes).join("\n"), quote: p.quote || "", ...src(p.source), real_world_impact: p.impact || "" }));
+    arr(d.record).forEach((r, i) => t.record.push({ _where: `${file} record[${i}]`, candidate_id: id, date: r.date || "",
+      action: r.action || "", text: r.text || "", outcome: r.outcome || "", ...src(r.source) }));
+    arr(d.endorsements).forEach((e, i) => t.endorsements.push({ _where: `${file} endorsements[${i}]`, candidate_id: id,
+      endorser: e.endorser || "", endorser_type: e.type || "", date: e.date || "", ...src(e.source) }));
+    arr(d.ratings).forEach((r, i) => t.ratings.push({ _where: `${file} ratings[${i}]`, candidate_id: id,
+      rater: r.rater || "", rating: r.rating || "", date: r.date || "", ...src(r.source) }));
+  }
+  return t;
 }
 
 /* ---------- Normalizers (Sheets can turn "00101" into 101 or dates into 6/10/2025) ---------- */
@@ -59,7 +84,9 @@ const isDate = (v) => /^\d{4}-\d{2}-\d{2}$/.test(v);
 /* ---------- Build + validate ---------- */
 function build(t) {
   const errors = [], warnings = [];
-  const err = (tab, i, msg) => errors.push(`${tab} row ${i + 2}: ${msg}`); // +2 = header + 1-based
+  // Candidate rows say which file/field they came from; CSV rows give the row number (+2 = header + 1-based).
+  const err = (tab, i, msg) => errors.push(`${t[tab][i]?._where ?? `${tab} row ${i + 2}`}: ${msg}`);
+  errors.push(...t.fileErrors);
 
   const meta = Object.fromEntries(t.meta.map((r) => [r.key, r.value]));
   meta.isSampleData = String(meta.isSampleData).toLowerCase() === "true";
@@ -81,8 +108,10 @@ function build(t) {
     if (races.has(r.race_id)) return err("races", i, `duplicate race_id "${r.race_id}"`);
     const kind = (r.kind || "office").toLowerCase();
     if (!["office", "judicial"].includes(kind)) return err("races", i, `kind must be "office" or "judicial", not "${r.kind}"`);
+    const seats = Number(r.seats || 1);
+    if (!Number.isInteger(seats) || seats < 1) return err("races", i, `seats must be a whole number, not "${r.seats}"`);
     races.set(r.race_id, { id: r.race_id, kind, office: r.office, category: r.category, district: r.district,
-      districtId: r.district_id, candidates: [], issues: [] });
+      districtId: r.district_id, seats, candidates: [], issues: [] });
   });
 
   const candidates = new Map();
@@ -92,6 +121,7 @@ function build(t) {
     if (!r.candidate_id || !r.name) return err("candidates", i, "needs candidate_id and name");
     if (candidates.has(r.candidate_id)) return err("candidates", i, `duplicate candidate_id "${r.candidate_id}"`);
     const c = { id: r.candidate_id, name: r.name, party: r.party, occupation: r.occupation };
+    if (r.running_mate) c.runningMate = r.running_mate;
     if (r.record_office) c.record = { office: r.record_office, years: r.record_years, actions: [] };
     candidates.set(c.id, { c, raceId: race.id });
     race.candidates.push(c);
@@ -161,7 +191,7 @@ function build(t) {
   });
 
   // District keys the page's address lookup produces (see index.html section 8).
-  const KEY = /^(state:ny|city:nyc|(cd|sd|ad|council|jd|nassau-leg):\d+|(county|borough|town|place|school):[a-z0-9-]+)$/;
+  const KEY = /^(state:ny|city:nyc|(cd|sd|ad|council|jd|nassau-leg):\d+|(county|borough|town|place|school):[a-z0-9-]+|civil:[a-z-]+-\d+)$/;
   const demoDistricts = new Set(Object.values(zipIndex).flat());
   for (const race of races.values())
     if (!KEY.test(race.districtId) && !demoDistricts.has(race.districtId))
@@ -197,4 +227,5 @@ if (errors.length) {
 }
 fs.writeFileSync(OUT, JSON.stringify(db, null, 2) + "\n");
 const n = (k) => db.races.reduce((a, r) => a + r[k].length, 0);
-console.log(`Wrote data/election.json: ${db.races.length} races, ${n("candidates")} candidates, ${n("issues")} issues (source: ${sheetId ? "Google Sheet" : "data/sheets/*.csv"}).`);
+const uniqueIssues = new Set(db.races.flatMap((r) => r.issues.map((i) => i.id))).size;
+console.log(`Wrote data/election.json: ${db.races.length} races, ${n("candidates")} candidates, ${uniqueIssues} issues (source: ${sheetId ? "Google Sheet" : "data/sheets/*.csv"}).`);

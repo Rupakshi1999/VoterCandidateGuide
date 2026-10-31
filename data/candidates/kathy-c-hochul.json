@@ -1,0 +1,87 @@
+{
+  "name": "Kathy C. Hochul",
+  "runningMate": "Adrienne E. Adams",
+  "occupation": "Governor of New York",
+  "race": "governor",
+  "ballotLines": [
+    "Democratic",
+    "Working Families"
+  ],
+  "priorOffice": {
+    "office": "Governor of New York",
+    "years": "2021–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Lowering costs for households",
+        "Returning money to New Yorkers through state refunds and credits"
+      ],
+      "opposes": [],
+      "quote": "As Governor, Kathy has taken decisive action to put money back in people’s pockets, lower costs, and invest in keeping New Yorkers safe.",
+      "source": {
+        "title": "About | Governor Kathy Hochul (campaign site)",
+        "url": "https://kathyhochul.com/about/"
+      },
+      "impact": "Expect a continued focus on state rebates, refunds and credits aimed at household costs. Specific new measures would depend on the budget the Legislature passes."
+    },
+    {
+      "issue": "income-gap",
+      "supports": [
+        "Middle-class tax cuts",
+        "A larger child tax credit"
+      ],
+      "opposes": [],
+      "quote": "She sent inflation refund checks to over 8 million New Yorkers, secured universal free school meals for all students, tripled the child tax credit, made historic middle-class tax cuts, banned cell phones during school hours, and enacted landmark gun safety legislation.",
+      "source": {
+        "title": "About | Governor Kathy Hochul (campaign site)",
+        "url": "https://kathyhochul.com/about/"
+      },
+      "impact": "Middle-income families and parents would likely keep the lower state tax rates and larger child credit already in place. Whether they grow further depends on future state budgets."
+    },
+    {
+      "issue": "crime",
+      "supports": [
+        "State investment in public safety"
+      ],
+      "opposes": [],
+      "quote": "She is fighting to lower costs, invest in public safety, and stand up to Trump.",
+      "source": {
+        "title": "About | Governor Kathy Hochul (campaign site)",
+        "url": "https://kathyhochul.com/about/"
+      },
+      "impact": "State funding for public safety programs would likely continue at current or higher levels. The campaign site doesn't detail which programs."
+    },
+    {
+      "issue": "abortion",
+      "supports": [
+        "Legal protections for abortion access in New York"
+      ],
+      "opposes": [],
+      "quote": "Protected abortion rights in New York",
+      "source": {
+        "title": "Accomplishments | Governor Kathy Hochul (campaign site)",
+        "url": "https://kathyhochul.com/accomplishments/"
+      },
+      "impact": "Abortion would likely remain legally available in New York under existing state protections. State policy would be unlikely to add new restrictions."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Holding federal immigration (ICE) agents accountable"
+      ],
+      "opposes": [],
+      "quote": "Holding ICE agents accountable",
+      "source": {
+        "title": "Accomplishments | Governor Kathy Hochul (campaign site)",
+        "url": "https://kathyhochul.com/accomplishments/"
+      },
+      "impact": "State policy would likely keep limits on how state and local agencies cooperate with federal immigration enforcement. The campaign site doesn't spell out specific new measures."
+    }
+  ],
+  "record": [],
+  "endorsements": [],
+  "ratings": [],
+  "lastResearched": "2026-10-31"
+}

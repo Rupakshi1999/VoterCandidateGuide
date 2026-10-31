@@ -1,13 +1,18 @@
-/* Shared CSV reading for the seven data tabs in data/sheets/. No dependencies. */
+/*
+  Shared data reading. No dependencies.
+  - data/sheets/*.csv: shared tables (meta, districts, races, issues), editable as a Google Sheet.
+  - data/candidates/<person-id>.json: everything about one candidate, in one file.
+*/
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 export const CSV_DIR = path.join(ROOT, "data", "sheets");
-export const TABS = ["meta", "districts", "races", "candidates", "issues", "stances", "record", "endorsements", "ratings"];
-// Added later; a sheet or folder without them still builds. Value = a column that proves it's the right tab.
-export const OPTIONAL_TABS = { endorsements: "endorser", ratings: "rater" };
+export const CANDIDATE_DIR = path.join(ROOT, "data", "candidates");
+export const TABS = ["meta", "districts", "races", "issues"];
+// Tabs a sheet or folder may leave out. Value = a column that proves it's the right tab.
+export const OPTIONAL_TABS = { districts: "zip" };
 
 /* Parses CSV text into objects keyed by the (lowercased) header row. Handles quoted commas and newlines. */
 export function parseCsv(text) {
@@ -39,4 +44,17 @@ export function readTab(tab) {
   // Header names are plain words (no quotes or commas), so a simple split is enough.
   const header = text.split(/\r?\n/)[0].split(",").map((h) => h.trim().toLowerCase());
   return { header, rows: parseCsv(text) };
+}
+
+/* Reads data/candidates/*.json. The file name (without .json) is the candidate's id. */
+export function readCandidates() {
+  if (!fs.existsSync(CANDIDATE_DIR)) return [];
+  return fs.readdirSync(CANDIDATE_DIR).filter((f) => f.endsWith(".json")).sort().map((f) => {
+    const file = `data/candidates/${f}`;
+    try {
+      return { id: f.slice(0, -5), file, data: JSON.parse(fs.readFileSync(path.join(CANDIDATE_DIR, f), "utf8")) };
+    } catch (err) {
+      return { id: f.slice(0, -5), file, error: `not valid JSON (${err.message})` };
+    }
+  });
 }

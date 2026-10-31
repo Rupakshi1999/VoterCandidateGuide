@@ -1,8 +1,8 @@
 key,value
-jurisdiction,Sampleville
+jurisdiction,Nassau County and New York City
 electionDate,2026-11-03
 lastUpdated,2026-10-31
-isSampleData,true
+isSampleData,false
 coverageFormAction,
 coverageFormTownField,
 coverageFormZipField,

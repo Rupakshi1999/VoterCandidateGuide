@@ -116,6 +116,7 @@
   }
   .person strong { display: block; font-size: 14px; }
   .person span { color: var(--muted); }
+  .person .mate { display: block; color: var(--ink-2); }
   .person.hit { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
   .vs { align-self: center; font-size: 12px; color: var(--muted); }
   .served { display: block; margin-top: 4px; font-size: 11px; font-style: normal; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
@@ -238,7 +239,7 @@
           </div>
           <ul id="addrSuggest" class="suggest" role="listbox" aria-label="Address suggestions" hidden></ul>
         </div>
-        <p class="hint" id="addrHint">As you type, your text goes to Photon (OpenStreetMap) for suggestions, and the address you choose goes to the U.S. Census Bureau to find your districts. This site doesn't store it. Demo ballots: ZIP <code>00101</code> or <code>00102</code>.</p>
+        <p class="hint" id="addrHint">As you type, your text goes to Photon (OpenStreetMap) for suggestions, and the address you choose goes to the U.S. Census Bureau to find your districts. This site doesn't store it.</p>
       </form>
     </div>
   </div>
@@ -438,7 +439,7 @@ function renderRace({ race, issues, unanswered, hitCands }) {
   const shown = filter ? issues.filter((i) => issueHit(i, filter)) : issues;
 
   const roster = race.candidates.map((c) =>
-    `<div class="person${hitCands.has(c.id) ? " hit" : ""}"><strong>${esc(c.name)}</strong><span>${esc(c.party)} · ${esc(c.occupation)}</span>${
+    `<div class="person${hitCands.has(c.id) ? " hit" : ""}"><strong>${esc(c.name)}</strong>${c.runningMate ? `<span class="mate">with ${esc(c.runningMate)} for Lt. Governor</span>` : ""}<span>${[c.party, c.occupation].filter(Boolean).map(esc).join(" · ")}</span>${
       recordActions(c).length ? `<em class="served">${judicial ? "Has served as a judge" : "Has held office"}</em>` : ""}</div>`
   ).join('<span class="vs">vs</span>');
   const records = race.candidates.filter((c) => recordActions(c).length).map((c) => renderRecord(c, judicial)).join("");
@@ -458,7 +459,7 @@ function renderRace({ race, issues, unanswered, hitCands }) {
 
   return `<article class="race" id="race-${race.id}">
     <div class="race-head">
-      <div class="eyebrow">${esc(race.category)} · ${race.candidates.length} candidate${race.candidates.length === 1 ? "" : "s"}</div>
+      <div class="eyebrow">${esc(race.category)} · ${race.candidates.length} candidate${race.candidates.length === 1 ? "" : "s"}${race.seats > 1 ? ` · vote for up to ${race.seats}` : ""}</div>
       <h2>${esc(race.office)}: ${esc(race.district)}</h2>
       <div class="roster">${roster}</div>
       ${records || renderBacking(race, judicial) ? `<div class="records">${records}${renderBacking(race, judicial)}</div>` : ""}

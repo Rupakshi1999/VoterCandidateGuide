@@ -1,8 +1,0 @@
-candidate_id,date,action,text,outcome,source,source_url
-c1,2025-06-10,Voted for,"The 2025–26 city budget, including $4M more for after-school and summer learning programs",Passed 6–3,"City Council Minutes, June 10, 2025",https://example.org/sampleville/council-minutes-2025-06-10
-c1,2024-03-19,Voted against,Renewing the agreement for city jails to hold people for ICE without a judge's warrant,Failed 4–5,"City Council Roll Call, Resolution 24-031",https://example.org/sampleville/res-24-031
-c1,2023-09-05,Voted for,A two-year bus rapid transit pilot on Main Street,Passed 7–2,"City Council Minutes, Sept 5, 2023",https://example.org/sampleville/council-minutes-2023-09-05
-c3,2022-05-24,Voted for,"The 2022–23 district budget, raising starting teacher pay by 6%",Passed 4–1,"North Unified Board Minutes, May 24, 2022",https://example.org/sampleville/nu-board-2022-05-24
-c3,2021-11-09,Voted against,Closing Lincoln Elementary to cut maintenance costs,Failed 2–3,"North Unified Board Minutes, Nov 9, 2021",https://example.org/sampleville/nu-board-2021-11-09
-c10,2025-04-17,Wrote the majority opinion in,"Harlow v. Sampleville Housing Authority, requiring hearings before public-housing evictions",Decided 5–2,State Supreme Court Opinion No. 24-118,https://example.org/sampleville/opinion-24-118
-c10,2023-11-02,Dissented in,"State v. Reyes, which allowed evidence from a warrantless phone search",Decided 4–3,State Supreme Court Opinion No. 22-301,https://example.org/sampleville/opinion-22-301
