@@ -137,6 +137,24 @@
   .coverage-form { display: grid; gap: 10px; max-width: 420px; }
   .coverage-form label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
   .coverage-form .btn { justify-self: start; }
+  /* Category tabs: one page per race category; scroll sideways on phones instead of wrapping */
+  .cat-tabs { display: flex; gap: 6px; overflow-x: auto; margin: 0 0 16px; padding-bottom: 4px; scrollbar-width: thin; }
+  .cat-tabs button {
+    flex: 0 0 auto; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-2);
+    background: var(--surface); color: var(--ink-2); font-weight: 600; font-size: 14px; cursor: pointer; white-space: nowrap;
+  }
+  .cat-tabs button span { font-weight: 400; color: var(--muted); margin-left: 2px; }
+  .cat-tabs button[aria-selected="true"] { background: var(--ink-2); color: var(--surface); border-color: var(--ink-2); }
+  .cat-tabs button[aria-selected="true"] span { color: inherit; opacity: .8; }
+  .cat-pager { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; margin: 0 0 24px; }
+  .cat-pager .btn { font-size: 14px; padding: 8px 12px; }
+  .cat-pager .btn:last-child { justify-self: end; }
+  .cat-pager .btn:first-child { justify-self: start; }
+  .pager-count { font-size: 13px; color: var(--muted); }
+  .page.slide-next { animation: slide-next .22s ease-out; }
+  .page.slide-prev { animation: slide-prev .22s ease-out; }
+  @keyframes slide-next { from { transform: translateX(24px); opacity: .4; } to { transform: none; opacity: 1; } }
+  @keyframes slide-prev { from { transform: translateX(-24px); opacity: .4; } to { transform: none; opacity: 1; } }
   .not-on-record { margin: 0; padding: 12px 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
   .record { background: var(--surface); border: 1px solid var(--line-2); border-radius: 8px; }
   .record summary { padding: 10px 12px; cursor: pointer; font-weight: 600; font-size: 14px; }
@@ -150,10 +168,18 @@
   .all-toggle[aria-pressed="true"] { background: var(--ink-2); color: var(--surface); }
   .all-toggle[aria-pressed="true"]::before { content: "✓ "; }
 
-  .issue { padding: 16px; border-bottom: 1px solid var(--line); }
+  .issue { padding: 0 16px; border-bottom: 1px solid var(--line); }
   .issue:last-child { border-bottom: 0; }
-  .issue h3 { margin: 0 0 2px; font-size: 16px; }
+  .issue > summary { list-style: none; cursor: pointer; padding: 14px 0; display: flex; align-items: center; gap: 12px; }
+  .issue > summary::-webkit-details-marker { display: none; }
+  .issue > summary::after { content: "▾"; margin-left: auto; color: var(--muted); transition: transform .15s; }
+  .issue[open] > summary::after { transform: rotate(180deg); }
+  .issue-name { display: grid; gap: 2px; }
+  .issue h3 { margin: 0; font-size: 16px; }
+  .issue .on-record { font-size: 12px; color: var(--muted); }
   .issue .desc { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+  .issue[open] { padding-bottom: 16px; }
+  @media (prefers-reduced-motion: reduce) { .issue > summary::after, .page { transition: none !important; animation: none !important; } }
   .grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
   @media (min-width: 700px) { .grid { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); } }
 
@@ -314,15 +340,17 @@ electionDatabase.races.forEach((r) => r.candidates.sort((a, b) => lastName(a.nam
 /* =====================================================================
    3. STATE (mirrored in the URL hash so results are shareable)
    ===================================================================== */
-const state = { query: "", ballot: null, issueFilters: {}, allRaces: false, allFilter: "" };
+const state = { query: "", ballot: null, category: "", openIssues: new Set(), issueFilters: {}, allRaces: false, allFilter: "" };
 
 function readHash() {
   const p = new URLSearchParams(location.hash.slice(1));
   state.query = p.get("q") || "";
+  state.category = p.get("c") || "";
 }
 function writeHash() {
   const p = new URLSearchParams();
   if (state.query) p.set("q", state.query);
+  if (state.category) p.set("c", state.category);
   const h = p.toString();
   // Shareable links are a convenience; some contexts (file previews, sandboxed iframes) forbid this.
   try { history.replaceState(null, "", h ? "#" + h : location.pathname + location.search); } catch {}
@@ -444,15 +472,24 @@ function renderRace({ race, issues, unanswered, hitCands }) {
   ).join('<span class="vs">vs</span>');
   const records = race.candidates.filter((c) => recordActions(c).length).map((c) => renderRecord(c, judicial)).join("");
 
-  const issueHtml = shown.length ? shown.map((issue) => `
-    <section class="issue" aria-labelledby="h-${race.id}-${issue.id}">
-      ${issue.shared ? `<div class="eyebrow" title="One of the 11 issues U.S. voters rated most important in Gallup's October 2026 poll">Top U.S. voter concern</div>` : ""}
-      <h3 id="h-${race.id}-${issue.id}">${esc(issue.name)}</h3>
+  // Each issue is a dropdown: every issue is visible up front, positions open on tap.
+  const issueHtml = shown.length ? shown.map((issue) => {
+    const key = `${race.id}:${issue.id}`;
+    const onRecord = race.candidates.filter((c) => isGrounded(issue.stances[c.id])).length;
+    return `<details class="issue" data-key="${esc(key)}"${filter || state.openIssues.has(key) ? " open" : ""}>
+      <summary>
+        <span class="issue-name">
+          ${issue.shared ? `<span class="eyebrow" title="One of the 11 issues U.S. voters rated most important in Gallup's October 2026 poll">Top U.S. voter concern</span>` : ""}
+          <h3 id="h-${race.id}-${issue.id}">${esc(issue.name)}</h3>
+          <span class="on-record">${onRecord} of ${race.candidates.length} candidates on record</span>
+        </span>
+      </summary>
       <p class="desc">${esc(issue.description)}</p>
       <div class="grid" style="--n:${race.candidates.length}">
         ${race.candidates.map((c) => renderCell(race, issue, c, hitCands.has(c.id))).join("")}
       </div>
-    </section>`).join("")
+    </details>`;
+  }).join("")
     : `<div class="issue"><p class="missing">No issues in this race match “${esc(filter)}”.</p></div>`;
   const notOnRecord = !filter && unanswered.length
     ? `<p class="not-on-record">Not yet on record in this race: ${unanswered.map((i) => esc(i.name)).join(", ")}.</p>` : "";
@@ -503,12 +540,45 @@ function render() {
     return;
   }
 
+  // One page per race category (Statewide, Federal, Judicial…), so voters don't scroll the whole ballot.
+  const cats = [...new Set(view.map((v) => v.race.category))];
+  if (!cats.includes(state.category)) { state.category = cats[0]; writeHash(); }
+  const page = view.filter((v) => v.race.category === state.category);
+  const tabs = cats.length > 1 ? `<nav class="cat-tabs" role="tablist" aria-label="Race categories">${cats.map((c) => {
+    const n = view.filter((v) => v.race.category === c).length;
+    return `<button type="button" role="tab" data-cat="${esc(c)}" aria-selected="${c === state.category}">${esc(c)} <span>${n}</span></button>`;
+  }).join("")}</nav>` : "";
+
+  // Previous/next category, so each category reads as its own slide.
+  const at = cats.indexOf(state.category);
+  const pager = cats.length > 1 ? `<nav class="cat-pager" aria-label="More categories">
+    ${at > 0 ? `<button type="button" class="btn ghost" data-cat="${esc(cats[at - 1])}">◀ ${esc(cats[at - 1])}</button>` : "<span></span>"}
+    <span class="pager-count">${at + 1} of ${cats.length}</span>
+    ${at < cats.length - 1 ? `<button type="button" class="btn ghost" data-cat="${esc(cats[at + 1])}">${esc(cats[at + 1])} ▶</button>` : "<span></span>"}
+  </nav>` : "";
+  const slide = state.slide ? ` slide-${state.slide}` : "";
+  state.slide = "";
+
   // In-feed ad after the 2nd race block.
-  $("#results").innerHTML = notices + view.map((v, i) => renderRace(v) + (i === 1 && view.length > 2
+  $("#results").innerHTML = notices + tabs + `<div class="page${slide}" role="tabpanel" aria-label="${esc(state.category)} races">` +
+    page.map((v, i) => renderRace(v) + (i === 1 && page.length > 2
     ? `<!-- ================= ADSENSE SLOT: in-feed (START) ================= -->
        <div class="ad" aria-hidden="true">Advertisement</div>
-       <!-- ================= ADSENSE SLOT: in-feed (END) ================= -->` : "")).join("");
+       <!-- ================= ADSENSE SLOT: in-feed (END) ================= -->` : "")).join("") + `</div>` + pager;
 }
+
+/* Switches the category page; dir (+1/-1) sets which way the slide animates. */
+function showCategory(cat, dir) {
+  state.slide = dir > 0 ? "next" : dir < 0 ? "prev" : "";
+  state.category = cat;
+  writeHash();
+  render();
+  const nav = document.querySelector(".cat-tabs");
+  document.querySelector(`.cat-tabs button[data-cat="${CSS.escape(cat)}"]`)?.scrollIntoView({ block: "nearest", inline: "center" });
+  // Keep the tabs in view, so the new page starts right under them.
+  if (nav && nav.getBoundingClientRect().top < 0) nav.scrollIntoView({ block: "start" });
+}
+const categoryOrder = () => [...document.querySelectorAll(".cat-tabs button[data-cat]")].map((b) => b.dataset.cat);
 
 /* =====================================================================
    6. COMBOBOX (shared by the candidate and address inputs)
@@ -737,7 +807,7 @@ async function lookupBallot({ address, lat, lon, label, zip }) {
   }
   if (mine !== lookupSeq) return;
   state.ballot = { ...d, label: matched, zip: zip || (matched.match(/\b\d{5}\b/) || [])[0] || "" };
-  state.query = ""; qEl.value = ""; // full ballot, not a candidate search
+  state.query = ""; qEl.value = ""; state.category = ""; // full ballot from its first page, not a candidate search
   addrHint.textContent = d.covered ? `Showing the races for ${matched}.` : `${matched} isn't in the area this guide covers yet.`;
   writeHash();
   render();
@@ -849,6 +919,13 @@ results.addEventListener("input", (e) => {
   if (again) { again.focus(); again.setSelectionRange(pos, pos); }
 });
 results.addEventListener("click", (e) => {
+  const tab = e.target.closest("button[data-cat]");
+  if (tab) {
+    const order = categoryOrder();
+    showCategory(tab.dataset.cat, order.indexOf(tab.dataset.cat) - order.indexOf(state.category));
+    document.querySelector(`.cat-tabs button[data-cat="${CSS.escape(state.category)}"]`)?.focus({ preventScroll: true });
+    return;
+  }
   const toggle = e.target.closest("button[data-all]");
   if (toggle) {
     const id = toggle.dataset.all;
@@ -871,9 +948,32 @@ results.addEventListener("click", (e) => {
   render();
   document.querySelector(`button[data-race="${id}"][data-tag="${CSS.escape(chip.dataset.tag)}"]`)?.focus();
 });
+// Remember which issue dropdowns the voter opened, so re-drawing the page doesn't close them.
+// (Clicks only: issues opened automatically by a filter shouldn't stay open afterwards.)
+results.addEventListener("click", (e) => {
+  const details = e.target.closest("details.issue > summary")?.parentElement;
+  if (!details) return;
+  // The click hasn't toggled it yet, so "open" is the state before the click.
+  if (details.open) state.openIssues.delete(details.dataset.key); else state.openIssues.add(details.dataset.key);
+});
+
+// Swipe left/right on a phone to move between category slides.
+let touch = null;
+results.addEventListener("touchstart", (e) => {
+  touch = e.target.closest(".cat-tabs, input, .grid") ? null : { x: e.touches[0].clientX, y: e.touches[0].clientY };
+}, { passive: true });
+results.addEventListener("touchend", (e) => {
+  if (!touch) return;
+  const dx = e.changedTouches[0].clientX - touch.x, dy = e.changedTouches[0].clientY - touch.y;
+  touch = null;
+  if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return; // mostly vertical: a scroll, not a swipe
+  const order = categoryOrder(), next = order[order.indexOf(state.category) + (dx < 0 ? 1 : -1)];
+  if (next) showCategory(next, dx < 0 ? 1 : -1);
+}, { passive: true });
+
 $("#status").addEventListener("click", (e) => {
   if (e.target.id !== "resetAll") return;
-  state.query = ""; state.ballot = null; state.issueFilters = {}; state.allRaces = false; state.allFilter = "";
+  state.query = ""; state.ballot = null; state.category = ""; state.issueFilters = {}; state.allRaces = false; state.allFilter = "";
   qEl.value = ""; addrEl.value = ""; addrHint.innerHTML = ADDR_HINT;
   writeHash(); render();
 });
