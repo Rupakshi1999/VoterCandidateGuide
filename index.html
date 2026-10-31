@@ -94,6 +94,7 @@
   .suggest[hidden] { display: none; }
   .suggest [role="option"] { padding: 8px 10px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; gap: 12px; }
   .suggest [role="option"] small { color: var(--muted); text-align: right; }
+  .suggest .none { padding: 8px 10px; color: var(--muted); font-size: 14px; }
   .suggest [aria-selected="true"], .suggest [role="option"]:hover { background: var(--surface-2); }
 
   /* ---------- Status ---------- */
@@ -321,6 +322,15 @@ function writeHash() {
 function terms() {
   return state.query.split(",").map(norm).filter(Boolean);
 }
+// Typed names (as written) that match no candidate in the guide.
+function unmatchedNames() {
+  const names = electionDatabase.races.flatMap((r) => r.candidates.map((c) => norm(c.name)));
+  return state.query.split(",").map((t) => t.trim()).filter((t) => t && !names.some((n) => n.includes(norm(t))));
+}
+function notInGuide(names) {
+  const list = names.map((n) => `‘${n}’`).join(", ");
+  return `No candidate named ${list} in this guide yet`;
+}
 function issueHit(issue, t) {
   return norm(issue.name).includes(t) || issue.tags.some((tag) => tag.includes(t));
 }
@@ -430,7 +440,9 @@ function render() {
   const parts = [];
 
   if (state.zip) parts.push(`<span class="chip" aria-pressed="true">Ballot for ZIP ${esc(state.zip)}</span>`);
+  const missing = unmatchedNames();
   if (ts.length) parts.push(`<span>Showing results for <strong>${ts.map(esc).join(", ")}</strong></span>`);
+  if (missing.length && view.length) parts.push(`<span>${esc(notInGuide(missing))}.</span>`);
   parts.push(`<span>${view.length} race${view.length === 1 ? "" : "s"}</span>`);
   if (state.allRaces && state.allFilter.trim()) parts.push(`<span class="chip" aria-pressed="true">Issue “${esc(state.allFilter.trim())}” in all races</span>`);
   if (state.zip || ts.length || (state.allRaces && state.allFilter.trim())) parts.push(`<button class="chip" type="button" id="resetAll">Show all races</button>`);
@@ -439,7 +451,7 @@ function render() {
   if (!view.length) {
     $("#results").innerHTML = state.allRaces && state.allFilter.trim()
       ? `<div class="empty">No race has an issue matching “${esc(state.allFilter.trim())}”. Try another issue, or turn off “Apply to all races”.</div>`
-      : `<div class="empty">No candidates match. Check the spelling, or clear the search to see every race.</div>`;
+      : `<div class="empty">${esc(notInGuide(missing.length ? missing : ts))}. Check the spelling, or clear the search to see every race.</div>`;
     return;
   }
 
@@ -454,7 +466,7 @@ function render() {
    6. COMBOBOX (shared by the candidate and address inputs)
    getItems(text) may be async; stale responses are dropped.
    ===================================================================== */
-function combobox({ input, list, getItems, renderItem, onChoose }) {
+function combobox({ input, list, getItems, renderItem, onChoose, emptyText }) {
   let items = [], active = -1, seq = 0;
 
   function close() {
@@ -476,7 +488,15 @@ function combobox({ input, list, getItems, renderItem, onChoose }) {
     const result = await getItems(input.value);
     if (mine !== seq) return;
     items = result; active = -1;
-    if (!items.length || document.activeElement !== input) return close();
+    if (document.activeElement !== input) return close();
+    if (!items.length) {
+      const msg = emptyText?.(input.value);
+      if (!msg) return close();
+      list.innerHTML = `<li class="none" role="presentation">${esc(msg)}</li>`;
+      list.hidden = false;
+      input.setAttribute("aria-expanded", "true");
+      return;
+    }
     list.innerHTML = items.map((it, i) =>
       `<li role="option" id="${list.id}-${i}" data-i="${i}" aria-selected="false">${renderItem(it)}</li>`).join("");
     list.hidden = false;
@@ -485,10 +505,11 @@ function combobox({ input, list, getItems, renderItem, onChoose }) {
 
   input.addEventListener("keydown", (e) => {
     if (list.hidden) return;
+    if (e.key === "Escape") return close();
+    if (!items.length) return;
     if (e.key === "ArrowDown") { e.preventDefault(); mark((active + 1) % items.length); }
     else if (e.key === "ArrowUp") { e.preventDefault(); mark((active - 1 + items.length) % items.length); }
     else if (e.key === "Enter" && active >= 0) { e.preventDefault(); pick(active); }
-    else if (e.key === "Escape") close();
   });
   list.addEventListener("mousedown", (e) => {
     const li = e.target.closest('[role="option"]');
@@ -518,6 +539,10 @@ const candidateBox = combobox({
       .slice(0, 8);
   },
   renderItem: (c) => `${esc(c.name)}<small>${esc(c.race)}</small>`,
+  emptyText(text) {
+    const t = text.split(",").pop().trim();
+    return t ? notInGuide([t]) : "";
+  },
   onChoose(c) {
     const parts = qEl.value.split(",");
     parts[parts.length - 1] = c.name;
