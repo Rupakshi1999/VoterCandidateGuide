@@ -253,15 +253,15 @@
 
   .empty { text-align: center; padding: 40px 16px; color: var(--muted); background: var(--surface); border: 1px dashed var(--line-2); border-radius: var(--radius); }
 
-  /* ---------- Ad slots: fixed min-height reserves space so ads cause no layout shift (CLS) ---------- */
-  .ad {
-    margin: 20px 0; min-height: 100px; display: grid; place-items: center;
-    border: 1px dashed var(--line-2); border-radius: var(--radius); color: var(--muted); font-size: 12px;
+  /* ---------- Ad slots: shown only while they hold an ad unit, and hidden again when Google
+     returns no ad. Once shown, the min-height reserves space so the ad loading causes no layout shift (CLS). ---------- */
+  .ad { display: none; }
+  .ad[data-filled] {
+    display: block; margin: 20px 0; min-height: 100px; padding: 4px 0; text-align: center;
+    border: 1px dashed var(--line-2); border-radius: var(--radius); color: var(--muted);
   }
-  /* Full width, so the unit can size itself. place-items must be reset too: browsers now apply
-     justify-items to block boxes, which would shrink the empty <ins> to 0px and AdSense skips it. */
-  .ad[data-filled] { display: block; place-items: normal; text-align: center; padding: 4px 0; }
-  .ad[data-filled] .ad-label { display: block; font-size: 11px; }
+  .ad[data-filled]:has(ins[data-ad-status="unfilled"]) { display: none; }
+  .ad-label { display: block; font-size: 11px; }
   footer { padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
 
   /* ================= Ballot paper theme ================= */
@@ -390,8 +390,8 @@
 
 <main class="wrap">
   <!-- ================= ADSENSE SLOT: top-leaderboard (START) =================
-       fillAds() puts the ad unit (AD_SLOTS.top) inside. Keep the .ad wrapper:
-       its min-height reserves space so the ad loading does not shift content. -->
+       fillAds() puts the ad unit (AD_SLOTS.top) inside. Keep the .ad wrapper: it stays hidden
+       until it holds a unit, then its min-height reserves space so the ad loading does not shift content. -->
   <div class="ad" data-ad="top" aria-hidden="true"><span class="ad-label">Advertisement</span></div>
   <!-- ================= ADSENSE SLOT: top-leaderboard (END) ================= -->
 
@@ -444,7 +444,7 @@ const lastName = (n) => n.split(" ").slice(-1)[0];
 const safeUrl = (u) => (/^https?:\/\//i.test(u) ? u : null);
 
 /* AdSense ad units, one per .ad slot. Paste each unit's data-ad-slot number from
-   AdSense > Ads > By ad unit. A slot with no number keeps its "Advertisement" box. */
+   AdSense > Ads > By ad unit. A slot with no number, or one Google leaves unfilled, stays hidden. */
 const AD_CLIENT = "ca-pub-8189873120277504";
 const AD_SLOTS = { top: "", infeed: "4310396541", footer: "" };
 /* Slots that use an in-article unit instead of a responsive display unit. */
