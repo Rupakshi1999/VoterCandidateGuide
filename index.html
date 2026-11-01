@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NYC & Nassau County Voter Guide: Compare Candidates Side by Side</title>
 <meta name="description" content="Non-partisan guide to every race on your ballot in New York City and Nassau County. See where candidates stand, side by side, with each position tied to a quote and its primary source.">
-<meta name="theme-color" content="#1e293b">
+<meta name="theme-color" content="#1c1917">
 <!-- Search and link previews. If the domain changes, update these URLs, robots.txt, sitemap.xml and CNAME. -->
 <link rel="canonical" href="https://compareyourballot.org/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Local Voter Guide">
+<meta property="og:site_name" content="Compare Your Ballot">
 <meta property="og:title" content="NYC & Nassau County Voter Guide: Compare Candidates Side by Side">
 <meta property="og:description" content="Non-partisan guide to every race on your ballot in New York City and Nassau County. See where candidates stand, side by side, with each position tied to a quote and its primary source.">
 <meta property="og:url" content="https://compareyourballot.org/">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23334155'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23facc15'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11' fill='none' stroke='%231c1917' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preload" href="data/election.json" as="fetch" crossorigin>
 <!-- ================= ADSENSE: site script (START) =================
      Verifies the site with AdSense and loads ads. async, so it never blocks the page.
@@ -30,21 +30,26 @@
   unreachable. Everything here is inline, so the page is a single request.
 -->
 <style>
+  /* Theme: "Ballot paper" (cream paper, ink, highlighter yellow). Yellow is interface-only:
+     it never marks a party or candidate, and text is never set in yellow on light backgrounds. */
   :root {
-    --bg: #f8fafc; --surface: #ffffff; --surface-2: #f1f5f9;
-    --ink: #0f172a; --ink-2: #334155; --muted: #64748b;
-    --line: #e2e8f0; --line-2: #cbd5e1;
-    --fill: #334155; --track: #e2e8f0; --focus: #475569;
-    --notice-bg: #1e293b; --notice-ink: #f1f5f9;
-    --radius: 12px;
+    --bg: #fffbeb; --surface: #ffffff; --surface-2: #fef7dc;
+    --ink: #1c1917; --ink-2: #44403c; --muted: #6b635c;
+    --line: #e7e0d0; --line-2: #cfc6b4;
+    --focus: #1c1917;
+    --notice-bg: #1c1917; --notice-ink: #fffbeb;
+    --accent: #facc15; --accent-soft: #fde68a; --on-accent: #1c1917;
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --radius: 4px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0b1120; --surface: #111827; --surface-2: #1f2937;
-      --ink: #f1f5f9; --ink-2: #cbd5e1; --muted: #94a3b8;
-      --line: #1f2937; --line-2: #334155;
-      --fill: #cbd5e1; --track: #334155; --focus: #94a3b8;
-      --notice-bg: #e2e8f0; --notice-ink: #0f172a;
+      --bg: #1a1714; --surface: #24201c; --surface-2: #2e2924;
+      --ink: #faf7f0; --ink-2: #e7e0d0; --muted: #b5ac9f;
+      --line: #3a342d; --line-2: #514a41;
+      --focus: #facc15;
+      --notice-bg: #0e0c0a; --notice-ink: #faf7f0;
+      --accent-soft: rgba(250, 204, 21, .32);
     }
   }
   *, *::before, *::after { box-sizing: border-box; }
@@ -145,7 +150,7 @@
   /* ---------- Race block ---------- */
   .race { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 24px; overflow: hidden; }
   .race-head { padding: 16px; border-bottom: 1px solid var(--line); background: var(--surface-2); }
-  .eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .eyebrow { font-size: 13px; font-weight: 600; color: var(--muted); }
   .race-head h2 { margin: 2px 0 10px; font-size: 20px; }
   .roster { display: flex; flex-wrap: wrap; gap: 8px; }
   .person {
@@ -156,13 +161,13 @@
   .person .mate { display: block; color: var(--ink-2); }
   .person.hit { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
   .vs { align-self: center; font-size: 12px; color: var(--muted); }
-  .served { display: block; margin-top: 4px; font-size: 11px; font-style: normal; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  .served { display: block; margin-top: 4px; font-size: 12px; font-style: italic; color: var(--muted); }
   .records { display: grid; gap: 8px; margin-top: 12px; }
   .judicial-note { margin: 12px 0 0; font-size: 13px; color: var(--ink-2); }
   .backing-grid { display: grid; gap: 12px; padding: 0 12px 12px; grid-template-columns: 1fr; }
   @media (min-width: 700px) { .backing-grid { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); } }
   .backing-col { border-top: 1px solid var(--line); padding-top: 10px; font-size: 14px; }
-  .backing-h { margin: 8px 0 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .backing-h { margin: 8px 0 4px; font-size: 13px; font-weight: 600; color: var(--muted); }
   .backing ul { padding: 0; gap: 8px; }
   .backing li { border: 0; padding: 0; }
   .backing .kind { font-size: 11px; color: var(--muted); }
@@ -234,7 +239,7 @@
   .impact { font-size: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
   .impact summary {
     padding: 8px 10px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
-    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2);
+    font-size: 13px; font-weight: 600; color: var(--ink-2);
   }
   .impact summary::-webkit-details-marker { display: none; }
   .impact summary::after { content: "▾"; font-size: 14px; color: var(--muted); transition: transform .15s; }
@@ -247,9 +252,52 @@
   /* ---------- Ad slots: fixed min-height reserves space so ads cause no layout shift (CLS) ---------- */
   .ad {
     margin: 20px 0; min-height: 100px; display: grid; place-items: center;
-    border: 1px dashed var(--line-2); border-radius: 8px; color: var(--muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+    border: 1px dashed var(--line-2); border-radius: var(--radius); color: var(--muted); font-size: 12px;
   }
   footer { padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
+
+  /* ================= Ballot paper theme ================= */
+  h1, h2, .race-head h2, .issue h3, .filters-head h2, .notice-box h2 { font-family: var(--serif); font-weight: 600; letter-spacing: 0; }
+  /* Yellow masthead (dark ink on yellow in both color modes) */
+  .site-header { background: var(--accent); color: var(--on-accent); padding: 18px 0 16px; margin-bottom: 16px; }
+  .site-header h1 { font-size: clamp(26px, 5vw, 36px); }
+  .site-header .sub { color: #44403c; }
+  .site-header .demo-tag { border-color: var(--on-accent); color: var(--on-accent); }
+  .demo-tag[hidden] { display: none; } /* the class sets display, which would otherwise override [hidden] */
+  .site-header .filter-btn { background: transparent; color: var(--on-accent); border: 1.5px solid var(--on-accent); border-radius: 999px; }
+  .filter-btn .badge { background: var(--on-accent); color: var(--accent); }
+  /* Buttons: solid ink, or outlined ink */
+  .btn { border-radius: var(--radius); background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .text { border-radius: var(--radius); background: var(--surface); }
+  /* Category tabs: underlined, with a yellow marker on the current page */
+  .cat-tabs { gap: 20px; border-bottom: 1px solid var(--line-2); padding-bottom: 0; scrollbar-width: none; }
+  .cat-tabs::-webkit-scrollbar { display: none; }
+  .cat-tabs button { background: none; border: 0; border-radius: 0; padding: 8px 0; border-bottom: 4px solid transparent; color: var(--ink-2); }
+  .cat-tabs button[aria-selected="true"] { background: none; color: var(--ink); border-bottom-color: var(--accent); }
+  .cat-tabs button[aria-selected="true"] span { color: var(--muted); opacity: 1; }
+  /* Race cards: white paper with an ink rule; candidates marked with a yellow edge */
+  .race { border: 1.5px solid var(--ink); border-radius: var(--radius); }
+  .race-head { background: var(--surface); }
+  .race-head h2 { font-size: 23px; line-height: 1.25; }
+  .person { border: 0; border-left: 4px solid var(--accent); border-radius: 0; background: var(--bg); padding: 8px 12px; }
+  .person.hit { box-shadow: none; outline: 1.5px solid var(--ink); }
+  .record, .impact, .cell, .notice-box, .empty, .suggest { border-radius: var(--radius); }
+  .record { background: var(--bg); }
+  /* Issues: dashed rules like a printed ballot, names in highlighter */
+  .issue { border-bottom: 1px dashed var(--line-2); }
+  .issue h3 { justify-self: start; padding: 0 4px; margin-left: -4px; font-size: 18px;
+    background-image: linear-gradient(transparent 55%, var(--accent-soft) 55%); }
+  .cell { background: var(--surface); }
+  .positions .mark { color: var(--ink-2); }
+  blockquote { border-left-color: var(--accent); font-family: var(--serif); font-size: 15px; }
+  /* Chips, notices, filter panel */
+  .chip { border-radius: 999px; }
+  .chip.removable { background: var(--accent-soft); border-color: transparent; color: var(--ink); }
+  .notice-box { border: 1.5px solid var(--ink); }
+  .filters-head { border-bottom: 4px solid var(--accent); }
+  .check input { accent-color: var(--ink); }
+  .report, .not-on-record { border-top-style: dashed; }
 </style>
 </head>
 <body>
@@ -269,7 +317,7 @@
 <header class="site-header">
   <div class="wrap header-bar">
     <div>
-      <h1>Local Voter Guide</h1>
+      <h1>Compare Your Ballot</h1>
       <p class="sub" id="metaLine"></p>
       <span class="demo-tag" id="demoTag" hidden>Prototype: all candidates, quotes and sources below are fictional sample data</span>
     </div>
