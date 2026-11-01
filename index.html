@@ -157,6 +157,8 @@
     padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--surface); font-size: 13px;
   }
   .person strong { display: block; font-size: 14px; }
+  .person strong a, .race-head h2 a { text-decoration: none; }
+  .person strong a:hover, .race-head h2 a:hover { text-decoration: underline; }
   .person span { color: var(--muted); }
   .person .mate { display: block; color: var(--ink-2); }
   .person.hit { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
@@ -409,11 +411,11 @@
 <footer>
   <div class="wrap">
     <p>Non-partisan. Candidates are listed in alphabetical order by last name. No candidate, party or campaign funds this guide.</p>
-    <p class="footer-links"><a href="privacy.html">Privacy policy</a> · <a id="correctionsLink" href="https://github.com/Rupakshi1999/VoterCandidateGuide/issues/new" rel="noopener">Report a correction</a></p>
+    <p class="footer-links"><a href="/races/">All races and candidates</a> · <a href="privacy.html">Privacy policy</a> · <a id="correctionsLink" href="https://github.com/Rupakshi1999/VoterCandidateGuide/issues/new" rel="noopener">Report a correction</a></p>
   </div>
 </footer>
 
-<noscript><div class="wrap"><p class="empty">This guide needs JavaScript to filter and compare races.</p></div></noscript>
+<noscript><div class="wrap"><p class="empty">This guide needs JavaScript to filter and compare races. Without it, browse <a href="/races/">all races and candidates</a>.</p></div></noscript>
 
 <script type="module">
 /* =====================================================================
@@ -616,7 +618,7 @@ function renderRace({ race, issues, unanswered, hitCands }) {
   const filtered = state.issues.size > 0; // chosen issues open automatically
 
   const roster = race.candidates.map((c) =>
-    `<div class="person${hitCands.has(c.id) ? " hit" : ""}"><strong>${esc(c.name)}</strong>${c.runningMate ? `<span class="mate">with ${esc(c.runningMate)} for Lt. Governor</span>` : ""}<span>${[c.party, c.occupation].filter(Boolean).map(esc).join(" · ")}</span>${
+    `<div class="person${hitCands.has(c.id) ? " hit" : ""}"><strong><a href="/candidates/${esc(c.id)}/">${esc(c.name)}</a></strong>${c.runningMate ? `<span class="mate">with ${esc(c.runningMate)} for Lt. Governor</span>` : ""}<span>${[c.party, c.occupation].filter(Boolean).map(esc).join(" · ")}</span>${
       recordActions(c).length ? `<em class="served">${judicial ? "Has served as a judge" : "Has held office"}</em>` : ""}</div>`
   ).join('<span class="vs">vs</span>');
   const records = race.candidates.filter((c) => recordActions(c).length).map((c) => renderRecord(c, judicial)).join("");
@@ -645,7 +647,7 @@ function renderRace({ race, issues, unanswered, hitCands }) {
   return `<article class="race" id="race-${race.id}">
     <div class="race-head">
       <div class="eyebrow">${esc(race.category)} · ${race.candidates.length} candidate${race.candidates.length === 1 ? "" : "s"}${race.seats > 1 ? ` · vote for up to ${race.seats}` : ""}</div>
-      <h2>${esc(race.office)}: ${esc(race.district)}</h2>
+      <h2><a href="/races/${esc(race.id)}/">${esc(race.office)}: ${esc(race.district)}</a></h2>
       <div class="roster">${roster}</div>
       ${records || renderBacking(race, judicial) ? `<div class="records">${records}${renderBacking(race, judicial)}</div>` : ""}
       ${judicial ? `<p class="judicial-note">Judges generally can't promise how they would rule, so this race focuses on each candidate's record and how they say they decide cases.</p>` : ""}

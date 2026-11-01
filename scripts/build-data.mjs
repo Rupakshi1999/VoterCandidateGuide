@@ -11,6 +11,7 @@
                                                     "Anyone with the link: Viewer"
     Add --save-csv with --sheet to also refresh data/sheets/*.csv, so every data
     change shows up as a reviewable git diff. Candidate files are always read from disk.
+    Then writes the static candidate and race pages and sitemap.xml (scripts/build-pages.mjs).
 
   The build fails (exit 1) on any rule violation, so ungrounded data never ships:
   every stance needs a position, quote, source, http(s) source_url and impact;
@@ -20,6 +21,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT, CSV_DIR, TABS, OPTIONAL_TABS, parseCsv, readCandidates } from "./common/sheets.mjs";
+import { buildPages } from "./build-pages.mjs";
 
 const OUT = path.join(ROOT, "data", "election.json");
 
@@ -230,3 +232,4 @@ fs.writeFileSync(OUT, JSON.stringify(db, null, 2) + "\n");
 const n = (k) => db.races.reduce((a, r) => a + r[k].length, 0);
 const uniqueIssues = new Set(db.races.flatMap((r) => r.issues.map((i) => i.id))).size;
 console.log(`Wrote data/election.json: ${db.races.length} races, ${n("candidates")} candidates, ${uniqueIssues} issues (source: ${sheetId ? "Google Sheet" : "data/sheets/*.csv"}).`);
+buildPages(db);
