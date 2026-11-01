@@ -2,6 +2,19 @@
 
 One entry per research run, newest first. See section 4 of claude.md for the steps.
 
+## 2026-10-31: DiNapoli, Blakeman, Komatireddy, LiPetri gaps
+
+- **DiNapoli (Comptroller):** first positions. Economy (waste and fraud audits) from his own answers in the PoliticsNY "Campaign Insiders" Q&A; climate change from his quote in an osc.ny.gov press release. Added `occupation`, `priorOffice` (Comptroller, 2007–present) and one record entry (April 2025 pension climate investment).
+- **Blakeman (Governor):** added gas prices (Marcellus Shale gas drilling, NEWS10 debate recap), climate change (all-electric building mandates, NY1) and AI data centers (opposes the moratorium, NY1). Record: signed the county transgender athlete law (2024-07-15, CBS New York) and the mask law (2024-08-14, News 12).
+- **Komatireddy (Attorney General):** added immigration (would defend New York's laws, including the 287(g) ban) and health care (Medicaid fraud prosecution), both from her NY1 interview of 2026-08-05.
+- **LiPetri (CD 3):** added climate change (wind, solar and batteries alongside natural gas, quoted by E&E News from a 2024 forum). Filled `priorOffice` (NYS Assembly District 9, 2019–2020) and one record entry: co-sponsored A6295A, the 1,4-dioxane ban (Chapter 613 of 2019), sourced to nyassembly.gov.
+- 24 entries verified for these four, 0 failed, 0 to check by hand.
+- Fixed `scripts/common/verify.mjs`: record/endorsement checks searched for "jr" instead of the last name for candidates whose names end in Jr., Sr., II, III or IV.
+- **Left out (paraphrase only, no direct quote):** DiNapoli backing the data center moratorium (City & State); Blakeman calling himself pro-choice (only an advocacy petition); LiPetri opposing a national abortion ban (Long Island Press, 2024 debate). Blakeman's health care remarks were in articles that block automated reading (nny360 returned 429, insurancenewsnet 403).
+- **Endorsements:** none added. Needs endorsers' own announcements for all four.
+
+**Next run:** endorsements for the statewide candidates; DiNapoli on AI data centers and health care from a debate transcript; Blakeman on abortion and health care; LiPetri on abortion and gas prices; then the 18 congressional candidates without positions, then State Senate and Assembly.
+
 ## 2026-10-31: Congress gaps filled (second pass)
 
 - Found and verified campaign sites for 5 more candidates: Halpin (CD 2, halpinforcongress.com), LiPetri (CD 3, mikelipetriforcongress.com), Valdez (CD 7, clairevaldezforcongress.com), Lander (CD 10, bradlanderforcongress.com), Lasher (CD 12, micahlasher.com). 31 positions, all verified word for word.

@@ -1,15 +1,57 @@
 {
   "name": "Thomas P. DiNapoli",
-  "occupation": "",
+  "occupation": "New York State Comptroller",
   "race": "comptroller",
   "ballotLines": [
     "Democratic",
     "Working Families"
   ],
-  "priorOffice": null,
-  "positions": [],
-  "record": [],
+  "priorOffice": {
+    "office": "New York State Comptroller",
+    "years": "2007–present"
+  },
+  "positions": [
+    {
+      "issue": "economy",
+      "supports": [
+        "Growing the state pension fund",
+        "Auditing state spending to find waste and fraud"
+      ],
+      "opposes": [],
+      "quote": "I will continue using the Comptroller’s powers to make government work efficiently, make sure services provided actually reach their intended targets, and aggressively go after waste and fraud to make sure New Yorkers aren’t paying taxes that don’t benefit them in the long run.",
+      "source": {
+        "title": "Campaign Insiders: A Q&A with NYS Comptroller Tom DiNapoli (PoliticsNY, May 19, 2026)",
+        "url": "https://politicsny.com/2026/05/19/campaign-insiders-a-qa-with-nys-comptroller-tom-dinapoli/"
+      },
+      "impact": "Expect continued audits of state and local agencies that look for wasted or misdirected money. The Comptroller doesn't set taxes or the budget, but audit findings can lead to recovered funds and changes in how programs are run."
+    },
+    {
+      "issue": "climate-change",
+      "supports": [
+        "Investing state pension money in the shift to a low-carbon economy"
+      ],
+      "opposes": [],
+      "quote": "Climate change poses a real threat to our investments, but the actions announced today will help position the Fund to address those risks and seize on opportunities generated as the world transitions to a low-carbon economy,",
+      "source": {
+        "title": "DiNapoli: NYS Pension Fund Commits Additional $2.4 Billion Through Sustainable Investment Program (Office of the State Comptroller, April 21, 2025)",
+        "url": "https://www.osc.ny.gov/press/releases/2025/04/dinapoli-nys-pension-fund-commits-additional-24-billion-through-sustainable-investment-program"
+      },
+      "impact": "The state pension fund, which pays retirement benefits to public employees, would keep shifting money toward climate-related investments. It doesn't change climate rules for residents, but it affects where about $40 billion of public pension money is invested."
+    }
+  ],
+  "record": [
+    {
+      "date": "2025-04-21",
+      "action": "Committed",
+      "text": "about $2.4 billion more of the state pension fund to its Sustainable Investments and Climate Solutions program, as the fund's trustee, bringing the total to over $26.5 billion toward a $40 billion goal.",
+      "outcome": "Announced April 21, 2025",
+      "source": {
+        "title": "Office of the State Comptroller press release, April 21, 2025",
+        "url": "https://www.osc.ny.gov/press/releases/2025/04/dinapoli-nys-pension-fund-commits-additional-24-billion-through-sustainable-investment-program"
+      }
+    }
+  ],
   "endorsements": [],
   "ratings": [],
-  "lastResearched": ""
+  "lastResearched": "2026-10-31"
 }

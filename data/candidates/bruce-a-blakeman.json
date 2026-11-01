@@ -53,9 +53,73 @@
         "url": "https://www.blakemanfornewyork.com/"
       },
       "impact": "Expect proposals aimed at lowering property-related costs for homeowners and renters. As County Executive he held county property taxes flat, according to his campaign."
+    },
+    {
+      "issue": "gas-prices",
+      "supports": [
+        "Drilling for natural gas in New York's Marcellus Shale"
+      ],
+      "opposes": [],
+      "quote": "I would extract the natural gas from the Marcellus Shale,",
+      "source": {
+        "title": "Hochul vs. Blakeman: debate recap (NEWS10, October 2026)",
+        "url": "https://www.news10.com/capitol/hochul-blakeman-debate-recap/amp/"
+      },
+      "impact": "New York has banned hydraulic fracturing (fracking) since 2015; lifting it would need a change in state law or policy. Supporters say in-state gas would lower energy costs, while opponents raise environmental concerns."
+    },
+    {
+      "issue": "climate-change",
+      "supports": [
+        "Allowing gas hookups in new buildings"
+      ],
+      "opposes": [
+        "State mandates to switch buildings to all-electric power"
+      ],
+      "quote": "This is a green energy scam. The fact of the matter is, we do not have enough energy to support going all electric,",
+      "source": {
+        "title": "Hochul, Blakeman spar over data center moratorium (NY1, July 15, 2026)",
+        "url": "https://ny1.com/nyc/all-boroughs/politics/2026/07/15/hochul-blakeman-data-center-moratorium"
+      },
+      "impact": "State rules that phase out gas in new buildings could be rolled back. That could lower some construction and heating costs, and would slow the state's planned cuts in building emissions."
+    },
+    {
+      "issue": "ai-data-centers",
+      "supports": [
+        "Building AI data centers where local governments agree"
+      ],
+      "opposes": [
+        "The state's one-year moratorium on new large data centers"
+      ],
+      "quote": "The moratorium is crazy. She should have had it figured out by now,",
+      "source": {
+        "title": "Hochul, Blakeman spar over data center moratorium (NY1, July 15, 2026)",
+        "url": "https://ny1.com/nyc/all-boroughs/politics/2026/07/15/hochul-blakeman-data-center-moratorium"
+      },
+      "impact": "Large data centers could be built sooner, with towns and counties deciding where. That could bring construction and tax revenue, along with higher demand on the power grid and water supply."
     }
   ],
-  "record": [],
+  "record": [
+    {
+      "date": "2024-07-15",
+      "action": "Signed",
+      "text": "a county law barring transgender women and girls from women's and girls' sports at county-run parks and facilities, after the County Legislature passed it along party lines.",
+      "outcome": "Signed into law; challenged in court by the NYCLU",
+      "source": {
+        "title": "Controversial transgender athlete ban signed into law on Long Island (CBS New York, July 15, 2024)",
+        "url": "https://www.cbsnews.com/newyork/news/nassau-county-transgender-athlete-ban-signed-into-law/"
+      }
+    },
+    {
+      "date": "2024-08-14",
+      "action": "Signed",
+      "text": "a county law making it illegal to wear a mask in public to hide one's identity.",
+      "outcome": "Signed into law, effective immediately",
+      "source": {
+        "title": "Nassau County executive signs mask ban into law (News 12 Long Island, August 14, 2024)",
+        "url": "https://longisland.news12.com/nassau-county-executive-to-sign-mask-ban-into-law-set-to-become-effective-immediately"
+      }
+    }
+  ],
   "endorsements": [],
   "ratings": [],
   "lastResearched": "2026-10-31"

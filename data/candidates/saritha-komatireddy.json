@@ -34,6 +34,32 @@
         "url": "https://sarithafornewyork.com/remarks/"
       },
       "impact": "She would publicly oppose new taxes on homeowners. The Attorney General doesn't set taxes, so this is an advocacy position rather than something the office decides."
+    },
+    {
+      "issue": "immigration",
+      "supports": [
+        "Defending New York's laws in court, including its ban on local agreements with ICE"
+      ],
+      "opposes": [],
+      "quote": "I'm going to follow the Constitution and the laws of the United States and the Constitution and the laws of New York. Period.",
+      "source": {
+        "title": "Republican Saritha Komatireddy lays out record in challenge to AG Letitia James (NY1, August 5, 2026)",
+        "url": "https://ny1.com/nyc/all-boroughs/news/2026/08/05/republican-saritha-komatireddy-lays-out-record-in-challenge-to-ag-letitia-james"
+      },
+      "impact": "The Attorney General defends state laws when they are challenged in court, including the new ban on 287(g) agreements between local police and ICE. She says she would defend that law, even though some Republicans oppose it."
+    },
+    {
+      "issue": "healthcare",
+      "supports": [
+        "Using the Attorney General's office to prosecute Medicaid fraud"
+      ],
+      "opposes": [],
+      "quote": "The attorney general has the power to prosecute fraud and help people in need. She's not using those powers,",
+      "source": {
+        "title": "Republican Saritha Komatireddy lays out record in challenge to AG Letitia James (NY1, August 5, 2026)",
+        "url": "https://ny1.com/nyc/all-boroughs/news/2026/08/05/republican-saritha-komatireddy-lays-out-record-in-challenge-to-ag-letitia-james"
+      },
+      "impact": "Expect more criminal cases and recovery efforts from the Attorney General's Medicaid Fraud Control Unit. Money recovered goes back to the Medicaid program, which pays for health care for low-income New Yorkers."
     }
   ],
   "record": [],

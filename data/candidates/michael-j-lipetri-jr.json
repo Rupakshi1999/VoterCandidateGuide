@@ -6,7 +6,10 @@
     "Republican",
     "Conservative"
   ],
-  "priorOffice": null,
+  "priorOffice": {
+    "office": "NYS Assembly, District 9",
+    "years": "2019–2020"
+  },
   "positions": [
     {
       "issue": "economy",
@@ -102,9 +105,33 @@
         "url": "https://www.mikelipetriforcongress.com/"
       },
       "impact": "He would vote for federal limits on boycotts of Israel. As one of 435 House members, they would vote and push for this in Congress; it would only become law with majorities in both chambers and the President's signature."
+    },
+    {
+      "issue": "climate-change",
+      "supports": [
+        "Wind, solar and battery power alongside natural gas"
+      ],
+      "opposes": [],
+      "quote": "We do need wind, we do need solar, we do need batteries, alongside natural gas,",
+      "source": {
+        "title": "5 New York House races where energy policy could matter (E&E News, June 26, 2026; remarks at a 2024 candidates' forum)",
+        "url": "https://www.eenews.net/articles/5-new-york-house-races-where-energy-policy-could-matter/"
+      },
+      "impact": "He would likely back federal support for renewable energy while keeping natural gas in the mix. As one of 435 House members, he would vote on energy tax credits and funding; those need majorities in both chambers and the President's signature."
     }
   ],
-  "record": [],
+  "record": [
+    {
+      "date": "2019-12-09",
+      "action": "Co-sponsored",
+      "text": "Assembly bill A6295A, which bans household cleaning, cosmetic and personal care products that contain 1,4-dioxane.",
+      "outcome": "Passed the Assembly June 20, 2019; signed into law December 9, 2019 (Chapter 613)",
+      "source": {
+        "title": "NYS Assembly bill A06295 (2019): sponsors, actions and votes",
+        "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A06295&term=2019&Summary=Y&Actions=Y&Votes=Y"
+      }
+    }
+  ],
   "endorsements": [],
   "ratings": [],
   "lastResearched": "2026-10-31"

@@ -80,6 +80,6 @@ export async function verifyQuote(url, quote) {
 export async function verifyMention(url, name) {
   const page = await fetchPageText(url);
   if (page.problem) return { ok: false, reason: page.problem };
-  const last = normalize(name).split(" ").pop();
+  const last = normalize(name).split(" ").filter((w) => !/^(jr|sr|ii|iii|iv)$/.test(w)).pop(); // "LiPetri Jr." -> "lipetri"
   return page.text.includes(last) ? { ok: true } : { ok: false, reason: `source page doesn't mention "${name}"` };
 }

@@ -98,6 +98,18 @@
               "source": "Priorities | Letitia James for New York (campaign site)",
               "sourceUrl": "https://jamesforny.com/priorities/",
               "realWorldImpact": "Expect more lawsuits and settlements against health care companies and providers accused of wrongdoing. Settlement money is often directed to programs such as opioid treatment."
+            },
+            "saritha-komatireddy": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Using the Attorney General's office to prosecute Medicaid fraud"
+                }
+              ],
+              "quote": "The attorney general has the power to prosecute fraud and help people in need. She's not using those powers,",
+              "source": "Republican Saritha Komatireddy lays out record in challenge to AG Letitia James (NY1, August 5, 2026)",
+              "sourceUrl": "https://ny1.com/nyc/all-boroughs/news/2026/08/05/republican-saritha-komatireddy-lays-out-record-in-challenge-to-ag-letitia-james",
+              "realWorldImpact": "Expect more criminal cases and recovery efforts from the Attorney General's Medicaid Fraud Control Unit. Money recovered goes back to the Medicaid program, which pays for health care for low-income New Yorkers."
             }
           },
           "shared": true
@@ -196,6 +208,18 @@
               "source": "Priorities | Letitia James for New York (campaign site)",
               "sourceUrl": "https://jamesforny.com/priorities/",
               "realWorldImpact": "The state would likely keep suing the federal government over immigration enforcement actions. Outcomes would depend on the courts."
+            },
+            "saritha-komatireddy": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Defending New York's laws in court, including its ban on local agreements with ICE"
+                }
+              ],
+              "quote": "I'm going to follow the Constitution and the laws of the United States and the Constitution and the laws of New York. Period.",
+              "source": "Republican Saritha Komatireddy lays out record in challenge to AG Letitia James (NY1, August 5, 2026)",
+              "sourceUrl": "https://ny1.com/nyc/all-boroughs/news/2026/08/05/republican-saritha-komatireddy-lays-out-record-in-challenge-to-ag-letitia-james",
+              "realWorldImpact": "The Attorney General defends state laws when they are challenged in court, including the new ban on 287(g) agreements between local police and ICE. She says she would defend that law, even though some Republicans oppose it."
             }
           },
           "shared": true
@@ -315,7 +339,21 @@
           "id": "thomas-p-dinapoli",
           "name": "Thomas P. DiNapoli",
           "party": "Democratic, Working Families",
-          "occupation": ""
+          "occupation": "New York State Comptroller",
+          "record": {
+            "office": "New York State Comptroller",
+            "years": "2007–present",
+            "actions": [
+              {
+                "date": "2025-04-21",
+                "action": "Committed",
+                "outcome": "Announced April 21, 2025",
+                "text": "about $2.4 billion more of the state pension fund to its Sustainable Investments and Climate Solutions program, as the fund's trustee, bringing the total to over $26.5 billion toward a $40 billion goal.",
+                "source": "Office of the State Comptroller press release, April 21, 2025",
+                "sourceUrl": "https://www.osc.ny.gov/press/releases/2025/04/dinapoli-nys-pension-fund-commits-additional-24-billion-through-sustainable-investment-program"
+              }
+            ]
+          }
         }
       ],
       "issues": [
@@ -351,6 +389,22 @@
               "source": "Joseph Hernandez for Comptroller (campaign site)",
               "sourceUrl": "https://hernandezforny.com/",
               "realWorldImpact": "The state pension fund, which the Comptroller manages, would likely shift some money toward investments in New York companies and lower-fee managers. Pension benefits themselves are set by law and wouldn't change."
+            },
+            "thomas-p-dinapoli": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Growing the state pension fund"
+                },
+                {
+                  "stance": "supports",
+                  "text": "Auditing state spending to find waste and fraud"
+                }
+              ],
+              "quote": "I will continue using the Comptroller’s powers to make government work efficiently, make sure services provided actually reach their intended targets, and aggressively go after waste and fraud to make sure New Yorkers aren’t paying taxes that don’t benefit them in the long run.",
+              "source": "Campaign Insiders: A Q&A with NYS Comptroller Tom DiNapoli (PoliticsNY, May 19, 2026)",
+              "sourceUrl": "https://politicsny.com/2026/05/19/campaign-insiders-a-qa-with-nys-comptroller-tom-dinapoli/",
+              "realWorldImpact": "Expect continued audits of state and local agencies that look for wasted or misdirected money. The Comptroller doesn't set taxes or the budget, but audit findings can lead to recovered funds and changes in how programs are run."
             }
           },
           "shared": true
@@ -499,7 +553,20 @@
             "energy"
           ],
           "description": "Policies on climate change and emissions.",
-          "stances": {},
+          "stances": {
+            "thomas-p-dinapoli": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Investing state pension money in the shift to a low-carbon economy"
+                }
+              ],
+              "quote": "Climate change poses a real threat to our investments, but the actions announced today will help position the Fund to address those risks and seize on opportunities generated as the world transitions to a low-carbon economy,",
+              "source": "DiNapoli: NYS Pension Fund Commits Additional $2.4 Billion Through Sustainable Investment Program (Office of the State Comptroller, April 21, 2025)",
+              "sourceUrl": "https://www.osc.ny.gov/press/releases/2025/04/dinapoli-nys-pension-fund-commits-additional-24-billion-through-sustainable-investment-program",
+              "realWorldImpact": "The state pension fund, which pays retirement benefits to public employees, would keep shifting money toward climate-related investments. It doesn't change climate rules for residents, but it affects where about $40 billion of public pension money is invested."
+            }
+          },
           "shared": true
         }
       ]
@@ -524,7 +591,24 @@
           "record": {
             "office": "Nassau County Executive",
             "years": "2022–present",
-            "actions": []
+            "actions": [
+              {
+                "date": "2024-07-15",
+                "action": "Signed",
+                "outcome": "Signed into law; challenged in court by the NYCLU",
+                "text": "a county law barring transgender women and girls from women's and girls' sports at county-run parks and facilities, after the County Legislature passed it along party lines.",
+                "source": "Controversial transgender athlete ban signed into law on Long Island (CBS New York, July 15, 2024)",
+                "sourceUrl": "https://www.cbsnews.com/newyork/news/nassau-county-transgender-athlete-ban-signed-into-law/"
+              },
+              {
+                "date": "2024-08-14",
+                "action": "Signed",
+                "outcome": "Signed into law, effective immediately",
+                "text": "a county law making it illegal to wear a mask in public to hide one's identity.",
+                "source": "Nassau County executive signs mask ban into law (News 12 Long Island, August 14, 2024)",
+                "sourceUrl": "https://longisland.news12.com/nassau-county-executive-to-sign-mask-ban-into-law-set-to-become-effective-immediately"
+              }
+            ]
           }
         },
         {
@@ -655,7 +739,20 @@
             "prices"
           ],
           "description": "Fuel and energy costs for households.",
-          "stances": {},
+          "stances": {
+            "bruce-a-blakeman": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Drilling for natural gas in New York's Marcellus Shale"
+                }
+              ],
+              "quote": "I would extract the natural gas from the Marcellus Shale,",
+              "source": "Hochul vs. Blakeman: debate recap (NEWS10, October 2026)",
+              "sourceUrl": "https://www.news10.com/capitol/hochul-blakeman-debate-recap/amp/",
+              "realWorldImpact": "New York has banned hydraulic fracturing (fracking) since 2015; lifting it would need a change in state law or policy. Supporters say in-state gas would lower energy costs, while opponents raise environmental concerns."
+            }
+          },
           "shared": true
         },
         {
@@ -787,7 +884,24 @@
             "technology"
           ],
           "description": "Building large data centers for artificial intelligence, including energy and water use.",
-          "stances": {},
+          "stances": {
+            "bruce-a-blakeman": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Building AI data centers where local governments agree"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "The state's one-year moratorium on new large data centers"
+                }
+              ],
+              "quote": "The moratorium is crazy. She should have had it figured out by now,",
+              "source": "Hochul, Blakeman spar over data center moratorium (NY1, July 15, 2026)",
+              "sourceUrl": "https://ny1.com/nyc/all-boroughs/politics/2026/07/15/hochul-blakeman-data-center-moratorium",
+              "realWorldImpact": "Large data centers could be built sooner, with towns and counties deciding where. That could bring construction and tax revenue, along with higher demand on the power grid and water supply."
+            }
+          },
           "shared": true
         },
         {
@@ -800,7 +914,24 @@
             "energy"
           ],
           "description": "Policies on climate change and emissions.",
-          "stances": {},
+          "stances": {
+            "bruce-a-blakeman": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Allowing gas hookups in new buildings"
+                },
+                {
+                  "stance": "opposes",
+                  "text": "State mandates to switch buildings to all-electric power"
+                }
+              ],
+              "quote": "This is a green energy scam. The fact of the matter is, we do not have enough energy to support going all electric,",
+              "source": "Hochul, Blakeman spar over data center moratorium (NY1, July 15, 2026)",
+              "sourceUrl": "https://ny1.com/nyc/all-boroughs/politics/2026/07/15/hochul-blakeman-data-center-moratorium",
+              "realWorldImpact": "State rules that phase out gas in new buildings could be rolled back. That could lower some construction and heating costs, and would slow the state's planned cuts in building emissions."
+            }
+          },
           "shared": true
         }
       ]
@@ -2867,7 +2998,21 @@
           "id": "michael-j-lipetri-jr",
           "name": "Michael J. LiPetri Jr.",
           "party": "Republican, Conservative",
-          "occupation": "Former New York State Assemblyman"
+          "occupation": "Former New York State Assemblyman",
+          "record": {
+            "office": "NYS Assembly, District 9",
+            "years": "2019–2020",
+            "actions": [
+              {
+                "date": "2019-12-09",
+                "action": "Co-sponsored",
+                "outcome": "Passed the Assembly June 20, 2019; signed into law December 9, 2019 (Chapter 613)",
+                "text": "Assembly bill A6295A, which bans household cleaning, cosmetic and personal care products that contain 1,4-dioxane.",
+                "source": "NYS Assembly bill A06295 (2019): sponsors, actions and votes",
+                "sourceUrl": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A06295&term=2019&Summary=Y&Actions=Y&Votes=Y"
+              }
+            ]
+          }
         },
         {
           "id": "thomas-r-suozzi",
@@ -3249,6 +3394,18 @@
           ],
           "description": "Policies on climate change and emissions.",
           "stances": {
+            "michael-j-lipetri-jr": {
+              "positions": [
+                {
+                  "stance": "supports",
+                  "text": "Wind, solar and battery power alongside natural gas"
+                }
+              ],
+              "quote": "We do need wind, we do need solar, we do need batteries, alongside natural gas,",
+              "source": "5 New York House races where energy policy could matter (E&E News, June 26, 2026; remarks at a 2024 candidates' forum)",
+              "sourceUrl": "https://www.eenews.net/articles/5-new-york-house-races-where-energy-policy-could-matter/",
+              "realWorldImpact": "He would likely back federal support for renewable energy while keeping natural gas in the mix. As one of 435 House members, he would vote on energy tax credits and funding; those need majorities in both chambers and the President's signature."
+            },
             "thomas-r-suozzi": {
               "positions": [
                 {
