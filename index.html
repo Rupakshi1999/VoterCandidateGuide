@@ -18,8 +18,8 @@
 <link rel="preload" href="data/election.json" as="fetch" crossorigin>
 <!-- ================= ADSENSE: site script (START) =================
      Verifies the site with AdSense and loads ads. async, so it never blocks the page.
-     Ad units go in the .ad slots marked below (manual units) or are placed by Auto ads,
-     which is switched on or off in the AdSense dashboard. -->
+     Ads appear only in the .ad slots marked below (manual ad units, filled by fillAds()
+     in the script, section 2). Keep Auto ads switched off in the AdSense dashboard. -->
 <meta name="google-adsense-account" content="ca-pub-8189873120277504">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8189873120277504"
      crossorigin="anonymous"></script>
@@ -258,6 +258,8 @@
     margin: 20px 0; min-height: 100px; display: grid; place-items: center;
     border: 1px dashed var(--line-2); border-radius: var(--radius); color: var(--muted); font-size: 12px;
   }
+  .ad[data-filled] { display: block; text-align: center; padding: 4px 0; } /* full width, so the responsive unit can size itself */
+  .ad[data-filled] .ad-label { display: block; font-size: 11px; }
   footer { padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
 
   /* ================= Ballot paper theme ================= */
@@ -386,9 +388,9 @@
 
 <main class="wrap">
   <!-- ================= ADSENSE SLOT: top-leaderboard (START) =================
-       Paste the AdSense <ins class="adsbygoogle"> unit here. Keep the .ad wrapper:
+       fillAds() puts the ad unit (AD_SLOTS.top) inside. Keep the .ad wrapper:
        its min-height reserves space so the ad loading does not shift content. -->
-  <div class="ad" aria-hidden="true">Advertisement</div>
+  <div class="ad" data-ad="top" aria-hidden="true"><span class="ad-label">Advertisement</span></div>
   <!-- ================= ADSENSE SLOT: top-leaderboard (END) ================= -->
 
   <div class="status" id="status" aria-live="polite"></div>
@@ -398,7 +400,7 @@
   <div id="results"><p class="empty">Loading races…</p></div>
 
   <!-- ================= ADSENSE SLOT: footer-banner (START) ================= -->
-  <div class="ad" aria-hidden="true">Advertisement</div>
+  <div class="ad" data-ad="footer" aria-hidden="true"><span class="ad-label">Advertisement</span></div>
   <!-- ================= ADSENSE SLOT: footer-banner (END) ================= -->
 </main>
 
@@ -438,6 +440,20 @@ const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&
 const norm = (s) => String(s).toLowerCase().trim();
 const lastName = (n) => n.split(" ").slice(-1)[0];
 const safeUrl = (u) => (/^https?:\/\//i.test(u) ? u : null);
+
+/* AdSense ad units, one per .ad slot. Paste each unit's data-ad-slot number from
+   AdSense > Ads > By ad unit. A slot with no number keeps its "Advertisement" box. */
+const AD_CLIENT = "ca-pub-8189873120277504";
+const AD_SLOTS = { top: "", infeed: "", footer: "" };
+function fillAds() {
+  for (const el of document.querySelectorAll(".ad[data-ad]:not([data-filled])")) {
+    const slot = AD_SLOTS[el.dataset.ad];
+    if (!slot) continue;
+    el.dataset.filled = "";
+    el.insertAdjacentHTML("beforeend", `<ins class="adsbygoogle" style="display:block" data-ad-client="${AD_CLIENT}" data-ad-slot="${slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>`);
+    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch { /* an unfilled slot must not break the page */ }
+  }
+}
 
 const STANCES = { supports: { label: "Supports", mark: "✓" }, opposes: { label: "Opposes", mark: "✕" } };
 
@@ -684,8 +700,9 @@ function render() {
   $("#results").innerHTML = notices + tabs + `<div class="page${slide}" role="tabpanel" aria-label="${esc(state.category)} races">` +
     page.map((v, i) => renderRace(v) + (i === 1 && page.length > 2
     ? `<!-- ================= ADSENSE SLOT: in-feed (START) ================= -->
-       <div class="ad" aria-hidden="true">Advertisement</div>
+       <div class="ad" data-ad="infeed" aria-hidden="true"><span class="ad-label">Advertisement</span></div>
        <!-- ================= ADSENSE SLOT: in-feed (END) ================= -->` : "")).join("") + `</div>` + pager;
+  fillAds(); // the in-feed slot is new on every render, so it needs its own ad request
 }
 
 /* Switches the category page; dir (+1/-1) sets which way the slide animates. */
