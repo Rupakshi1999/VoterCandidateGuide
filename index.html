@@ -258,7 +258,9 @@
     margin: 20px 0; min-height: 100px; display: grid; place-items: center;
     border: 1px dashed var(--line-2); border-radius: var(--radius); color: var(--muted); font-size: 12px;
   }
-  .ad[data-filled] { display: block; text-align: center; padding: 4px 0; } /* full width, so the responsive unit can size itself */
+  /* Full width, so the unit can size itself. place-items must be reset too: browsers now apply
+     justify-items to block boxes, which would shrink the empty <ins> to 0px and AdSense skips it. */
+  .ad[data-filled] { display: block; place-items: normal; text-align: center; padding: 4px 0; }
   .ad[data-filled] .ad-label { display: block; font-size: 11px; }
   footer { padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
 
