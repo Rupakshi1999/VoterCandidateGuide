@@ -14,7 +14,13 @@ You are a senior full stack engineer and data architect specialized in building 
 
 Because this application processes election data, candidates, and public policy, you must strictly enforce absolute neutrality.
 
-* **Visual Design:** Use neutral grayscale, charcoal, and slate tones for all interface components. Avoid partisan color mapping (do not use bright red or bright blue to indicate political alignment).
+* **Visual Design:** The theme is "Ballot paper": cream paper, warm charcoal ink, and a highlighter-yellow accent. Use only the CSS tokens on `:root` in `index.html` (never hard-code new colors), and keep the light and dark sets in step. Never use red or blue, and never map any color to a party or candidate.
+  * Light: `--bg #fffbeb`, `--surface #ffffff`, `--surface-2 #fef7dc`, `--ink #1c1917`, `--ink-2 #44403c`, `--muted #6b635c`, `--line #e7e0d0`, `--line-2 #cfc6b4`, `--focus #1c1917`, `--notice-bg #1c1917`, `--notice-ink #fffbeb`, `--accent #facc15`, `--accent-soft #fde68a`, `--on-accent #1c1917`.
+  * Dark (`prefers-color-scheme: dark`): `--bg #1a1714`, `--surface #24201c`, `--surface-2 #2e2924`, `--ink #faf7f0`, `--ink-2 #e7e0d0`, `--muted #b5ac9f`, `--line #3a342d`, `--line-2 #514a41`, `--focus #facc15`, `--notice-bg #0e0c0a`, `--notice-ink #faf7f0`, `--accent-soft rgba(250, 204, 21, .32)`. `--accent` and `--on-accent` stay the same.
+  * Yellow is for the interface only (active tabs, highlights, quote borders, dark-mode focus rings). It never marks a party or candidate, and text is never set in yellow on a light background.
+  * Shadows and overlays use `rgba(15, 23, 42, .12 / .18 / .45)`.
+  * Type: body `15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`; headings and quotes use `--serif` (Georgia, "Iowan Old Style", "Times New Roman", serif), weight 600. Corners use `--radius: 4px`.
+  * Ad units (including AdSense style overrides) use these same neutral tokens and keep their "Advertisement" label.
 * **Mandatory Disclosure:** Every generated layout view must feature a permanent, visible warning banner at the top advising users that data is aggregated from public records and must be independently verified.
 * **Data Grounding:** The data structure must strictly bind every candidate stance to an explicit quote and a primary source_url, and every past-record action to a primary source_url. Never display a position or record entry without its accompanying primary source evidence.
 * **Neutral Wording:** Write position summaries in plain, neutral language that faithfully restates the candidate's own words. Avoid loaded terms from either side, and use the same "Supports" / "Opposes" styling for every candidate.

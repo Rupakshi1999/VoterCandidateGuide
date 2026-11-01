@@ -444,13 +444,18 @@ const safeUrl = (u) => (/^https?:\/\//i.test(u) ? u : null);
 /* AdSense ad units, one per .ad slot. Paste each unit's data-ad-slot number from
    AdSense > Ads > By ad unit. A slot with no number keeps its "Advertisement" box. */
 const AD_CLIENT = "ca-pub-8189873120277504";
-const AD_SLOTS = { top: "", infeed: "", footer: "" };
+const AD_SLOTS = { top: "", infeed: "4310396541", footer: "" };
+/* Slots that use an in-article unit instead of a responsive display unit. */
+const AD_IN_ARTICLE = new Set(["infeed"]);
 function fillAds() {
   for (const el of document.querySelectorAll(".ad[data-ad]:not([data-filled])")) {
     const slot = AD_SLOTS[el.dataset.ad];
     if (!slot) continue;
     el.dataset.filled = "";
-    el.insertAdjacentHTML("beforeend", `<ins class="adsbygoogle" style="display:block" data-ad-client="${AD_CLIENT}" data-ad-slot="${slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>`);
+    const format = AD_IN_ARTICLE.has(el.dataset.ad)
+      ? `style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid"`
+      : `style="display:block" data-ad-format="auto" data-full-width-responsive="true"`;
+    el.insertAdjacentHTML("beforeend", `<ins class="adsbygoogle" ${format} data-ad-client="${AD_CLIENT}" data-ad-slot="${slot}"></ins>`);
     try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch { /* an unfilled slot must not break the page */ }
   }
 }
