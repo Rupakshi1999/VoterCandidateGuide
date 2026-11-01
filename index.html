@@ -175,6 +175,10 @@
   .notice-box h2 { margin: 0 0 4px; font-size: 17px; }
   .notice-box p { margin: 0 0 12px; color: var(--ink-2); }
   .notice-box.small { font-size: 14px; padding: 12px 16px; }
+  .leg-pick { display: grid; gap: 6px; }
+  .leg-pick label { font-weight: 600; }
+  .leg-pick select { max-width: 220px; }
+  .leg-pick p { margin: 0; }
   .notice-box.small, .notice-box > p:last-child { margin-bottom: 16px; }
   .coverage-form { display: grid; gap: 10px; max-width: 420px; }
   .coverage-form label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
@@ -995,8 +999,17 @@ function ballotNotices(viewLength) {
       ${coverageForm(b)}
     </section>`);
   }
-  if (b.covered && b.county === "nassau") notes.push(`<p class="notice-box small">Your Nassau County Legislature district can't be matched automatically yet.
-    Look it up on the <a href="${VOTER_LOOKUP}" target="_blank" rel="noopener">New York State voter lookup</a>, then search for your legislator above.</p>`);
+  // Nassau's published district data predates the court-ordered 2026 map, so voters pick their district
+  // (shown on the state voter lookup, which uses their registration) instead of us guessing it.
+  if (b.covered && b.county === "nassau") notes.push(`<div class="notice-box small leg-pick">
+    <label for="nassauLeg">Your Nassau County Legislature district</label>
+    <select id="nassauLeg" class="text">
+      <option value="">Choose 1–19</option>
+      ${Array.from({ length: 19 }, (_, i) => `<option value="${i + 1}"${b.nassauLeg === i + 1 ? " selected" : ""}>District ${i + 1}</option>`).join("")}
+    </select>
+    <p>${b.nassauLeg ? "Showing that district's race on your ballot." : "Its race isn't on your ballot until you choose."}
+      Not sure? Your district is listed on the <a href="${VOTER_LOOKUP}" target="_blank" rel="noopener">New York State voter lookup</a>.</p>
+  </div>`);
   if (b.councilUnknown) notes.push(`<p class="notice-box small">We couldn't confirm your NYC Council district.
     Look it up on the <a href="${VOTER_LOOKUP}" target="_blank" rel="noopener">New York State voter lookup</a>.</p>`);
   return notes.join("");
@@ -1055,6 +1068,18 @@ results.addEventListener("touchend", (e) => {
   const order = categoryOrder(), next = order[order.indexOf(state.category) + (dx < 0 ? 1 : -1)];
   if (next) showCategory(next, dx < 0 ? 1 : -1);
 }, { passive: true });
+
+// Nassau County Legislature district picker (see ballotNotices).
+results.addEventListener("change", (e) => {
+  if (e.target.id !== "nassauLeg" || !state.ballot) return;
+  const n = Number(e.target.value) || null;
+  for (const k of [...state.ballot.keys]) if (k.startsWith("nassau-leg:")) state.ballot.keys.delete(k);
+  state.ballot.labels = state.ballot.labels.filter((l) => !l.startsWith("County Legislature District"));
+  if (n) { state.ballot.keys.add(`nassau-leg:${n}`); state.ballot.labels.push(`County Legislature District ${n}`); }
+  state.ballot.nassauLeg = n;
+  render();
+  document.getElementById("nassauLeg")?.focus();
+});
 
 $("#status").addEventListener("click", (e) => {
   const b = e.target.closest("button");
