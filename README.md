@@ -4,14 +4,14 @@ A free, static, non-partisan voter guide: compare local candidates side by side,
 
 No backend. The site is `index.html` plus `data/election.json`, so it can be hosted for $0 on GitHub Pages, Netlify or Vercel.
 
-## Publish on GitHub Pages ($0)
+## Publishing
 
-1. Push to GitHub: `git push origin main`.
-2. On GitHub: **Settings → Pages → Build and deployment → Deploy from a branch**, branch `main`, folder `/ (root)`, **Save**.
-3. A few minutes later the site is live at `https://rupakshi1999.github.io/VoterCandidateGuide/`. Every push to `main` updates it.
-4. Tell Google about it: add the site in [Google Search Console](https://search.google.com/search-console) and submit `sitemap.xml`.
+The site is live at **https://compareyourballot.org**, served free by GitHub Pages. Every push to `main` updates it within a few minutes.
 
-No domain or verification is needed for the address above. **Optional custom domain:** buy one (about $10–15/year), add it under Settings → Pages → Custom domain, and follow GitHub's DNS steps. GitHub also recommends verifying the domain (Settings → Pages → "Add a verified domain") so nobody else can claim it. Then update the URLs in `index.html` (canonical and `og:url`), `robots.txt` and `sitemap.xml`.
+- **GitHub:** Settings → Pages deploys from branch `main`, folder `/ (root)`, with custom domain `compareyourballot.org` (stored in the `CNAME` file; don't delete it).
+- **Domain and DNS:** registered at Cloudflare. The apex `@` points to GitHub Pages (`185.199.108.153`, `.109.153`, `.110.153`, `.111.153`) and `www` is a CNAME to `rupakshi1999.github.io`.
+- **Search:** add the site in [Google Search Console](https://search.google.com/search-console) and submit `https://compareyourballot.org/sitemap.xml`.
+- If the domain ever changes, update `CNAME`, the canonical and `og:url` tags in `index.html`, `robots.txt` and `sitemap.xml`.
 
 `.nojekyll` tells GitHub Pages to serve the files as they are. `data/sources/` is never committed, so the downloaded Board of Elections PDFs aren't published.
 

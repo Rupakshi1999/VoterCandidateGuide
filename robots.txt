@@ -3,4 +3,4 @@ Allow: /
 Disallow: /scripts/
 Disallow: /data/sheets/
 
-Sitemap: https://rupakshi1999.github.io/VoterCandidateGuide/sitemap.xml
+Sitemap: https://compareyourballot.org/sitemap.xml
